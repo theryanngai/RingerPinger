@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<% if flash[:alerts] %>
+	<%= flash[:alerts] %>
+<% end %>
+
+<% if current_user %>
+	<b><i>You are currently logged in as 
+	<%= current_user.email %></i></b>
+	<br>
+	<%= button_to "Sign Out", session_url, method: :delete %>
+<% end %>
+
+<html>
+<head>
+  <title>RingerPinger</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
