@@ -1,5 +1,5 @@
 RingerPinger.Views.ProfilesIndex = Backbone.CompositeView.extend({ 
-	template: JST["users/index"],
+	template: JST["profiles/index"],
 
 	initialize: function() {
 		this.listenTo(this.collection, "sync", this.render);

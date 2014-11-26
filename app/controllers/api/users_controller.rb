@@ -5,16 +5,18 @@ module Api
 		end
 
 		def create
-			debugger;
 			@user = User.new(user_params)
 
 			if @user.save
-				flash.now[:alerts] = 'Thanks for creating an account!'
 				log_in_user!(@user)
+				render :show, status: :created
 			else
-				flash.now[:alerts] = @user.errors.full_messages
-				render :new
+				render json: @user.errors.full_messages, status: :unprocessable_entity
 			end
+		end
+
+		def show
+			@current_user = current_user
 		end
 
 
