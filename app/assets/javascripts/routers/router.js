@@ -1,11 +1,17 @@
 RingerPinger.Routers.Router = Backbone.Router.extend({
 	routes: {
-		"": "profilesIndex",
+		'' : 'home',
+		"profiles": "profilesIndex",
 		"users/new" : 'newUser'
 	},
 
 	initialize: function(options) {
 		this.$rootEl = options.$rootEl;
+	},
+
+	home: function() {
+		var homeView = new RingerPinger.Views.Home;
+		this._swapView(homeView);
 	},
 
 	profilesIndex: function() {

@@ -11,6 +11,7 @@ Backbone.CompositeView = Backbone.View.extend({
 		if (subview.attachSubviews) {
 			subview.attachSubviews();
 		}
+		debugger;
 	},
 
 	attachSubviews: function() {
