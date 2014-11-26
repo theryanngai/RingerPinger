@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
+ruby '2.1.2'
 
-
+gem 'backbone-on-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 
@@ -55,5 +56,4 @@ end
 # gem 'capistrano-rails', group: :development
 
 # Use byebug
-gem 'byebug'
 

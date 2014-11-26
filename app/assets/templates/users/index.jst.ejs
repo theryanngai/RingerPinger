@@ -1,0 +1,9 @@
+<h1>Users Index</h1>
+
+<ul class='users'>
+	<% profiles.each(function(model) { %>
+		<li><%= model.get('user').first_name +  " " + 
+		model.get('user').last_name %></li>
+	<% }) %>
+</ul>
+
