@@ -10,7 +10,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	},
 
 	home: function() {
-		var homeView = new RingerPinger.Views.Home;
+		var homeView = new RingerPinger.Views.Home();
 		this._swapView(homeView);
 	},
 

@@ -1,5 +1,5 @@
 RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
-	template: JST['home/pieces/_navbar'],
+	template: JST['home/pieces/navbar'],
 
 	render: function() {
 		var content = this.template();

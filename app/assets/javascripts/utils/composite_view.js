@@ -1,6 +1,7 @@
 Backbone.CompositeView = Backbone.View.extend({
 	addSubview: function(selector, subview) {
 		this.subviews(selector).push(subview);
+		debugger;
 		this.attachSubview(selector, subview.render());
 	},
 
@@ -11,7 +12,6 @@ Backbone.CompositeView = Backbone.View.extend({
 		if (subview.attachSubviews) {
 			subview.attachSubviews();
 		}
-		debugger;
 	},
 
 	attachSubviews: function() {
@@ -41,7 +41,7 @@ Backbone.CompositeView = Backbone.View.extend({
 	},
 
 	subviews: function (selector) {
-		this._subviews = this._subview || {};
+		this._subviews = this._subviews || {};
 
 		if(!selector) {
 			return this._subviews;
