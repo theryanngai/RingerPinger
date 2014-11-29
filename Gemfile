@@ -5,7 +5,13 @@ gem 'backbone-on-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 
+gem 'bootstrap-sass'
+
 gem 'byebug'
+
+gem 'font-awesome-rails'
+
+gem 'jquery-ui-rails'
 
 gem 'annotate'
 # Use postgresql as the database for Active Record

@@ -4,7 +4,7 @@ window.RingerPinger = {
   Views: {},
   Routers: {},
   initialize: function() {
-  	var $body = $('body');
+  	var $body = $('.backbone');
   	new RingerPinger.Routers.Router ({ $rootEl: $body });
   	Backbone.history.start();
   }

@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_logged_in
-  	redirect_to new_session_url unless logged_in?
+    unless logged_in?
+  	 render json: "Oops! Looks like you aren't logged in!", status: :unathorized
+    end
   end
 end

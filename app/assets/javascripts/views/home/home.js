@@ -2,6 +2,8 @@ RingerPinger.Views.Home = Backbone.CompositeView.extend({
 	
 	template: JST["home/home"],
 
+	className: 'index-content',
+
 	initialize: function() {
 		this.addNavbar();
 		this.addSearchbar();
