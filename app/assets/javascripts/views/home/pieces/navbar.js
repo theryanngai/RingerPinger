@@ -9,7 +9,8 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 
 	events: {
 		'click .signup-link': 'showSignUp',
-		'click #signup-hide': 'hideSignUp'
+		'click #signup-hide': 'hideSignUp',
+		'click #signup-btn': 'createAccount'
 	},
 
 	render: function() {
@@ -33,6 +34,23 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 	hideSignUp: function(event) {
 		event.preventDefault();
 		$('.signup-modal').removeClass('signup-show');
+	},
+
+	createAccount: function(event) {
+		event.preventDefault();
+		var newAttrs = $('#signup-form').serializeJSON();
+		var newUser = new RingerPinger.Models.User;
+		newUser.set(newAttrs);
+		debugger;
+		newUser.save({}, {
+			success: function() {
+				alert("YOU FUCKING SAVED ME");
+			},
+			error: function() {
+				debugger;
+				alert(newUser.error);
+			}
+		});
 	}
 
 })

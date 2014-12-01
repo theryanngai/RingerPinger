@@ -9,6 +9,8 @@ gem 'bootstrap-sass'
 
 gem 'byebug'
 
+gem 'jquery-serialize-json-sprockets', '~> 0.0.1'
+
 gem 'font-awesome-rails'
 
 gem 'jquery-ui-rails'
