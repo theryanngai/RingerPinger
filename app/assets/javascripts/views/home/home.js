@@ -20,7 +20,7 @@ RingerPinger.Views.Home = Backbone.CompositeView.extend({
 	},
 
 	addNavbar: function() {
-		var navBarView = new RingerPinger.Views.HomeNavBar;
+		var navBarView = new RingerPinger.Views.HomeNavBar({ $homeEl: this.$el });
 		this.addSubview('.navbar', navBarView);
 	},
 

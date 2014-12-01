@@ -1,5 +1,6 @@
-.navbar {
+#navbar-style {
 	background: rgba(0, 0, 0, 0.3);
+	height: 70px;
 }
 
 .navbar-items {
@@ -39,7 +40,7 @@
 	left: 10px;
 	font-size: 20px;
 	letter-spacing: 1px;
-	top: 8%;
+	top: 6%;
 	font-weight: 500;
 }
 
@@ -49,7 +50,7 @@
 	letter-spacing: 1px;
 	font-weight: 125;
 	font-size: 13px;
-	top: 30%;
+	top: auto;
 }
 
 #recruit-ringer {
@@ -60,5 +61,27 @@
 	background: #2D9D92;
 	border-style: none;
 	border-radius: 2px;
+}
+
+.signup-modal {
+	position: absolute;
+	visibility: hidden;
+}
+
+.signup-show {
+	position: absolute;
+	background: white;
+	position: absolute;
+	visibility: visible;
+	text-align: center;
+	width: 400px;
+	z-index: 1;
+	margin: 5px;
+
+	input {
+		padding: 10px;
+		margin: 5px;
+		text-align: center;
+	}
 }
 

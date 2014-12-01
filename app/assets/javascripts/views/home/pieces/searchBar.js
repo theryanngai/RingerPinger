@@ -4,7 +4,6 @@ RingerPinger.Views.HomeSearchBar = Backbone.CompositeView.extend({
 		var content = this.template();
 		$('.date').datepicker();
 		this.$el.html(content);
-		debugger;
 
 		return this;
 	}
