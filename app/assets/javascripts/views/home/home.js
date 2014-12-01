@@ -22,7 +22,11 @@ RingerPinger.Views.Home = Backbone.CompositeView.extend({
 	},
 
 	addNavbar: function() {
-		var navBarView = new RingerPinger.Views.HomeNavBar({ $homeEl: this.$el });
+		if (RingerPinger.currentUser) {
+			var navBarView = new RingerPinger.Views.HomeNavBar({ $homeEl: this.$el, loggedIn: true });
+		} else {
+			var navBarView = new RingerPinger.Views.HomeNavBar({ $homeEl: this.$el, loggedIn: false});
+		}
 		this.addSubview('.navbar', navBarView);
 	},
 

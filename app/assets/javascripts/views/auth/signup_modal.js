@@ -4,7 +4,7 @@ RingerPinger.Views.SignupModal = Backbone.CompositeView.extend({
 
 	events: {
 		'click #signup-hide': 'hideSignUp',
-		'click #signup-btn': 'createAccount',
+		'submit #signup-form': 'createAccount',
 	},
 
 	initialize: function(options) {
@@ -27,9 +27,10 @@ RingerPinger.Views.SignupModal = Backbone.CompositeView.extend({
 		var newUser = new RingerPinger.Models.User;
 		newUser.set(newAttrs.user);
 		newUser.save({}, {
-			success: function() {
+			success: function(model) {
+				RingerPinger.currentUser = model;
 				RingerPinger.users.fetch();
-				Backbone.history.navigate('', {trigger: true});
+				Backbone.history.navigate('#/', {trigger:true});
 			}
 		});
 

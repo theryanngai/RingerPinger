@@ -3,15 +3,17 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 
 	initialize: function(options) {
 		this.$homeEl = options.$homeEl;
-		this.addSignupBox();
-		this.addLoginBox();
+		if (RingerPinger.currentUser) {
+			this.addSignupBox();
+			this.addLoginBox();
+		} else {
+			this.addUserDropdown();
+		}
 	},
 
 	events: {
 		'click .signup-link': 'showSignUp',
-		'click .login-link':'showLogin',
-		'click #login-hide': 'hideLogin',
-		'click #login-btn': 'loginUser'
+		'click .login-link':'showLogin'
 	},
 
 	render: function() {
@@ -46,28 +48,7 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 		this.$homeEl.addClass('darkened');
 	},
 
-	hideLogin: function(event) {
-		event.preventDefault();
-		$('.login-modal').removeClass('login-show');
-	},
-
-	loginUser: function(event) {
-		event.preventDefault();
-		var attrs = $('#login-form').serializeJSON();
-		var that = this;
-
-    $.ajax({
-      url: "/api/session",
-      type: "POST",
-      data: attrs,
-      success: function (model, resp) {
-        that.$('.login-modal').removeClass('login-show');
-        Backbone.history.loadUrl(Backbone.history.fragment);
-      },
-      error: function (model) {
-      	alert('Bad Username/Password Combo');
-      }
-    })
+	addUserDropdown: function(event) {
 	}
 
 })
