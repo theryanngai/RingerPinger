@@ -25,7 +25,7 @@
 		text-decoration: none;
 	}
 
-	#recruit-ringer:hover {
+	#create-event:hover {
 		background: turquoise;
 	}
 
@@ -53,7 +53,7 @@
 	top: auto;
 }
 
-#recruit-ringer {
+#create-event {
 	position: relative;
 	height: 30px;
 	width: 120px;
@@ -61,6 +61,7 @@
 	background: #2D9D92;
 	border-style: none;
 	border-radius: 2px;
+	bottom: 5px;
 }
 
 

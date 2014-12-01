@@ -31,8 +31,9 @@ RingerPinger.Views.LoginModal = Backbone.CompositeView.extend({
       url: "/api/session",
       type: "POST",
       data: attrs,
-      success: function (model, resp) {
+      success: function (model) {
         that.$('.login-modal').removeClass('login-show');
+        RingerPinger.currentUser = model;
         Backbone.history.navigate('#/', { trigger: true });
       },
       error: function (model) { 

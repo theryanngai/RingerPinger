@@ -4,16 +4,16 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 	initialize: function(options) {
 		this.$homeEl = options.$homeEl;
 		if (RingerPinger.currentUser) {
+			this.addUserDropdown();
+		} else {
 			this.addSignupBox();
 			this.addLoginBox();
-		} else {
-			this.addUserDropdown();
 		}
 	},
 
 	events: {
 		'click .signup-link': 'showSignUp',
-		'click .login-link':'showLogin'
+		'click .login-link':'showLogin',
 	},
 
 	render: function() {

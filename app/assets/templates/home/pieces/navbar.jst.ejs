@@ -3,19 +3,30 @@
 		<li class="left-justify" id="site-logo">
 			<a href='/#/'>RingerPinger&#174</a>
 		</li>
-
 		<div class="right-justify">
-			<li id="sign-up">
-				<a href="javaScript:void(0);" class="signup-link">Sign Up</a>
+		<% if (RingerPinger.currentUser) {%>
+			<li id="user_links">
+				<a href="javaScript:void(0);" class="user-link">
+					<%= RingerPinger.currentUser.first_name %>
+				</a>
 			</li>
-			<li id="log-in">
-				<a href="javaScript:void(0);" class="login-link">Log In</a>
-			</li>
-			<li id="help">
-				<a href="javaScript:void(0);" class="help-link">Help <span id="down-caret">&#9660;</span></a>
-			</li>
-				<button id="recruit-ringer">Recruit a Ringer</button>
-		</div>
+		<%} else {%>
+				<li id="sign-up">
+					<a href="javaScript:void(0);" class="signup-link">
+						Sign Up
+					</a>
+				</li>
+				<li id="log-in">
+					<a href="javaScript:void(0);" class="login-link">
+						Log In
+					</a>
+				</li>
+		<% } %>
+				<li id="help">
+					<a href="javaScript:void(0);" class="help-link">Help <span id="down-caret">&#9660;</span></a>
+				</li>
+						<button id="create-event">Create an Event</button>
+			</div>
 	</ul>
 </div>
 

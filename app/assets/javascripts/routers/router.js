@@ -2,7 +2,8 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	routes: {
 		'' : 'home',
 		"profiles": "profilesIndex",
-		"users/new" : 'newUser'
+		"users/new" : 'newUser',
+		'events/new': 'event'
 	},
 
 	initialize: function(options) {
