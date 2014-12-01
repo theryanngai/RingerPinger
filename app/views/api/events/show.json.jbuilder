@@ -1,0 +1,12 @@
+json.(
+	@event, 
+	:id,
+	:title, 
+	:description, 
+	:location, 	
+	:user_id, 
+	:sport, 
+	:max_players,
+	:created_at, 
+	:updated_at
+	)
