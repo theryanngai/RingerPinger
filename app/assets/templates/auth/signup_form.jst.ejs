@@ -3,16 +3,22 @@
 		<text id="signup-title">Join the Fray!</text>
 		<br><br><br>
 
-		<input name="email" id="user_email" placeholder="E-mail">
+		<input name="user[email]" id="user_email" placeholder="E-mail">
 		<br>
-		<input type="password" name="password" id="user_password" placeholder="Password">
+		<input type="password" name="user[password]" id="user_password" placeholder="Password">
+		<br>
+		<input name="user[first_name]" id="user_first_name" placeholder="First Name">
+		<br>
+		<input name="user[last_name]" id="user_last_name" placeholder="Last Name">
 		<br>
 		<button id="signup-btn">Sign Up</button>
 	</form>
-	<br><br>
-	<text id="signup-text">
-		By signing up, I agree to RingerPinger's Terms of Service, Privacy Policy, and Athlete Standards of Conduct.
-	</text>
-	<br><br>
-	<a href="#" id="signup-hide">Close</a>
+	<div class="signup-text-style">
+		<br>
+		<text id="signup-text">
+			By signing up, I agree to RingerPinger's Terms of Service, Privacy Policy, and Athlete Standards of Conduct.
+		</text>
+		<br><br>
+		<a href="#" id="signup-hide">Close</a>
+	</div>
 </div>

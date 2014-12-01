@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
   def current_user
-  	User.find_by_session_token(session[:token])
+  	@current_user = User.find_by_session_token(session[:token])
   end
 
   def logged_in?
@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
   end
 
   def log_in_user!(user)
+    @current_user = user
   	session[:token] = user.reset_session_token!
-  	redirect_to profiles_url
   end
 
   def log_out

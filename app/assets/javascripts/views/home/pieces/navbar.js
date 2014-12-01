@@ -4,13 +4,14 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 	initialize: function(options) {
 		this.$homeEl = options.$homeEl;
 		this.addSignupBox();
-		// this.addLoginBox();
+		this.addLoginBox();
 	},
 
 	events: {
 		'click .signup-link': 'showSignUp',
-		'click #signup-hide': 'hideSignUp',
-		'click #signup-btn': 'createAccount'
+		'click .login-link':'showLogin',
+		'click #login-hide': 'hideLogin',
+		'click #login-btn': 'loginUser'
 	},
 
 	render: function() {
@@ -20,37 +21,53 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 		return this;
 	},
 
-	addSignupBox: function() {
-		var signupBox = new RingerPinger.Views.SignupModal();
-		this.addSubview('.signup', signupBox);
-	},
-
 	showSignUp: function(event) {
 		event.preventDefault();
 		$('.signup-modal').addClass('signup-show');
+		$('.login-modal').removeClass('login-show');
 		this.$homeEl.addClass('darkened');
 	},
 
-	hideSignUp: function(event) {
-		event.preventDefault();
-		$('.signup-modal').removeClass('signup-show');
+	addSignupBox: function() {
+		var signupBox = new RingerPinger.Views.SignupModal;
+		this.addSubview('.signup', signupBox);
 	},
 
-	createAccount: function(event) {
+	addLoginBox: function() {
+		var loginBox = new RingerPinger.Views.LoginModal;
+		this.addSubview('.login', loginBox);
+	},
+
+	showLogin: function(event) {
 		event.preventDefault();
-		var newAttrs = $('#signup-form').serializeJSON();
-		var newUser = new RingerPinger.Models.User;
-		newUser.set(newAttrs);
-		debugger;
-		newUser.save({}, {
-			success: function() {
-				alert("YOU FUCKING SAVED ME");
-			},
-			error: function() {
-				debugger;
-				alert(newUser.error);
-			}
-		});
+		RingerPinger.users.fetch();
+		$('.login-modal').addClass('login-show');
+		$('.signup-modal').removeClass('signup-show');
+		this.$homeEl.addClass('darkened');
+	},
+
+	hideLogin: function(event) {
+		event.preventDefault();
+		$('.login-modal').removeClass('login-show');
+	},
+
+	loginUser: function(event) {
+		event.preventDefault();
+		var attrs = $('#login-form').serializeJSON();
+		var that = this;
+
+    $.ajax({
+      url: "/api/session",
+      type: "POST",
+      data: attrs,
+      success: function (model, resp) {
+        that.$('.login-modal').removeClass('login-show');
+        Backbone.history.loadUrl(Backbone.history.fragment);
+      },
+      error: function (model) {
+      	alert('Bad Username/Password Combo');
+      }
+    })
 	}
 
 })

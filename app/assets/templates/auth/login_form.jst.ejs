@@ -1,6 +1,19 @@
 <div class="login-modal">
-	<input name="user[email]" id="user_email" placeholder="e-mail">
-	<br>
-	<input name="user[password]" id="user_password" placeholder="password">
-	<input type="submit" value="Log In">
+	<form id="login-form">
+		<text id="login-title">Log In</text>
+		<br><br><br>
+		<input name="user[email]" id="user_email" placeholder="E-mail">
+		<br>
+		<input type="password" name="user[password]" id="user_password" placeholder="Password">
+		<br>
+		<button id="login-btn">Log In</button>
+	</form>
+	<div class="closing-text">
+		Don't have an account yet? 
+		<a href="javaScript:void(0);" class="signup-link">
+			Join us!
+		</a>
+		<br>
+	</div>
+	<div id="hide-login"><a href="#" id="login-hide">Close</a></div>
 </div>
