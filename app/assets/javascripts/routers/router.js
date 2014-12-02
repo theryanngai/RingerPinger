@@ -20,8 +20,9 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		this._swapView(newEventView);
 	},
 
-	showEvent: function() {
-		var eventShow = new RingerPinger.Views.EventShow();
+	showEvent: function(id) {
+		var sportsEvent = RingerPinger.events.getOrFetch(id);
+		var eventShow = new RingerPinger.Views.EventShow({ model: sportsEvent });
 		this._swapView(eventShow);
 	},
 

@@ -4,6 +4,22 @@ RingerPinger.Collections.Events = Backbone.Collection.extend({
 	url:"/api/events",
 
 	initialize: function(options) {
+	},
+
+	getOrFetch: function(id) {
+		var sportsEvent = RingerPinger.events.get(id);
+		if (sportsEvent) {
+			sportsEvent.fetch();
+		} else {
+			sportsEvent = new RingerPinger.Models.Event({ id: id });
+			sportsEvent.fetch({
+				success: function() {
+					RingerPinger.events.add(sportsEvent);
+				}
+			});
+		}
+
+		return sportsEvent;
 	}
 })
 

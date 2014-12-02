@@ -3,7 +3,6 @@ RingerPinger.Views.EventShow = Backbone.CompositeView.extend({
 	template: JST["events/show"],
 
 	events: {
-		'submit': 'createEvent'
 	},
 
 	initialize: function() {
@@ -13,7 +12,7 @@ RingerPinger.Views.EventShow = Backbone.CompositeView.extend({
 	className: 'event-show',
 
 	render: function() {
-		var content = this.template();
+		var content = this.template({ sportsEvent: this.model });
 		this.$el.html(content);
 		this.attachSubviews();
 		return this;
