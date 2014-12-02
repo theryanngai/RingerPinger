@@ -10,8 +10,6 @@ RingerPinger.Views.Home = Backbone.CompositeView.extend({
 		this.addPanels();
 		this.addSliders();
 		this.addFooter();
-
-		this.listenTo(RingerPinger.users, 'sync', this.rerender);
 	},
 
 	render: function() {

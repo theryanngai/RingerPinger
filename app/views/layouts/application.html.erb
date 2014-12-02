@@ -6,6 +6,14 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 
+  <script>
+  	<% if current_user %>
+  		RingerPinger.currentUser = <%= current_user.to_json.html_safe %>;
+  	<% else %>
+  		RingerPinger.currentUser = null;
+    <% end %>
+  </script>
+
 </head>
 <body>
 
@@ -16,12 +24,6 @@
 			<%= flash[:alerts] %>
 		<% end %>
 	 
-	 	<% if current_user %>
-		<b><i>You are currently logged in as 
-		<%= current_user.email %></i></b>
-		<br>
-		<%= button_to "Sign Out", "/api/session", method: :delete %>
-		<% end %>
 	</div>
 	<div class="backbone jumbotron"></div>
 </body>

@@ -1,0 +1,55 @@
+<div class="navbar navbar-no-margin"></div>
+<form id="event-form">
+	<div class="new-event-header">
+		<div id="event-form-title">
+			Create Your Event
+		</div>
+		<div id="event-form-description">
+			RingerPinger allows athletes to find and join your 
+			events. You can also find and recruit others to your own events!
+		</div>
+	</div>
+	<div class="sport-choice">
+		<span id="sport-label">Sport</span>
+		<div class='btn-group'>
+			<button id="basketball-btn" value="basketball">
+				<img src="/assets/basketball.png">
+				<span>Basketball</span>
+			</button><button value="football">
+				<img src="/assets/football.png">
+				<span>Football</span>
+			</button><button value="baseball">
+				<img src="/assets/baseball.png">
+				<span>Baseball</span>
+			</button><button value="soccer">
+				<img src="/assets/soccer.png">
+				<span>Soccer</span>
+			</button><button value="tennis">
+				<img src="/assets/tennis.png">
+				<span>Tennis</span>
+			</button><button id="other-sport"><span>Other</span> <span id="down-caret">&#9660;</span></button>
+		</div>
+	</div>
+
+	<div class="text-inputs">
+		<input type="textarea" name="event[description]" id="event_description" 
+			placeholder="Title">
+			<br>
+		<input type="textarea" name="event[description]" id="event_description" 
+			placeholder="Description" class="description-field">
+			<br>
+		<input name="event[max_players]" id="event_max_players" placeholder="Maximum # of Players">
+	</div>
+
+
+	<button id="signup-btn">Create Event</button>
+</form>
+<div class="signup-text-style">
+	<br>
+	<text id="signup-text">
+		By signing up, I agree to RingerPinger's Terms of Service, Privacy Policy, and Athlete Standards of Conduct.
+	</text>
+	<br><br>
+	<a href="#" id="signup-hide">Close</a>
+</div>
+

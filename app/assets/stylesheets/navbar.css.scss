@@ -1,6 +1,12 @@
+.navbar.navbar-no-margin {
+	margin: 0px;
+	background: white;
+}
+
 #navbar-style {
 	background: rgba(0, 0, 0, 0.3);
 	height: 70px;
+	width: 100%
 }
 
 .navbar-items {
@@ -61,7 +67,7 @@
 	background: #2D9D92;
 	border-style: none;
 	border-radius: 2px;
-	bottom: 5px;
+	text-align: center;
 }
 
 

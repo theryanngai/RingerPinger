@@ -7,4 +7,4 @@ RingerPinger.Collections.Events = Backbone.Collection.extend({
 	}
 })
 
-RingerPinger.events = new RingerPinger.Collections.Event;
+RingerPinger.events = new RingerPinger.Collections.Events;

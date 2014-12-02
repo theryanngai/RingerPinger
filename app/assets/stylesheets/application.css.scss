@@ -17,6 +17,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
+*:focus {
+	outline: 0;
+}
+
 body {
 	height: 100%;
 	width: 100%;
@@ -83,6 +87,10 @@ body {
 
 .darkened { 
 	background-color: rgba(0, 0, 0, 0.6);
+}
+
+#down-caret {
+	font-size: 10px;
 }
 
 
