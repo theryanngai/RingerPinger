@@ -16,6 +16,7 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	render: function() {
 		var content = this.template();
 		this.$el.html(content);
+		debugger;
 		this.attachSubviews();
 		return this;
 	},
