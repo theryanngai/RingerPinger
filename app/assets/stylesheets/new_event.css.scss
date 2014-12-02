@@ -1,16 +1,22 @@
-form {
+#event-form {
 	background: #E0E2E8;
-	text-align: center;
 	color: #585858;
 	font-size: 18px;
 	font-weight: 300;
 	letter-spacing: 1px;
+
+	.form-inputs {
+		position: relative;
+		width: 1000px;
+		left: 30%
+	}
 }
 
 .new-event-header {
 	width: 100%;
 	height: 200px;
 	background: white;
+	text-align: center;
 
 	#event-form-title {
 		font-size: 30px;
@@ -25,15 +31,16 @@ form {
 		font-weight: 400;
 		width: 400px;
 		letter-spacing: 0px;
-		text-align: center;
 		left: 36%;
 	}
 }
 
 .sport-choice {
-	
+	position: relative;
 	margin: 50px;
+	margin-left: 0px;
 	margin-bottom: 20px;
+	left: -9.5%;
 
 	#sport-label {
 		margin: 25px;
@@ -74,8 +81,16 @@ button {
 }
 
 #create-btn {
+	font-size: 14px;
+	font-weight: 400;
+	height: 50px;
+	background: salmon;
+	color: white;
 	border: solid #C3C6CC 1px;
-	margin-bottom: 30px;
+	border-radius: 3px;
+	margin: 30px;
+	margin-left: 10px;
+	letter-spacing: 1px;
 }
 
 .text-inputs {
