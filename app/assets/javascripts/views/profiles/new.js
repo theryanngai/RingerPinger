@@ -1,22 +1,22 @@
-RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
+RingerPinger.Views.NewProfile = Backbone.CompositeView.extend({
 	
-	template: JST["events/new"],
+	template: JST["profiles/new"],
 
 	events: {
 		'submit': 'createEvent'
 	},
 
 	initialize: function() {
-		this.navBar = this.addNavBar();
+		this.addNavBar();
 		this.addFooter();
-		this.addMap();
 	},
 
-	className: 'new-event',
+	className: 'new-profile',
 
 	render: function() {
 		var content = this.template();
 		this.$el.html(content);
+		debugger;
 		this.attachSubviews();
 		return this;
 	},
@@ -24,18 +24,12 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	addNavBar: function() {
 		var navBarView = new RingerPinger.Views.HomeNavBar({ $homeEl: this.$el });
 		this.addSubview('.navbar', navBarView);
-		return navBarView;
 	},
 
 	addFooter: function() {
 		var footerView = new RingerPinger.Views.Footer();
 		this.addSubview('.main-footer', footerView);
 	},	
-
-	addMap: function() {
-		var mapView = new RingerPinger.Views.Map();
-		this.addSubview('#map-canvas', mapView);
-	},
 
 	createEvent: function(event) {
 		event.preventDefault();

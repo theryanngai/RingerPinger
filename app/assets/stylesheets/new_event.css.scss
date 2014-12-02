@@ -84,6 +84,8 @@ button:focus {
 }
 
 #create-btn {
+	transition-property: background;
+	transition-duration: 0.5s;
 	font-size: 14px;
 	font-weight: 400;
 	height: 50px;
@@ -117,10 +119,26 @@ button:focus {
 	top: 70px;
 }
 
-#map-input {
+#map-search {
 	position: relative;
 	top: 500px;
-	right: 235px;
+	left: 7%;
 	width: 300px;
+
+	button {
+		transition-property: background;
+		transition-duration: 0.5s;
+		background: #2D9D92;
+		color: white;
+		border: solid #C3C6CC 1px;
+		border-radius: 3px;
+		letter-spacing: 1px;
+	}
+
+	button:hover {
+	transition-property: background;
+	transition-duration: 0.5s;
+	background:turquoise;
+}
 }
 
