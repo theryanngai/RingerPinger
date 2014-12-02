@@ -47,9 +47,51 @@
 }
 
 .main-footer {
+	position: absolute;
 	background: url('images/tennis_ball.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 2000px;
-	background-position: -500px 100px;
+	background-position: -500px -300px;
+	width: 100%;
+
+	.links {
+		position: relative;
+		float: left;
+		margin: 50px;
+		color: white;
+		left: 25%;
+
+		h5 {
+			font-size: 16px;
+			font-weight: 500;
+			letter-spacing: 1px;
+		}
+
+		a {
+			font-size: 12px;
+			color: white;
+			font-weight: 200;
+			margin-top: 10px;
+			letter-spacing: 1px;
+		}
+	}
+
+	#language-selector {
+		top: 90px;
+	}
+
+	#copyright {
+		clear: both;
+		display: block;
+
+		hr {
+			width: 600px;
+		}
+		text-align: center;
+		padding: 20px;
+		color: white;
+		font-weight: 100;
+		letter-spacing: 1px;
+	}
 }
