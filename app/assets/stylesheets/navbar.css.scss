@@ -39,12 +39,15 @@
 	}
 
 	a:hover {
-		// color: rgba(0, 0, 0, 0.6);
+		transition-property: color;
+		transition-duration: 0.5s;
 		color: tomato;
 		text-decoration: none;
 	}
 
 	#create-event:hover {
+		transition-property: background;
+		transition-duration: 0.5s;
 		background: turquoise;
 	}
 

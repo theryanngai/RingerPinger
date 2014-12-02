@@ -95,6 +95,8 @@ button:focus {
 }
 
 #create-btn:hover {
+	transition-property: background;
+	transition-duration: 0.5s;
 	background:salmon;
 }
 
