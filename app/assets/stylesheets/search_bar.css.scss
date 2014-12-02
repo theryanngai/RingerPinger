@@ -30,6 +30,8 @@
 
 .home-search-button {
 	position: relative;
+	transition-property: background;
+	transition-duration: 0.5s;
 	height: 45px;
 	width: 150px;
 	color: white;

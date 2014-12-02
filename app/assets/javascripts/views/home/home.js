@@ -38,6 +38,7 @@ RingerPinger.Views.Home = Backbone.CompositeView.extend({
 	},
 
 	addFooter: function() {
-
+		var footerView = new RingerPinger.Views.Footer;
+		this.addSubview('.main-footer', footerView);
 	}
 })

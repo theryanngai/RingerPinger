@@ -1,6 +1,15 @@
 .login-modal {
 	position: absolute;
 	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s linear;
+	background: rgba(0, 0, 0, 0.9);
+	border-radius: 5px;
+	left: 40%;
+	text-align: center;
+	width: 275px;
+	z-index: 1;
+	top: 200px;
 }
 
 .login-show {
@@ -10,6 +19,8 @@
 	background: rgba(0, 0, 0, 0.9);
 	position: absolute;
 	left: 40%;
+	opacity: 1;
+	transition-delay: 0s;
 	visibility: visible;
 	text-align: center;
 	width: 275px;

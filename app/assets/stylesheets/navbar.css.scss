@@ -30,6 +30,8 @@
 	}
 
 	a {
+		transition-property: color;
+		transition-duration: 0.5s;
 		color: white;
 	}
 
@@ -43,6 +45,20 @@
 		transition-duration: 0.5s;
 		color: tomato;
 		text-decoration: none;
+	}
+
+	#create-event {
+	transition-property: background;
+	transition-duration: 0.5s;
+	position: relative;
+	height: 30px;
+	width: 120px;
+	color: white;
+	background: #2D9D92;
+	border-style: none;
+	border-radius: 2px;
+	text-align: center;
+	bottom: 3px;
 	}
 
 	#create-event:hover {
@@ -76,16 +92,5 @@
 	top: auto;
 }
 
-#create-event {
-	position: relative;
-	height: 30px;
-	width: 120px;
-	color: white;
-	background: #2D9D92;
-	border-style: none;
-	border-radius: 2px;
-	text-align: center;
-	bottom: 3px;
-}
 
 

@@ -1,6 +1,14 @@
 .signup-modal {
 	position: absolute;
+	left: 38%;
+	background: rgba(0, 0, 0, 0.9);
 	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s linear;
+	text-align: center;
+	width: 350px;
+	z-index: 1;
+	top: 200px;
 }
 
 .signup-show {
@@ -11,6 +19,8 @@
 	position: absolute;
 	left: 38%;
 	visibility: visible;
+	opacity: 1;
+	transition-delay: 0s;
 	text-align: center;
 	width: 350px;
 	z-index: 1;

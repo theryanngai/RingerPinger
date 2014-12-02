@@ -28,6 +28,7 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	createEvent: function(event) {
 		event.preventDefault();
 		if (!RingerPinger.currentUser) {
+			
 			this.navBar.showLogin(event);
 		} else {
 			var newAttrs = $('#event-form').serializeJSON();

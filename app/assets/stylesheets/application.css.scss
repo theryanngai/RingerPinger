@@ -65,6 +65,8 @@ body {
 	}
 
 	.info-button {
+		transition-property: background-color;
+		transition-duration: 0.5s;
 		letter-spacing: 1px;
 		font-weight: 400;
 		background: rgba(255,255,255, 0.5);
