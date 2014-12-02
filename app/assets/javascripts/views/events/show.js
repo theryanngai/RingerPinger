@@ -7,6 +7,8 @@ RingerPinger.Views.EventShow = Backbone.CompositeView.extend({
 
 	initialize: function() {
 		this.addNavBar();
+
+		this.listenTo(this.model, "sync", this.render);
 	},
 
 	className: 'event-show',

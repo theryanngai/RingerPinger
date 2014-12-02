@@ -1,4 +1,10 @@
 <div class='navbar navbar-event-show'></div>
 
-<%=sportsEvent.get('id')%>
-<%=sportsEvent.escape('title') %>
+<h4><%=sportsEvent.escape('title') %></h4>
+<ul>
+	<li>Description: <%= sportsEvent.escape('description') %></li>
+	<li><%= sportsEvent.escape('sport') %></li>
+	<li><%= sportsEvent.escape('max_players') %></li>
+	<li><%= sportsEvent.escape('location') %></li>
+	<li><%= sportsEvent.escape('user_id') %></li>
+</ul>
