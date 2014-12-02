@@ -8,6 +8,7 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 
 	initialize: function() {
 		this.navBar = this.addNavBar();
+		this.addFooter();
 	},
 
 	className: 'new-event',
@@ -24,6 +25,11 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 		this.addSubview('.navbar', navBarView);
 		return navBarView;
 	},
+
+	addFooter: function() {
+		var footerView = new RingerPinger.Views.Footer();
+		this.addSubview('.main-footer', footerView);
+	},	
 
 	createEvent: function(event) {
 		event.preventDefault();

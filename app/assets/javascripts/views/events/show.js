@@ -26,4 +26,8 @@ RingerPinger.Views.EventShow = Backbone.CompositeView.extend({
 		return navBarView;
 	},
 
+	addFooter: function() {
+		
+	}
+
 })
