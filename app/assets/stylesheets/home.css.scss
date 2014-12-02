@@ -1,0 +1,49 @@
+
+
+.main-footer {
+	background: url('images/tennis_ball.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 2000px;
+	background-position: -500px 100px;
+}
+
+#panels {
+	background: #CEE1E1;
+}
+
+.panels-header {
+	color: #3E4444;
+	font-size: 28px;
+	font-weight: 100;
+	text-align: center;
+	padding: 50px;
+	letter-spacing: 3px;
+}
+
+.panel-images {
+	
+	img {
+		width: 425px;
+		height: 250px;
+	}
+
+	.top-row {
+		margin-left: 250px;
+		img {
+			margin: 20px;
+			margin-top: 0px;
+			border: solid gray 2px;
+		}
+	}
+
+	.bottom-row {
+		margin-left: 50px;
+		
+		img {
+			margin: 10px;
+			border: solid gray 2px;
+			margin-bottom: 50px;
+		}
+	}
+}

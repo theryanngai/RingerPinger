@@ -13,33 +13,38 @@
 		<div class="sport-choice">
 			<span id="sport-label">Sport</span>
 			<div class='btn-group'>
-				<button id="basketball-btn" value="basketball">
+				<input type="radio" id="basketball-btn" value="basketball" name="event[sport]">
 					<img src="/assets/basketball.png">
 					<span>Basketball</span>
-				</button><button value="football">
+				</input><input type="radio" value="football" name="event[sport]">
 					<img src="/assets/football.png">
 					<span>Football</span>
-				</button><button value="baseball">
+				</input><input type="radio" value="baseball" name="event[sport]">
 					<img src="/assets/baseball.png">
 					<span>Baseball</span>
-				</button><button value="soccer">
+				</input><input type="radio" value="soccer" name="event[sport]">
 					<img src="/assets/soccer.png">
 					<span>Soccer</span>
-				</button><button value="tennis">
+				</input><input type="radio" value="tennis" name="event[sport]">
 					<img src="/assets/tennis.png">
 					<span>Tennis</span>
-				</button><button id="other-sport"><span>Other</span> <span id="down-caret">&#9660;</span></button>
+				</input><button type="button" id="other-sport"><span>Other</span> <span id="down-caret">&#9660;</span></button>
 			</div>
 		</div>
 
 		<div class="text-inputs">
-			<input type="textarea" name="event[description]" id="event_description" 
-				placeholder="Title">
+			<input name="event[title]" id="event_title" placeholder="Title">
 				<br>
-			<input type="textarea" name="event[description]" id="event_description" 
-				placeholder="Tell us about your event." class="description-field">
+			<textarea name="event[description]" id="event_description" 
+				placeholder="Tell us about your event." rows="4" cols="50" 
+				class="description-field"></textarea>
 				<br>
-			<input name="event[max_players]" id="event_max_players" placeholder="Maximum # of Players">
+			<select name="event[max_players]" id="event_max_players">
+				<option selected="true" style="display:none;">Max Players</option>
+				<% for (var i = 1; i < 41; i++) { %>
+					<option><%= i %></options>
+				<% } %>
+			</select>
 		</div>
 
 

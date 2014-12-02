@@ -2,7 +2,8 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	routes: {
 		'' : 'home',
 		"profiles": "profilesIndex",
-		'events/new': 'newEvent'
+		'events/new': 'newEvent',
+		'events/:id': 'showEvent'
 	},
 
 	initialize: function(options) {
@@ -17,6 +18,11 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	newEvent: function() {
 		var newEventView = new RingerPinger.Views.NewEvent();
 		this._swapView(newEventView);
+	},
+
+	showEvent: function() {
+		var eventShow = new RingerPinger.Views.EventShow();
+		this._swapView(eventShow);
 	},
 
 	profilesIndex: function() {

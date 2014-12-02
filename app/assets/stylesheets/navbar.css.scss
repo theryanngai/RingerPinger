@@ -1,6 +1,19 @@
 .navbar.navbar-no-margin {
 	margin: 0px;
-	background: white;
+	background: url('images/baseball_grass.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 2000px;
+	background-position: -200px -1050px;
+}
+
+.navbar.navbar-event-show {
+	margin: 0px;
+	background: url('images/tennis_ball.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 2000px;
+	background-position: -500px -800px;
 }
 
 #navbar-style {
@@ -49,6 +62,7 @@
 	top: 10%;
 	font-weight: 500;
 }
+
 
 .right-justify {
 	position: absolute;

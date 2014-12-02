@@ -59,9 +59,6 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
       success: function (model) {
         RingerPinger.currentUser = null;
         Backbone.history.navigate('#/', { trigger: true });
-      },
-      error: function (model) { 
-      	alert('Your Logout fucked up');
       }
     })
 	},

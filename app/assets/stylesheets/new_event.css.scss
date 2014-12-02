@@ -43,7 +43,7 @@
 	left: -9.5%;
 
 	#sport-label {
-		margin: 25px;
+		margin-left: 100px;
 		font-weight: 300px;
 	}
 }
@@ -53,15 +53,12 @@
 	height: 200px;
 }
 
-button {
-	height: 72px;
-	background: white;
-	border: solid #C3C6CC 1px;
-	border-left: none;
-	padding: 10px;
+.btn-group {
+	padding-left: 10px;
+	bottom: 3px;
 
 	img {
-		height: 30px;
+		height: 20px;
 	}
 
 	span {
@@ -69,6 +66,10 @@ button {
 		font-size: 14px;
 		letter-spacing: 1px;
 	}
+}
+
+button:focus {
+	background: salmon;
 }
 
 #basketball-btn {
@@ -84,7 +85,7 @@ button {
 	font-size: 14px;
 	font-weight: 400;
 	height: 50px;
-	background: salmon;
+	background: tomato;
 	color: white;
 	border: solid #C3C6CC 1px;
 	border-radius: 3px;
@@ -93,11 +94,22 @@ button {
 	letter-spacing: 1px;
 }
 
+#create-btn:hover {
+	background:salmon;
+}
+
 .text-inputs {
 
-	input {
+	* {
+		border: solid #C3C6CC 1px;
 		margin: 10px;
-		text-align: center;
+		padding-left: 10px;
+	}
+}
+
+.btn-group {
+	input {
+		font-size: 1px;
 	}
 }
 
