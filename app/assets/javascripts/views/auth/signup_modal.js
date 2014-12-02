@@ -30,7 +30,7 @@ RingerPinger.Views.SignupModal = Backbone.CompositeView.extend({
 			success: function(model) {
 				RingerPinger.currentUser = model;
 				RingerPinger.users.fetch();
-				Backbone.history.navigate('#/', {trigger:true});
+				Backbone.history.loadUrl(Backbone.history.fragment);
 			}
 		});
 

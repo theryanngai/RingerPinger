@@ -14,6 +14,7 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 	events: {
 		'click .signup-link': 'showSignUp',
 		'click .login-link':'showLogin',
+		'click .log-out': 'logOutUser'
 	},
 
 	render: function() {
@@ -46,6 +47,23 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 		$('.login-modal').addClass('login-show');
 		$('.signup-modal').removeClass('signup-show');
 		this.$homeEl.addClass('darkened');
+	},
+
+	logOutUser: function(event) {
+		event.preventDefault();
+
+    $.ajax({
+      url: "/api/session",
+      type: "DELETE",
+      data: RingerPinger.currentUser,
+      success: function (model) {
+        RingerPinger.currentUser = null;
+        Backbone.history.navigate('#/', { trigger: true });
+      },
+      error: function (model) { 
+      	alert('Your Logout fucked up');
+      }
+    })
 	},
 
 	addUserDropdown: function(event) {
