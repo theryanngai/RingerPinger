@@ -17,6 +17,20 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	render: function() {
 		var content = this.template();
 		this.$el.html(content);
+
+		var that = this;
+
+		// this.$('#map-input').geocomplete({
+		// 	map: that.$('#map-canvas'),
+		// 	// details: ".details",
+		// 	detailsAttribute: "data-geo"
+		// });
+
+    this.$("#map-find").click(function(){
+      $("#map-input").trigger("geocode");
+      return false;
+    });
+
 		this.attachSubviews();
 		return this;
 	},
@@ -33,20 +47,23 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	},	
 
 	addMap: function() {
-		var mapView = new RingerPinger.Views.Map();
-		this.addSubview('#map-canvas', mapView);
+		this.mapView = new RingerPinger.Views.Map();
+		this.addSubview('#map-canvas', this.mapView);
 	},
 
 	createEvent: function(event) {
+		debugger;
 		event.preventDefault();
 		if (!RingerPinger.currentUser) {
 			
 			this.navBar.showLogin(event);
 		} else {
 			var newAttrs = $('#event-form').serializeJSON();
-			var newEvent = new RingerPinger.Models.Event({ user_id: RingerPinger.currentUser.id});
+			var newEvent = new RingerPinger.Models.Event({ 
+																				user_id: RingerPinger.currentUser.id,
+																				location: newAttrs.map.input
+																			});
 			newAttrs.event.max_players = parseInt(newAttrs.event.max_players);
-			debugger;
 			newEvent.set(newAttrs.event);
 			newEvent.save({}, {
 				success: function(model) {

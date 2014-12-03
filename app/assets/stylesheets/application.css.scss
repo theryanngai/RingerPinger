@@ -13,7 +13,7 @@
  // *= require_tree .
  // *= require_self
  
-
+@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
 
@@ -97,6 +97,43 @@ body {
 
 #down-caret {
 	font-size: 10px;
+}
+
+.ui-datepicker {
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
+	font-weight: 100;
+	padding: 20px;
+
+	a {
+		color: white;
+		padding: 5px;
+	}
+
+	.ui-corner-all {
+		font-weight: 400;
+		margin-left: 0px;
+		padding-left: 0px;
+	}
+
+	.ui-datepicker-month {
+		color: #2D9D92;
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	.ui-datepicker-year {
+		color: #2D9D92;
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	a:hover {
+		transition-property: color;
+		transition-duration: 0.5s;
+		color: tomato;
+		text-decoration: none;
+	}
 }
 
 

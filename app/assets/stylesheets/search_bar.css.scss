@@ -8,7 +8,7 @@
 
 .home-inputs {
 	position: relative;
-	top: 33px;
+	top: 35px;
 	width: 52%;
 	min-width: 800px;
 	margin: 0 auto;
@@ -26,9 +26,9 @@
 	width: 150px;
 	border-radius: 3px;
 	border-width: 1px;
-	text-align: center;
 	letter-spacing: 1px;
 	font-weight: 200;
+	padding: 10px;
 }
 
 .home-search-button {
@@ -52,4 +52,8 @@
 	transition-property: background;
 	transition-duration: 0.5s;
 	background:	#FF927E;
+}
+
+.hasDatePicker {
+	background: white;
 }

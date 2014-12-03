@@ -1,8 +1,8 @@
 RingerPinger.Routers.Router = Backbone.Router.extend({
 	routes: {
 		'' : 'home',
-		'profiles': 'profilesIndex',
-		'profiles/new': 'newProfile',
+		'users': 'usersIndex',
+		'users/:id': 'showUser',
 		'events/new': 'newEvent',
 		'events/:id': 'showEvent'
 	},
@@ -14,16 +14,18 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	home: function() {
 		var homeView = new RingerPinger.Views.Home();
 		this._swapView(homeView);
-	},
-
-	newProfile: function() {
-		var newProfileView = new RingerPinger.Views.NewProfile();
-		this._swapView(newProfileView);
+		$('.datepicker').datepicker();
+		$('.search-location').geocomplete();
 	},
 
 	newEvent: function() {
 		var newEventView = new RingerPinger.Views.NewEvent();
 		this._swapView(newEventView);
+		debugger;
+		newEventView.mapView.initializeMap();
+		$('#map-input').geocomplete({
+			map: $('#map-canvas'),
+		});
 	},
 
 	showEvent: function(id) {
@@ -32,9 +34,9 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		this._swapView(eventShow);
 	},
 
-	profilesIndex: function() {
-		RingerPinger.profiles.fetch();
-		var indexView = new RingerPinger.Views.ProfilesIndex({ collection: RingerPinger.profiles});
+	usersIndex: function() {
+		RingerPinger.users.fetch();
+		var indexView = new RingerPinger.Views.UsersIndex({ collection: RingerPinger.users});
 		this._swapView(indexView);
 	},
 

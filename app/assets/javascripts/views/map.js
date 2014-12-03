@@ -9,6 +9,7 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 	},
 
 	initializeMap: function() {
+		debugger;
 		var mapCanvas = document.getElementById('map-canvas');
     var mapOptions = {
       center: new google.maps.LatLng(37.7810556,-122.411455),
@@ -21,7 +22,6 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 	render: function() {
 		var content = this.template();
 		this.$el.html(content);
-		google.maps.event.addDomListener(window, 'load', this.initializeMap);
 		return this;
 	},
 })

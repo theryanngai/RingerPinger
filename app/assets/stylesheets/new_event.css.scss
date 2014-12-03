@@ -117,13 +117,19 @@ button:focus {
 	position: relative;
 	margin-left: 170px;
 	top: 70px;
+	left: 5%
 }
 
 #map-search {
 	position: relative;
 	top: 500px;
-	left: 7%;
+	left: 11%;
 	width: 300px;
+
+	input {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
 
 	button {
 		transition-property: background;

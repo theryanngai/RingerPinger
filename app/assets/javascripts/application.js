@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.serializejson.min
 //= require jquery.geocomplete
+//= require bootstrap-datepicker
 //= require jquery-ui
 //= require underscore
 //= require backbone

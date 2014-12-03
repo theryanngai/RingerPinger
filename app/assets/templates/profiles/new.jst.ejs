@@ -5,55 +5,19 @@
 			Create Your Profile
 		</div>
 		<div id="event-form-description">
-			Let us know a little bit about you, so we can 
+			Let us know a little bit about you!
 		</div>
 	</div>
-	<span id="map-title">Select Location</span>
-	
-	<div id="map-canvas" class="new-event-map"></div>
 
-	<input id="map-input" name="map[input]" placeholder="Where to?">
-
-	<div class="form-inputs">
-		<div class="sport-choice">
-			<span id="sport-label">Select Sport</span>
-			<div class='btn-group'>
-				<input type="radio" id="basketball-btn" value="basketball" name="event[sport]">
-					<img src="/assets/basketball.png">
-					<span>Basketball</span>
-				</input><input type="radio" value="football" name="event[sport]">
-					<img src="/assets/football.png">
-					<span>Football</span>
-				</input><input type="radio" value="baseball" name="event[sport]">
-					<img src="/assets/baseball.png">
-					<span>Baseball</span>
-				</input><input type="radio" value="soccer" name="event[sport]">
-					<img src="/assets/soccer.png">
-					<span>Soccer</span>
-				</input><input type="radio" value="tennis" name="event[sport]">
-					<img src="/assets/tennis.png">
-					<span>Tennis</span>
-				</input><button type="button" id="other-sport"><span>Other</span> <span id="down-caret">&#9660;</span></button>
-			</div>
-		</div>
-
-		<div class="text-inputs">
-			<input name="event[title]" id="event_title" placeholder="Title">
-				<br>
-			<textarea name="event[description]" id="event_description" 
-				placeholder="Tell us about your event." rows="4" cols="50" 
-				class="description-field"></textarea>
-				<br>
-			<select name="event[max_players]" id="event_max_players">
-				<option selected="true" style="display:none;">Max Players</option>
-				<% for (var i = 1; i < 41; i++) { %>
-					<option><%= i %></options>
-				<% } %>
-			</select>
-		</div>
+	<div class="profile-forms">
+		<label for="profile_about_me">About Me</label>
+		<input type="textarea" name="profile[about_me]" id="profile_about_me" 
+			placeholder="What's your story?" rows="4" cols="50" class="profile-input">
+					
+	</div>
 
 
-	<button id="create-btn">Create Event</button>
+	<button id="profile-save">Save Profile</button>
 	</div>
 </form>
 
