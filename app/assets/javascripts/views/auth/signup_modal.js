@@ -28,11 +28,18 @@ RingerPinger.Views.SignupModal = Backbone.CompositeView.extend({
 		newUser.set(newAttrs.user);
 		newUser.save({}, {
 			success: function(model) {
-				RingerPinger.currentUser = model;
-				RingerPinger.users.fetch();
-				Backbone.history.loadUrl(Backbone.history.fragment);
+				var that = this;
+				$.ajax({
+		      url: "/api/session",
+		      type: "POST",
+		      data: newAttrs,
+		      success: function (model) {
+		        that.$('.signup-modal').removeClass('signup-show');
+		        RingerPinger.currentUser = model;
+		        Backbone.history.loadUrl(Backbone.history.fragment);
+		      }
+		    })
 			}
 		});
-
 	},
 })

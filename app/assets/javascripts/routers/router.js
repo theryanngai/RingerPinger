@@ -3,6 +3,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		'' : 'home',
 		'users': 'usersIndex',
 		'users/:id': 'showUser',
+		'events': 'eventsIndex',
 		'events/new': 'newEvent',
 		'events/:id': 'showEvent'
 	},
@@ -21,11 +22,10 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	newEvent: function() {
 		var newEventView = new RingerPinger.Views.NewEvent();
 		this._swapView(newEventView);
-		debugger;
-		newEventView.mapView.initializeMap();
 		$('#map-input').geocomplete({
 			map: $('#map-canvas'),
 		});
+		$('#map-canvas').addClass('new-event-map');
 	},
 
 	showEvent: function(id) {
@@ -34,10 +34,30 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		this._swapView(eventShow);
 	},
 
+	showUser: function(id) {
+		var user = RingerPinger.users.getOrFetch(id);
+		var userShow = new RingerPinger.Views.UserShow({ model: user });
+		this._swapView(userShow);
+	},
+
+	eventsIndex: function() {
+		RingerPinger.events.fetch();
+		var eventsIndexView = new RingerPinger.Views.EventsIndex({ collection: RingerPinger.events });
+		this._swapView(eventsIndexView);
+		$('#map-input').geocomplete({
+			map: $('#map-canvas'),
+		});
+		$('#map-canvas').addClass('user-index-map');
+	},
+
 	usersIndex: function() {
 		RingerPinger.users.fetch();
 		var indexView = new RingerPinger.Views.UsersIndex({ collection: RingerPinger.users});
 		this._swapView(indexView);
+		$('#map-input').geocomplete({
+			map: $('#map-canvas'),
+		});
+		$('#map-canvas').addClass('user-index-map');
 	},
 
 	_swapView: function(view) {

@@ -1,0 +1,51 @@
+<div class="navbar navbar-no-margin"></div>
+
+<span id="index-map-title">Select Location</span>
+	
+<div id="map-container"></div>
+
+<div id="index-map-search">
+	<input id="map-input" name="map[input]" placeholder="Search a City...">
+	<button type="button" id="map-find">Find It!</button>
+</div>
+
+<div id="filter-slider">
+	<input type="range"  min="1" max="4" value="1" step=1 
+	onchange="outputUpdate(value)" id="skill_level_slider">
+	<output for="skill_level_slider" id="skill_level">Rookie</output>
+
+	<script>
+		function outputUpdate(val) {
+		if (val === "1") {
+			val = "Rookie";
+		} else if (val === "2") {
+			val = "Amateur";
+		} else if (val === "3") {
+			val = "Veteran";
+		} else {
+			val = "All-Star";
+		}
+
+		document.querySelector('#skill_level').value = val;
+	}
+	</script>
+</div>
+
+<div class="ringer-collection">
+	<h1> Local Ringers </h1>
+
+	<ul class="ringer-list">
+		<% users.each(function(user) { %>
+			<li>
+				<a>
+					<%= user.escape('first_name') + " " + user.escape('last_name') %>
+				</a>
+			</li>
+		<% }) %>
+	</ul>
+</div>
+
+	
+
+
+<div class="main-footer"></div>

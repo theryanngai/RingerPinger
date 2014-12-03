@@ -7,6 +7,7 @@ RingerPinger.Views.EventShow = Backbone.CompositeView.extend({
 
 	initialize: function() {
 		this.addNavBar();
+		this.addFooter();
 
 		this.listenTo(this.model, "sync", this.render);
 	},
@@ -27,7 +28,8 @@ RingerPinger.Views.EventShow = Backbone.CompositeView.extend({
 	},
 
 	addFooter: function() {
-		
+		var footerView = new RingerPinger.Views.Footer;
+		this.addSubview('.main-footer', footerView);
 	}
 
 })

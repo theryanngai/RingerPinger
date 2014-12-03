@@ -1,21 +1,17 @@
-RingerPinger.Views.UserShow = Backbone.CompositeView.extend({
+RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	
-	template: JST["user/show"],
-
-	events: {
-	},
+	template: JST["events/index"],
 
 	initialize: function() {
-		this.addNavBar();
+		this.addNavbar();
 		this.addFooter();
+		this.addMap();
 
-		this.listenTo(this.model, "sync", this.render);
+		this.listenTo(RingerPinger.events, "sync", this.render);
 	},
 
-	className: 'user-show',
-
 	render: function() {
-		var content = this.template({ user: this.model });
+		var content = this.template({ events: RingerPinger.events });
 		this.$el.html(content);
 		this.attachSubviews();
 		return this;
@@ -29,6 +25,10 @@ RingerPinger.Views.UserShow = Backbone.CompositeView.extend({
 	addFooter: function() {
 		var footerView = new RingerPinger.Views.Footer;
 		this.addSubview('.main-footer', footerView);
-	}
+	},
 
+	addMap: function() {
+		this.mapView = new RingerPinger.Views.Map();
+		this.addSubview('#map-container', this.mapView);
+	},
 })

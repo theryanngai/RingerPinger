@@ -17,15 +17,7 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	render: function() {
 		var content = this.template();
 		this.$el.html(content);
-
 		var that = this;
-
-		// this.$('#map-input').geocomplete({
-		// 	map: that.$('#map-canvas'),
-		// 	// details: ".details",
-		// 	detailsAttribute: "data-geo"
-		// });
-
     this.$("#map-find").click(function(){
       $("#map-input").trigger("geocode");
       return false;
@@ -47,12 +39,11 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	},	
 
 	addMap: function() {
-		this.mapView = new RingerPinger.Views.Map();
-		this.addSubview('#map-canvas', this.mapView);
+		var mapView = new RingerPinger.Views.Map({ $rootEl: this.$el });
+		this.addSubview('#map-container', mapView);
 	},
 
 	createEvent: function(event) {
-		debugger;
 		event.preventDefault();
 		if (!RingerPinger.currentUser) {
 			
@@ -68,7 +59,7 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 			newEvent.save({}, {
 				success: function(model) {
 					RingerPinger.events.fetch();
-					Backbone.history.navigate('events/' + model.id, { trigger: true });
+					Backbone.history.navigate('#/events/' + model.id, { trigger: true });
 				}
 			});
 		}

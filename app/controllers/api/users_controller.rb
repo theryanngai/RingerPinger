@@ -5,6 +5,7 @@ class Api::UsersController < ApplicationController
 		:password,
 		:email
 	]
+	
 	def create
 		@user = User.new(user_params)
 

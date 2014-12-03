@@ -1,0 +1,74 @@
+<div class="navbar navbar-no-margin"></div>
+
+<span id="index-map-title">Select Location</span>
+	
+<div id="map-container"></div>
+
+<div id="index-map-search">
+	<input id="map-input" name="map[input]" placeholder="Search a City...">
+	<button type="button" id="map-find">Find It!</button>
+</div>
+
+
+<div class="sport-choice event-index">
+	<div class='btn-group'>
+		<input type="radio" id="basketball-btn" value="basketball" name="event[sport]">
+			<img src="/assets/basketball.png">
+			<span>Basketball</span>
+		</input><input type="radio" value="football" name="event[sport]">
+			<img src="/assets/football.png">
+			<span>Football</span>
+		</input><input type="radio" value="baseball" name="event[sport]">
+			<img src="/assets/baseball.png">
+			<span>Baseball</span>
+		</input><input type="radio" value="soccer" name="event[sport]">
+			<img src="/assets/soccer.png">
+			<span>Soccer</span>
+		</input><input type="radio" value="tennis" name="event[sport]">
+			<img src="/assets/tennis.png">
+			<span>Tennis</span>
+		</input><button type="button" id="other-sport"><span>Other</span> <span id="down-caret">&#9660;</span></button>
+	</div>
+</div>
+
+<div id="filter-slider">
+	<input type="range"  min="1" max="4" value="1" step=1 
+	onchange="outputUpdate(value)" id="skill_level_slider">
+	<output for="skill_level_slider" id="skill_level">Rookie</output>
+
+	<script>
+		function outputUpdate(val) {
+		if (val === "1") {
+			val = "Rookie";
+		} else if (val === "2") {
+			val = "Amateur";
+		} else if (val === "3") {
+			val = "Veteran";
+		} else {
+			val = "All-Star";
+		}
+
+		document.querySelector('#skill_level').value = val;
+	}
+	</script>
+</div>
+
+<div class="event-collection">
+
+	<h1> Local Events </h1>
+
+	<ul class="event-list">
+		<% events.each(function(event) { %>
+			<li>
+				<a>
+					<%= event.escape('title') + ": " + event.escape('location') %>
+				</a>
+			</li>
+		<% }) %>
+	</ul>
+</div>
+
+	
+
+
+<div class="main-footer"></div>
