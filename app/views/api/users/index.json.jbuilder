@@ -1,3 +1,3 @@
 json.array! @users do |user|
-	json.(user, :email, :password_digest, :first_name, :last_name)
+	json.(user, :email, :first_name, :last_name, :location, :status, :profile_picture)
 end

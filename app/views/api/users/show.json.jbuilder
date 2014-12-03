@@ -1,10 +1,11 @@
 json.(
-	@current_user, 
+	@user, 
 	:email, 
-	:password_digest, 
 	:first_name, 	
 	:last_name, 
-	:status, 
+	:status,
+	:about_me,
+	:profile_picture,
 	:created_at, 
 	:updated_at
 	)
