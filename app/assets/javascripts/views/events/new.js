@@ -18,6 +18,7 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 		var content = this.template();
 		this.$el.html(content);
 		var that = this;
+    
     this.$("#map-find").click(function(){
       $("#map-input").trigger("geocode");
       return false;
@@ -39,7 +40,7 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	},	
 
 	addMap: function() {
-		var mapView = new RingerPinger.Views.Map({ $rootEl: this.$el });
+		var mapView = new RingerPinger.Views.Map();
 		this.addSubview('#map-container', mapView);
 	},
 

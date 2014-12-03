@@ -22,9 +22,15 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	newEvent: function() {
 		var newEventView = new RingerPinger.Views.NewEvent();
 		this._swapView(newEventView);
-		$('#map-input').geocomplete({
-			map: $('#map-canvas'),
-		});
+
+		setTimeout(function(){
+			$('#map-input').geocomplete({
+				map: $('#map-canvas'),
+				location: 'San Francisco'
+			});
+		}, 100);
+	
+
 		$('#map-canvas').addClass('new-event-map');
 	},
 
@@ -44,9 +50,14 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		RingerPinger.events.fetch();
 		var eventsIndexView = new RingerPinger.Views.EventsIndex({ collection: RingerPinger.events });
 		this._swapView(eventsIndexView);
-		$('#map-input').geocomplete({
-			map: $('#map-canvas'),
-		});
+		
+		setTimeout(function(){
+			$('#map-input').geocomplete({
+				map: $('#map-canvas'),
+				location: 'San Francisco'
+			});
+		}, 100);
+
 		$('#map-canvas').addClass('user-index-map');
 	},
 
@@ -54,9 +65,14 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		RingerPinger.users.fetch();
 		var indexView = new RingerPinger.Views.UsersIndex({ collection: RingerPinger.users});
 		this._swapView(indexView);
-		$('#map-input').geocomplete({
-			map: $('#map-canvas'),
-		});
+		
+		setTimeout(function(){
+			$('#map-input').geocomplete({
+				map: $('#map-canvas'),
+				location: 'San Francisco'
+			});
+		}, 100);
+
 		$('#map-canvas').addClass('user-index-map');
 	},
 

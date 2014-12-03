@@ -6,7 +6,7 @@ RingerPinger.Views.UserShow = Backbone.CompositeView.extend({
 	},
 
 	initialize: function() {
-		this.addNavBar();
+		this.addNavbar();
 		this.addFooter();
 
 		this.listenTo(this.model, "sync", this.render);

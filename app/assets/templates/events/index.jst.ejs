@@ -60,9 +60,11 @@
 	<ul class="event-list">
 		<% events.each(function(event) { %>
 			<li>
-				<a>
-					<%= event.escape('title') + ": " + event.escape('location') %>
+				<a href="#/events/<%= event.id %>">
+					<%= event.escape('title') %>
 				</a>
+				<br>
+				<%= event.escape('location') %>
 			</li>
 		<% }) %>
 	</ul>
