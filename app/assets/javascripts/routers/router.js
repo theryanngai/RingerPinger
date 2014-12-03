@@ -3,6 +3,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		'' : 'home',
 		'users': 'usersIndex',
 		'users/:id': 'showUser',
+		'users/:id/edit': 'editUser',
 		'events': 'eventsIndex',
 		'events/new': 'newEvent',
 		'events/:id': 'showEvent'
@@ -42,8 +43,14 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 
 	showUser: function(id) {
 		var user = RingerPinger.users.getOrFetch(id);
-		var userShow = new RingerPinger.Views.UserShow({ model: user });
-		this._swapView(userShow);
+		var userShowView = new RingerPinger.Views.UserShow({ model: user });
+		this._swapView(userShowView);
+	},
+
+	editUser: function() {
+		RingerPinger.currentUser.fetch();
+		var editUserView = new RingerPinger.Views.EditUser({ model: RingerPinger.currentUser });
+		this._swapView(editUserView);
 	},
 
 	eventsIndex: function() {
