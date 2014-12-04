@@ -37,7 +37,6 @@
 	<ul class="ringer-list">
 		<% users.each(function(user) { %>
 			<li>
-				<% debugger %>
 				<a href="#/users/<%= user.id %>">
 					<%= user.escape('first_name') + " " + user.escape('last_name') %>
 				</a>

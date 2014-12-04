@@ -3,7 +3,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		'' : 'home',
 		'users': 'usersIndex',
 		'users/:id': 'showUser',
-		'users/:id/edit': 'editUser',
+		'user/edit': 'editUser',
 		'events': 'eventsIndex',
 		'events/new': 'newEvent',
 		'events/:id': 'showEvent'
@@ -48,9 +48,14 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	},
 
 	editUser: function() {
-		RingerPinger.currentUser.fetch();
-		var editUserView = new RingerPinger.Views.EditUser({ model: RingerPinger.currentUser });
-		this._swapView(editUserView);
+		if (!RingerPinger.currentUser) {
+			Backbone.history.navigate('#/', { trigger: true });
+			alert("You must be logged in to continue!");
+		} else {
+			var editUserView = new RingerPinger.Views.EditUser({ model: RingerPinger.currentUser });
+			this._swapView(editUserView);
+			$('#user_location').geocomplete();
+		}
 	},
 
 	eventsIndex: function() {
