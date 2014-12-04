@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204063113) do
+ActiveRecord::Schema.define(version: 20141204075811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20141204063113) do
     t.datetime "updated_at"
   end
 
+  add_index "sports", ["name"], name: "index_sports_on_name", unique: true, using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                                   null: false
     t.string   "password_digest",                         null: false
@@ -46,5 +48,17 @@ ActiveRecord::Schema.define(version: 20141204063113) do
     t.string   "profile_picture"
     t.string   "location"
   end
+
+  create_table "usersports", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "sport_id",   null: false
+    t.string   "skill",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "usersports", ["sport_id"], name: "index_usersports_on_sport_id", using: :btree
+  add_index "usersports", ["user_id", "sport_id"], name: "index_usersports_on_user_id_and_sport_id", unique: true, using: :btree
+  add_index "usersports", ["user_id"], name: "index_usersports_on_user_id", using: :btree
 
 end

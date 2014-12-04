@@ -1,14 +1,30 @@
 <div class='navbar navbar-no-margin'></div>
 
-
 <h4><%=user.escape('first_name') + " " + user.escape('last_name') %></h4>
 
 
-<ul>
+<ul class="user-details">
 	<li><%= user.escape('email') %></li>
 	<li><%= user.escape('status') %></li>
 	<li><%= user.escape('about_me') %></li>
 	<li><%= user.escape('location') %></li>
 </ul>
+
+<% if (user.get('sports')) { %>
+	<div class="sports-played">
+		<h3> Sports Played </h3>
+		<ul>
+			<% user.get('sports').forEach(function(sport) { %>
+				<li>
+					<h5><%= sport.name %></h5>
+					<span id="skill-level-title">Skill Level: </span> 
+					<span id="skill-level"><%= sport.skill %></span>
+				</li>
+			<% }) %>
+		</ul>
+	</div>
+<% } %>
+
+
 
 <div class='main-footer'></div> 

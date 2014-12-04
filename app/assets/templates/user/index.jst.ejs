@@ -6,7 +6,7 @@
 
 <div id="index-map-search">
 	<input id="map-input" name="map[input]" placeholder="Search a City...">
-	<button type="button" id="map-find">Find It!</button>
+	<button type="button" id="map-find">Filter Results!</button>
 </div>
 
 <div id="filter-slider">
@@ -37,7 +37,7 @@
 	<ul class="ringer-list">
 		<% users.each(function(user) { %>
 			<li>
-				<a href="#/users/<%= user.id %>">
+				<a href="#/user/<%= user.id %>">
 					<%= user.escape('first_name') + " " + user.escape('last_name') %>
 				</a>
 			</li>

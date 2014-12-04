@@ -2,6 +2,10 @@ RingerPinger.Views.UsersIndex = Backbone.CompositeView.extend({
 	
 	template: JST["user/index"],
 
+	events: {
+		'click #map-find' : 'doShit'
+	},
+
 	initialize: function() {
 		this.addNavbar();
 		this.addFooter();
@@ -12,15 +16,13 @@ RingerPinger.Views.UsersIndex = Backbone.CompositeView.extend({
 
 	render: function() {
 		var content = this.template({ users: RingerPinger.users });
-		this.$el.html(content);
-
-		this.$("#map-find").click(function(){
-      $("#map-input").trigger("geocode");
-      return false;
-    });
-    
+		this.$el.html(content);   
 		this.attachSubviews();
 		return this;
+	},
+
+	doShit: function(event) {
+		alert("butts");
 	},
 
 	addNavbar: function() {
