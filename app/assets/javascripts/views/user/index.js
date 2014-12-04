@@ -3,15 +3,16 @@ RingerPinger.Views.UsersIndex = Backbone.CompositeView.extend({
 	template: JST["user/index"],
 
 	events: {
-		'click #map-find' : 'doShit'
+		'click #map-find' : 'filterResults'
 	},
 
 	initialize: function() {
 		this.addNavbar();
 		this.addFooter();
+		this.addLocalRingers(RingerPinger.users);
 		this.addMap();
 
-		this.listenTo(RingerPinger.users, "sync", this.render);
+		// this.listenTo(RingerPinger.users, "sync", this.)
 	},
 
 	render: function() {
@@ -21,13 +22,20 @@ RingerPinger.Views.UsersIndex = Backbone.CompositeView.extend({
 		return this;
 	},
 
-	doShit: function(event) {
-		alert("butts");
+	filterResults: function(event) {
+		var filteredUsers = RingerPinger.users.where({ location: this.$('#map-input').val() });
+		var filteredContent = new RingerPinger.Views.LocalRingers({ collection: filteredUsers });
+		this.$('.local-ringers').html(filteredContent.render().$el);
 	},
 
 	addNavbar: function() {
 		var navBarView = new RingerPinger.Views.HomeNavBar({ $homeEl: this.$el });
 		this.addSubview('.navbar', navBarView);
+	},
+
+	addLocalRingers: function(collection) {
+		var localRingerView = new RingerPinger.Views.LocalRingers({ collection: collection });
+		this.addSubview('.local-ringers', localRingerView);
 	},
 
 	addFooter: function() {

@@ -27,7 +27,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		setTimeout(function(){
 			$('#map-input').geocomplete({
 				map: $('#map-canvas'),
-				location: 'San Francisco'
+				location: 'San Francisco, CA, United States'
 			});
 		}, 200);
 	
@@ -66,7 +66,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		setTimeout(function(){
 			$('#map-input').geocomplete({
 				map: $('#map-canvas'),
-				location: 'San Francisco'
+				location: 'San Francisco, CA, United States'
 			});
 		}, 200);
 
@@ -81,7 +81,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		setTimeout(function(){
 			$('#map-input').geocomplete({
 				map: $('#map-canvas'),
-				location: 'San Francisco'
+				location: 'San Francisco, CA, United States'
 			});
 		}, 200);
 

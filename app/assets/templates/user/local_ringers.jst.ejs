@@ -1,0 +1,26 @@
+<h1> Local Ringers </h1>
+
+<% if (users.length === 0) { %>
+	<h3> No Ringers Found! </h3>
+<% } %>
+
+<ul class="ringer-list">
+	<% users.forEach(function(user) { %>
+		<li>
+			<a href="#/user/<%= user.id %>">
+				<%= user.escape('first_name') + " " + user.escape('last_name') %>
+			</a>
+			<div id="user_sports">
+				<ul>
+					<% user.get('sports').forEach(function(sport) { %>
+						<li><%= sport.name %></li>
+					<% }) %>
+				</ul>
+			</div>
+		</li>
+	<% }) %>
+</ul>
+
+
+
+

@@ -4,6 +4,6 @@ json.array! @users do |user|
 
 	json.sports user.sports do |sport|
 		json.(sport, :id, :name)
-		json.skill user.usersports.where(id: sport.id)[0].skill
+		json.skill user.usersports.where(sport_id: sport.id)[0].skill
 	end
 end

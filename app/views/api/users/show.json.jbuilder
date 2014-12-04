@@ -13,7 +13,7 @@ json.(
 )
 
 json.sports @user.sports do |sport|
-		json.(sport, :id, :name)
-		json.skill @user.usersports.where(id: sport.id)[0].skill
-	end
+	json.(sport, :id, :name)
+	json.skill @user.usersports.where(sport_id: sport.id)[0].skill
+end
 

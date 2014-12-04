@@ -1,16 +1,33 @@
-.ringer-collection {
-	position: absolute;
-	left: 55%;
-	bottom: -150px;
+.local-ringers {
+	position: relative;
+	float: right;
+	bottom: 900px;
 	width: 600px;
 	height: 500px;
+
+	font-color: gray;
+
+	ul {
+		list-style: none;
+		a {
+			position: relative;
+			right: 5%;
+			font-size: 20px;
+			color: gray;
+			text-decoration: none;
+		}
+
+		a:hover {
+			color: tomato;
+		}
+	}
 }
 
 
 #filter-slider {
-	position: absolute;
+	position: relative;
 	left: 55%;
-	bottom: 450px;
+	bottom: 900px;
 	width: 500px;
 	height: 50px;
 }
