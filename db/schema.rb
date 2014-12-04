@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204075811) do
+ActiveRecord::Schema.define(version: 20141204185028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,19 @@ ActiveRecord::Schema.define(version: 20141204075811) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",     null: false
+    t.date     "event_date",  null: false
   end
+
+  add_index "events", ["event_date"], name: "index_events_on_event_date", using: :btree
+
+  create_table "eventusers", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "event_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "eventusers", ["user_id", "event_id"], name: "index_eventusers_on_user_id_and_event_id", unique: true, using: :btree
 
   create_table "sports", force: true do |t|
     t.string   "name",       null: false

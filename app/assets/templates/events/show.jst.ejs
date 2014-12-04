@@ -6,7 +6,14 @@
 	<li><%= sportsEvent.escape('sport') %></li>
 	<li><%= sportsEvent.escape('max_players') %></li>
 	<li><%= sportsEvent.escape('location') %></li>
-	<li><%= sportsEvent.escape('user_id') %></li>
+	<% if (sportsEvent.get('creator')) { %>
+		<li>
+			Captain:
+			<a href="#/user/<%= sportsEvent.get('creator').id %>">
+				<%= sportsEvent.get('creator').first_name %>
+			</a>
+		</li>
+	<% } %>
 </ul>
 
 <div class='main-footer'></div>

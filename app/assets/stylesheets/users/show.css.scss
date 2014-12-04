@@ -1,0 +1,80 @@
+.user-show {
+
+	#user-info{
+		position: relative;
+		text-align: center;
+		width: 50%;
+		margin-top: 5%;
+		margin-bottom: 5%;
+
+		.availability {
+			color: tomato;
+			text-transform: capitalize;
+		}
+
+		h1 {
+			letter-spacing: 5px;
+		}
+
+		hr {
+			border: none;
+			height: 1px;
+			color: lightgray;
+			background: lightgray;
+			width: 50%;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+
+		hr.short {
+			width: 40%;
+		}
+		
+		ul {
+			list-style: none;
+			padding-left: 0;
+		}
+
+		li {
+			margin: 20px;
+			font-size: 20px;
+			font-weight: 100;
+			letter-spacing: 1px;
+		}
+
+		.title {
+			font-size: 25px;
+			font-weight: 200;
+			letter-spacing: 1px;
+			margin-top: 20px;
+		}
+
+		#edit-user-btn {
+			font-size: 18px;
+			font-weight: 200;
+			letter-spacing: 1px;
+			margin-bottom: 40px;
+			transition-property: background, color;
+			transition-duration: 0.5s;
+			height: 45px;
+			width: 150px;
+			color: white;
+			background: tomato;
+			border-style: none;
+			border-radius: 5px;
+		}
+
+		#edit-user-btn:hover {
+			transition-property: background, color;
+			transition-duration: 0.5s;
+			color: gray;
+			background:	#FF927E;
+		}
+
+		.sports-played {
+			font-size: 30px;
+			letter-spacing: 5px;
+			font-weight: 200;
+		}
+	}
+}

@@ -14,7 +14,8 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 	events: {
 		'click .signup-link': 'showSignUp',
 		'click .login-link':'showLogin',
-		'click .log-out': 'logOutUser'
+		'click .log-out': 'logOutUser',
+		'click #toggle' : 'changeStatus'
 	},
 
 	render: function() {
@@ -47,6 +48,23 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 		$('.login-modal').addClass('login-show');
 		$('.signup-modal').removeClass('signup-show');
 		this.$homeEl.addClass('darkened');
+	},
+
+	changeStatus: function(event) {
+		event.preventDefault();
+		
+		if (RingerPinger.currentUser.escape('status') === "available") {
+			RingerPinger.currentUser.set({ status: "unavailable"})
+		} else {
+			RingerPinger.currentUser.set({ status: "available" })
+		}
+
+		RingerPinger.currentUser.save({}, {
+			success: function(model) {
+				RingerPinger.currentUser.fetch();
+        Backbone.history.loadUrl(Backbone.history.fragment);
+			}
+		});
 	},
 
 	logOutUser: function(event) {

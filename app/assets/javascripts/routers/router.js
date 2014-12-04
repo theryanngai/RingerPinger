@@ -3,6 +3,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		'' : 'home',
 		'users': 'usersIndex',
 		'user/edit': 'editUser',
+		'user/addsport': 'newUserSport',
 		'user/:id': 'showUser',
 		'events': 'eventsIndex',
 		'events/new': 'newEvent',
@@ -23,6 +24,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	newEvent: function() {
 		var newEventView = new RingerPinger.Views.NewEvent();
 		this._swapView(newEventView);
+		$('.datepicker').datepicker();
 
 		setTimeout(function(){
 			$('#map-input').geocomplete({
@@ -35,6 +37,11 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		$('#map-canvas').addClass('new-event-map');
 	},
 
+	newUserSport: function() {
+		var newUserSportView = new RingerPinger.Views.NewUserSport();
+		this._swapView(newUserSportView);
+	},
+
 	showEvent: function(id) {
 		var sportsEvent = RingerPinger.events.getOrFetch(id);
 		var eventShow = new RingerPinger.Views.EventShow({ model: sportsEvent });
@@ -43,6 +50,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 
 	showUser: function(id) {
 		var user = RingerPinger.users.getOrFetch(id);
+		debugger;
 		var userShowView = new RingerPinger.Views.UserShow({ model: user });
 		this._swapView(userShowView);
 	},

@@ -1,30 +1,74 @@
 <div class='navbar navbar-no-margin'></div>
+<div id='user-info'>
+	<h1><%=(user.escape('first_name') + " " + user.escape('last_name')).toUpperCase() %></h1>
 
-<h2><%=user.escape('first_name') + " " + user.escape('last_name') %></h2>
+	<% if (user.get('status') === "available") { %>
+		<hr />
+		<div class="availability"><h3>Currently Available!</h3></div>
+		<hr class='short'/>
+	<% } else { %>
+		<hr />
+		<h3>Currently Unavailable.</h3>
+		<hr class="short"/>
+	<% } %>
 
+	<ul class="user-details">
+		<li>
+			<span class="title" id="email-title">CONTACT</span>
+			<br>
+			<%= user.escape('email') %>
+		</li>
+		<li>
+			<span class="title" id="about-me-title">ABOUT ME</span>
+			<br>
+			<%= user.escape('about_me') %>
+		</li>
+		<li>
+			<span class="title" id="location-title">LOCATION</span>
+			<br>
+			<%= user.escape('location') %>
+		</li>
+	</ul>
 
-<ul class="user-details">
-	<li><%= user.escape('email') %></li>
-	<li><%= user.escape('status') %></li>
-	<li><%= user.escape('about_me') %></li>
-	<li><%= user.escape('location') %></li>
-</ul>
+	<% if (user.get('sports')) { %>
+		<div class="sports-played">
+			<hr class='short'/>
+			<h3> SPORTS PLAYED </h3>
+			<hr />
 
-<% if (user.get('sports')) { %>
-	<div class="sports-played">
-		<h3> Sports Played </h3>
-		<ul>
-			<% user.get('sports').forEach(function(sport) { %>
+			<ul>
+				<% if (user.get('sports').length === 0) { %>
+					<li>
+						Nothing yet!
+					</li>
+				<% } else { %>
+					<% user.get('sports').forEach(function(sport) { %>
+						<li>
+							<div class="title" id="sport-name"><%= sport.name %></div>
+							<span id="skill-level-title">Skill Level: </span> 
+							<span id="skill-level"><%= sport.skill %></span>
+						</li>
+					<% }) %>
+				<% } %>
+
 				<li>
-					<h5><%= sport.name %></h5>
-					<span id="skill-level-title">Skill Level: </span> 
-					<span id="skill-level"><%= sport.skill %></span>
+					<a> Add A Sport </a>
 				</li>
-			<% }) %>
-		</ul>
-	</div>
-<% } %>
+			</ul>
+		</div>
+	<% } %>
 
+	<br>
 
+	<% if (user.get('id') === RingerPinger.currentUser.get('id')) { %>
+		<a href="#/user/edit">
+			<button type="button" id="edit-user-btn">Edit My Info</button>
+		</a>
+	<% } %>
+</div>
+
+<div class="user-events">
+	
+</div>
 
 <div class='main-footer'></div> 

@@ -27,7 +27,8 @@ class Api::EventsController < ApplicationController
 																	:sport, 
 																	:max_players, 
 																	:user_id,
-																	:location
+																	:location,
+																	:event_date
 																	)
 	end
 end

@@ -17,7 +17,7 @@
 }
 
 #navbar-style {
-	background: rgba(0, 0, 0, 0.3);
+	background: rgba(0, 0, 0, 0.5);
 	height: 70px;
 	width: 100%
 }
@@ -56,8 +56,27 @@
 		text-decoration: none;
 	}
 
+	.toggle-avail:link {
+		color: #19D119;
+		color: tomato;
+	}
+
+
+	.toggle-avail:hover {
+		color: gray;
+	}
+
+	.toggle-unavail:link {
+		color: gray;
+	}
+
+	.toggle-unavail:hover {
+		color: #19D119;
+		color: tomato;
+	}
+
 	#create-event {
-		transition-property: background;
+		transition-property: background, color;
 		transition-duration: 0.5s;
 		position: relative;
 		height: 30px;
@@ -72,8 +91,9 @@
 	}
 
 	#create-event:hover {
-		transition-property: background;
+		transition-property: background, color;
 		transition-duration: 0.5s;
+		color: gray;
 		background: turquoise;
 	}
 

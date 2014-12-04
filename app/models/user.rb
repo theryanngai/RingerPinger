@@ -24,7 +24,16 @@ class User < ActiveRecord::Base
 
 
 	has_many :usersports
+	has_many :eventusers
 	has_many :sports, through: :usersports
+	has_many :events, through: :eventusers
+
+	has_many( 
+		:created_events,
+		class_name: 'Event',
+		foreign_key: :user_id,
+		primary_key: :id
+	) 
 
 	after_initialize :ensure_session_token
 

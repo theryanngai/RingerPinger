@@ -8,6 +8,8 @@ json.(
 	:about_me,
 	:profile_picture,
 	:location,
+	:created_events,
+	:events,
 	:created_at, 
 	:updated_at
 )

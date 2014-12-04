@@ -37,7 +37,7 @@
 
 .home-search-button {
 	position: relative;
-	transition-property: background;
+	transition-property: background, color;
 	transition-duration: 0.5s;
 	height: 45px;
 	width: 150px;
@@ -50,9 +50,10 @@
 }
 
 .home-search-button:hover {
-	transition-property: background;
+	transition-property: background, color;
 	transition-duration: 0.5s;
 	background:	#FF927E;
+	color: gray;
 }
 
 .hasDatePicker {

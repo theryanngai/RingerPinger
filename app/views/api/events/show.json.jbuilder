@@ -7,6 +7,9 @@ json.(
 	:user_id, 
 	:sport, 
 	:max_players,
+	:creator,
+	:users,
 	:created_at, 
 	:updated_at,
+
 	)

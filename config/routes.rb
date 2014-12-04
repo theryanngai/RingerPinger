@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :events
     resources :sports
     resources :usersports
+    resources :eventusers
   end
 end
