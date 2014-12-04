@@ -1,3 +1,3 @@
-RingerPinger.Models.User = Backbone.Model.extend({
+RingerPinger.Models.Usersport = Backbone.Model.extend({
 	urlRoot: "/api/usersports"
 });

@@ -1,4 +1,4 @@
-RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
+RingerPinger.Views.NewUserSport = Backbone.CompositeView.extend({
 	
 	template: JST["usersport/new"],
 
@@ -7,8 +7,9 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	},
 
 	initialize: function() {
-		this.navBar = this.addNavBar();
+		this.addNavBar();
 		this.addFooter();
+		this.addSportModal();
 	},
 
 	className: 'new-usersport',
@@ -37,6 +38,11 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 		var footerView = new RingerPinger.Views.Footer();
 		this.addSubview('.main-footer', footerView);
 	},	
+
+	addSportModal: function() {
+		var addSportModal = new RingerPinger.Views.AddSportModal;
+		this.addSubview('.addsport', addSportModal);
+	},
 
 	createEvent: function(event) {
 		event.preventDefault();

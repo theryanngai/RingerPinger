@@ -5,13 +5,16 @@ RingerPinger.Views.UserShow = Backbone.CompositeView.extend({
 	className: 'user-show',
 
 	events: {
+		'click #add-sport-link':'showAddSport',
 	},
 
 	initialize: function() {
 		this.addNavbar();
 		this.addFooter();
+		this.addSportModal();
 
 		this.listenTo(this.model, "sync", this.render);
+		this.listenTo(RingerPinger.usersports, "sync", this.render);
 	},
 
 	className: 'user-show',
@@ -31,6 +34,16 @@ RingerPinger.Views.UserShow = Backbone.CompositeView.extend({
 	addFooter: function() {
 		var footerView = new RingerPinger.Views.Footer;
 		this.addSubview('.main-footer', footerView);
-	}
+	},
 
+	addSportModal: function() {
+		var addSportModal = new RingerPinger.Views.AddSportModal;
+		this.addSubview('.addsport', addSportModal);
+	},
+
+	showAddSport: function(event) {
+		event.preventDefault();
+		RingerPinger.usersports.fetch();
+		$('.addsport-modal').addClass('addsport-show');
+	}
 })

@@ -8,7 +8,7 @@
 		<hr class='short'/>
 	<% } else { %>
 		<hr />
-		<h3>Currently Unavailable.</h3>
+		<div class="unavailability"><h3>Currently Unavailable.</h3></div>
 		<hr class="short"/>
 	<% } %>
 
@@ -52,7 +52,7 @@
 				<% } %>
 
 				<li>
-					<a> Add A Sport </a>
+					<span id="add-sport-link"><a href="#/user/addsport"> Add A Sport </a></span>
 				</li>
 			</ul>
 		</div>
@@ -70,5 +70,7 @@
 <div class="user-events">
 	
 </div>
+
+<div class="addsport"></div>
 
 <div class='main-footer'></div> 

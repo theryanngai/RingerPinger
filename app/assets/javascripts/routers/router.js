@@ -50,7 +50,6 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 
 	showUser: function(id) {
 		var user = RingerPinger.users.getOrFetch(id);
-		debugger;
 		var userShowView = new RingerPinger.Views.UserShow({ model: user });
 		this._swapView(userShowView);
 	},

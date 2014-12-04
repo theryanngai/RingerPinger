@@ -1,6 +1,7 @@
 .user-show {
 
 	#user-info{
+		color: gray;
 		position: relative;
 		text-align: center;
 		width: 50%;
@@ -9,10 +10,14 @@
 
 		.availability {
 			color: tomato;
-			text-transform: capitalize;
+		}
+
+		.unavailability {
+			color: gray;
 		}
 
 		h1 {
+			color: #2F2F2F;
 			letter-spacing: 5px;
 		}
 
@@ -42,7 +47,28 @@
 			letter-spacing: 1px;
 		}
 
+		a {
+			transition-property: color;
+			transition-duration: 0.5s;
+			text-decoration: none;
+			font-weight: 200;
+		}
+
+		a:visited {
+			transition-property: color;
+			transition-duration: 0.5s;
+			text-decoration: none;
+		}
+
+		a:hover {
+			transition-property: color;
+			transition-duration: 0.5s;
+			text-decoration: none;
+			color: darkblue;
+		}
+
 		.title {
+			color: #2F2F2F;
 			font-size: 25px;
 			font-weight: 200;
 			letter-spacing: 1px;
@@ -72,9 +98,110 @@
 		}
 
 		.sports-played {
+			color: #2F2F2F;
 			font-size: 30px;
 			letter-spacing: 5px;
 			font-weight: 200;
+		}
+	}
+
+	.addsport-modal {
+		position: absolute;
+		visibility: hidden;
+		opacity: 0;
+		transition-property: visibility, opacity;
+		transition-duration: 0.3s;		
+		background: rgba(0, 0, 0, 0.5);
+		border-radius: 5px;
+		left: 40%;
+		text-align: center;
+		width: 150px; 
+		z-index: 1;
+		top: 45%;
+	}
+
+	.addsport-show {
+		position: absolute;
+		border-radius: 5px;
+		color: white;
+		background: rgba(0, 0, 0, 0.9);
+		position: absolute;
+		left: 40%;
+		opacity: 1;
+		transition-property: visibility, opacity;
+		transition-duration: 0.3s;
+		visibility: visible;
+		text-align: center;
+		width: 225px;
+		z-index: 1;
+		top: 45%;
+
+		input {
+			color: black;
+			padding: 8px;
+			margin: 5px;
+			text-align: center;
+			letter-spacing: 1px;
+			font-weight: 200;
+		}
+
+		#addsport-form {
+			margin: 10px;
+		}
+
+		text {
+			margin-top: 10px;
+			text-align: center;
+			padding: 10px;
+		}
+
+		#addsport-btn {
+			margin: 20px;
+			color: white;
+			width: 100px;
+			height: 50px;
+			background: tomato;
+			border-style: none;
+			border-radius: 3px;
+			letter-spacing: 1px;
+		}
+
+		select {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			width: 120px;
+			font-size: 20px;
+			text-align: center;
+			font-color: gray;
+			letter-spacing: 1px;
+		}
+
+		#addsport-title {
+			color: white;
+			font-size: 20px;
+			font-weight: 200;
+			letter-spacing: 2px;
+		}
+
+		.closing-text {
+			font-size: 11px;
+			margin: 10px;
+		}
+
+		#hide-addsport {
+			margin: 10px;
+		}
+
+		#addsport-btn {
+			transition-property: color, background;
+			transition-duration: 0.5s; 
+		}
+
+		#addsport-btn:hover {
+			color: gray;
+			background: salmon;
+			transition-property: color, background;
+			transition-duration: 0.5s;
 		}
 	}
 }
