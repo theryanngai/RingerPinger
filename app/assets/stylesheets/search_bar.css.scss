@@ -14,14 +14,18 @@
 	margin: 0 auto;
 }
 
+.search-bar {
+	float: left;
+	margin-left: -4px;
+	left: 9%;
+}
+
 #num-guests {
 	border-radius: 0px;
 }
 
 .home-search-field {
 	position: relative;
-	float: left;
-	margin: -4px;
 	height: 45px;
 	width: 150px;
 	border-radius: 3px;
@@ -33,13 +37,10 @@
 
 .home-search-button {
 	position: relative;
-	float: left;
 	transition-property: background;
 	transition-duration: 0.5s;
 	height: 45px;
 	width: 150px;
-	left: 4px;
-	bottom: 3px;
 	color: white;
 	background: tomato;
 	border-style: none;

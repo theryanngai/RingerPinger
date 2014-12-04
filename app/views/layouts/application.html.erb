@@ -8,7 +8,8 @@
 
   <script>
   	<% if current_user %>
-  		RingerPinger.currentUser = <%= current_user.to_json.html_safe %>;
+  		RingerPinger.currentUser = 
+          new RingerPinger.Models.User(<%= current_user.to_json.html_safe %>);
   	<% else %>
   		RingerPinger.currentUser = null;
     <% end %>

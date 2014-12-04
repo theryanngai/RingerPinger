@@ -6,17 +6,17 @@
 		<div class="right-justify">
 		<% if (RingerPinger.currentUser) {%>
 			<li id="user_links">
-				<a href="javaScript:void(0);" class="user-link">
-					<%= RingerPinger.currentUser.first_name %>
+				<a href="#/user/<%= RingerPinger.currentUser.get('id') %>" class="user-link">
+					<%= RingerPinger.currentUser.escape('first_name') %>
 				</a>
 			</li>
 			<li id="log_out">
 				<a href="javaScript:void(0);" class="log-out">
-				Log Out
+					Log Out
 				</a>
 			</li>
 			<li id="local_games">
-				<a href="javaScript:void(0);" class="find-game">
+				<a href="#/events" class="find-game">
 					Find a Game
 				</a>
 			</li>

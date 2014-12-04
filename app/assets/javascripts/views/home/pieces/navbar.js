@@ -55,7 +55,7 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
     $.ajax({
       url: "/api/session",
       type: "DELETE",
-      data: RingerPinger.currentUser,
+      data: RingerPinger.currentUser.toJSON(),
       success: function (model) {
         RingerPinger.currentUser = null;
         Backbone.history.navigate('#/', { trigger: true });

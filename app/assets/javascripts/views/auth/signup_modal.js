@@ -35,7 +35,7 @@ RingerPinger.Views.SignupModal = Backbone.CompositeView.extend({
 		      data: newAttrs,
 		      success: function (model) {
 		        that.$('.signup-modal').removeClass('signup-show');
-		        RingerPinger.currentUser = model;
+		        RingerPinger.currentUser = new RingerPinger.Models.User(model);
 		        Backbone.history.loadUrl(Backbone.history.fragment);
 		      }
 		    })

@@ -4,40 +4,39 @@
 
 <form id="update_user_form">
 	<ul>
-
 		<label for="user_first_name">First Name</label>
 			<li>
-				<input id="user_first_name" name="user[first_name]" value="<%= this.model.first_name %>">
+				<input id="user_first_name" name="user[first_name]" value="<%= this.model.escape('first_name') %>">
 			</li>
 		<label for="user_last_name">Last Name</label>
 			<li>
-				<input id="user_last_name" name="user[last_name]" value="<%= this.model.last_name %>">
+				<input id="user_last_name" name="user[last_name]" value="<%= this.model.escape('last_name') %>">
 			</li>
 		<label for="user_email">E-mail</label>
-		<li>
-			<input id="user_email" name="user[email]" value="<%= this.model.email%>">
-		</li>
+			<li>
+				<input id="user_email" name="user[email]" value="<%= this.model.escape('email') %>">
+			</li>
 		<label for="user_about_me">About Me</label>
-		<li>
-			<textarea id="user_about_me" name="user[about_me]" value="<%= this.model.about_me %>" placeholder="Tell us what you're all about!" rows="4" cols="50"></textarea>
-		</li>
+			<li>
+				<input id="user_about_me" name="user[about_me]" value="<%= this.model.escape('about_me') %>" placeholder="Tell us what you're all about!" rows="4" cols="50">
+			</li>
 		<label for="user_location">City</label>
-		<li>
-			<input id="user_location" name="user[location]" value="<%= this.model.location %>" placeholder="Where are you located?">
-		</li>
+			<li>
+				<input id="user_location" name="user[location]" value="<%= this.model.escape('location') %>" placeholder="Where are you located?">
+			</li>
 		<label for="user_location">Status</label>
-		<li>
-			<div class="profile-pic">
-				<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpa1/t31.0-8/s960x960/1658306_2331775727928_166834307_o.jpg">
-			</div>
-			<br>
-			<button type="button" id="upload_pic">Change Profile Picture</button>
-		</li>
-		<li>
-			<button type="button" id="toggle_status">
-				<%= this.model.status %>
-			</button>
-		</li>
+			<li>
+				<div class="profile-pic">
+					<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpa1/t31.0-8/s960x960/1658306_2331775727928_166834307_o.jpg">
+				</div>
+				<br>
+				<button type="button" id="upload_pic">Change Profile Picture</button>
+			</li>
+			<li>
+				<button type="button" id="toggle_status">
+					<%= this.model.escape('status') %>
+				</button>
+			</li>
 	</ul>
 	<br><br>
 	<button>Save</button>

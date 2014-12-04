@@ -34,14 +34,13 @@ RingerPinger.Views.EditUser = Backbone.CompositeView.extend({
 	updateUser: function(event) {
 		event.preventDefault();
 		var newAttrs = $('#update_user_form').serializeJSON().user;
-		var editedUser = new RingerPinger.Models.User({ 
-																			id: RingerPinger.currentUser.id,
-																		});
+		var editedUser = new RingerPinger.Models.User({ id: RingerPinger.currentUser.id});
 		editedUser.set(newAttrs);
+
 		editedUser.save({}, {
 			success: function(model) {
-				RingerPinger.users.fetch();
-				Backbone.history.navigate('#/users/' + model.id, { trigger: true });
+				RingerPinger.currentUser.fetch();
+				Backbone.history.navigate('#/user/' + model.id, { trigger: true });
 			}
 		});
 	}

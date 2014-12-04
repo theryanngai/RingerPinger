@@ -2,8 +2,8 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	routes: {
 		'' : 'home',
 		'users': 'usersIndex',
-		'users/:id': 'showUser',
 		'user/edit': 'editUser',
+		'user/:id': 'showUser',
 		'events': 'eventsIndex',
 		'events/new': 'newEvent',
 		'events/:id': 'showEvent'
@@ -29,7 +29,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 				map: $('#map-canvas'),
 				location: 'San Francisco'
 			});
-		}, 100);
+		}, 200);
 	
 
 		$('#map-canvas').addClass('new-event-map');
@@ -68,7 +68,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 				map: $('#map-canvas'),
 				location: 'San Francisco'
 			});
-		}, 100);
+		}, 200);
 
 		$('#map-canvas').addClass('user-index-map');
 	},
@@ -83,7 +83,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 				map: $('#map-canvas'),
 				location: 'San Francisco'
 			});
-		}, 100);
+		}, 200);
 
 		$('#map-canvas').addClass('user-index-map');
 	},

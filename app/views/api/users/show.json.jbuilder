@@ -6,6 +6,7 @@ json.(
 	:status,
 	:about_me,
 	:profile_picture,
+	:location,
 	:created_at, 
 	:updated_at
 	)

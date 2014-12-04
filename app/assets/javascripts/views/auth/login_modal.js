@@ -33,7 +33,7 @@ RingerPinger.Views.LoginModal = Backbone.CompositeView.extend({
       data: attrs,
       success: function (model) {
         that.$('.login-modal').removeClass('login-show');
-        RingerPinger.currentUser = model;
+        RingerPinger.currentUser = new RingerPinger.Models.User(model);
         Backbone.history.loadUrl(Backbone.history.fragment);
       },
       error: function (model) { 

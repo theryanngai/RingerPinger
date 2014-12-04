@@ -9,11 +9,11 @@
 
 .navbar.navbar-event-show {
 	margin: 0px;
-	background: url('images/tennis_ball.jpg');
+	background: url('images/soccer_goal.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 2000px;
-	background-position: -500px -800px;
+	background-position: -500px -600px;
 }
 
 #navbar-style {
@@ -57,17 +57,18 @@
 	}
 
 	#create-event {
-	transition-property: background;
-	transition-duration: 0.5s;
-	position: relative;
-	height: 30px;
-	width: 120px;
-	color: white;
-	background: #2D9D92;
-	border-style: none;
-	border-radius: 2px;
-	text-align: center;
-	bottom: 3px;
+		transition-property: background;
+		transition-duration: 0.5s;
+		position: relative;
+		height: 30px;
+		width: 120px;
+		color: white;
+		background: #2D9D92;
+		border-style: none;
+		border-radius: 2px;
+		text-align: center;
+		bottom: 3px;
+		margin-left: 5px;
 	}
 
 	#create-event:hover {
