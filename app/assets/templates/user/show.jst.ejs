@@ -81,4 +81,40 @@
 
 <div class="addsport"></div>
 
+<div class="user-events">
+	<div id="captained-events">
+		<h3>CAPTAINED GAMES</h3>
+		<% if (user.get('created_events')) { %>
+			<ul>
+				<% user.get('created_events').forEach(function(created_event) { %>
+					<li>
+						<a href="#/event/<%=created_event.id %>"><%= created_event.title %></a>
+					</li>
+				<% }) %>
+			</ul>
+		<% } else { %>
+			<h2>--</h2>
+		<% } %>
+	</div>
+
+	<div id="attending-events">
+		<h3>ATTENDING GAMES</h3>
+		<% if (user.get('events')) { %>
+			<ul>
+				<% user.get('events').forEach(function(game) { %>
+					<li>
+						<a href="#/event/<%= game.id %>"><%= game.title %></a>
+					</li>
+				<% }) %>
+			</ul>
+		<% } else { %>
+			<h2>--</h2>
+		<% } %>
+	</div>
+</div>
+
+
+
+</div>
+
 <div class='main-footer'></div> 
