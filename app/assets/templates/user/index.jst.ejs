@@ -12,18 +12,18 @@
 <div id="filter-slider">
 	<input type="range"  min="1" max="4" value="1" step=1 
 	onchange="outputUpdate(value)" id="skill_level_slider">
-	<output for="skill_level_slider" id="skill_level">Rookie</output>
+	<output for="skill_level_slider" id="skill_level">ROOKIE</output>
 
 	<script>
 		function outputUpdate(val) {
 		if (val === "1") {
-			val = "Rookie";
+			val = "ROOKIE";
 		} else if (val === "2") {
-			val = "Amateur";
+			val = "AMATEUR";
 		} else if (val === "3") {
-			val = "Veteran";
+			val = "VETERAN";
 		} else {
-			val = "All-Star";
+			val = "ALL-STAR";
 		}
 
 		document.querySelector('#skill_level').value = val;

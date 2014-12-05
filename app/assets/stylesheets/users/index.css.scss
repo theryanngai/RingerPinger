@@ -1,7 +1,8 @@
 .local-ringers {
-	position: relative;
+	position: absolute;
 	float: right;
-	bottom: 900px;
+	top: 300px;
+	right: 50px; 
 	width: 600px;
 	height: 500px;
 
@@ -25,11 +26,18 @@
 
 
 #filter-slider {
-	position: relative;
+	position: absolute;
 	left: 55%;
-	bottom: 900px;
+	bottom: 500px;
 	width: 500px;
 	height: 50px;
+
+	output {
+		font-size: 40px;
+		font-weight: 500;
+		color: tomato;
+		letter-spacing: 2px;
+	}
 }
 
 #index-map-search {
