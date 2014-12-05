@@ -1,7 +1,11 @@
 <div class='navbar navbar-no-margin'></div>
 
 <div class="profile-pic">
-	<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpa1/t31.0-8/s960x960/1658306_2331775727928_166834307_o.jpg">
+	<% if (user.get('profile_picture')) { %>
+		<img src="<%= user.escape('profile_picture') %>">
+	<% } else { %>
+	No Profile Picture yet!
+	<% } %>
 </div>
 
 <div id='user-info'>

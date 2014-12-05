@@ -34,10 +34,9 @@
 				<li>
 					<label for="user_profile_pic">Profile Picture</label>
 					<div class="profile-pic">
-						<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpa1/t31.0-8/s960x960/1658306_2331775727928_166834307_o.jpg">
+						<img src="<%= this.model.escape('profile_picture') %>">
 					</div>
-					<br>
-					<button type="button" id="upload_pic">Change</button>
+					<input id="user_profile_pic" name="user[profile_picture]" value="<%= this.model.escape('profile_picture') %>" placeholder="Add a Profile Picture!">
 				</li>
 			<li>
 				<button id="save-btn">Save</button>
