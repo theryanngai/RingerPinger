@@ -1,4 +1,4 @@
-class CreateUsersports < ActiveRecord::Migration
+class CreateUsersports2 < ActiveRecord::Migration
   def change
     create_table :usersports do |t|
     	t.integer :user_id, null: false
