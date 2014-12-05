@@ -11,22 +11,26 @@
 		</div>
 
 		<div class="event-attr">
+			<hr class="short"/>
 			<label for="event_sport">SPORT</label>
 			<li id="event_sport"><%= sportsEvent.escape('sport') %></li>
 		</div>
 
 		<div class="event-attr">
+			<hr class="short"/>
 			<label for="event_max_players">MAX PARTICIPANTS</label>
 			<li id="event_max_players"><%= sportsEvent.escape('max_players') %></li>
 		</div>
 
 		<div class="event-attr">
+			<hr class="short"/>
 			<label for="event_location">LOCATION</label>
 			<li><%= sportsEvent.escape('location') %></li>
 		</div>
 
 		<% if (sportsEvent.get('creator')) { %>
 			<div class="event-attr">
+				<hr class="short"/>
 				<label for="event_captain">CAPTAIN</label>
 				<li id="event_captain">
 	 				<a href="#/user/<%= sportsEvent.get('creator').id %>">
@@ -38,23 +42,29 @@
 
 		<% if (sportsEvent.get('users')) { %>
 			<div class="event-attr">
+				<hr class="short"/>
 				<label for="event_users">REGISTERED PLAYERS</label>
 				<% if (sportsEvent.get('users').length === 0) { %>
+					<br>
 					None yet!
+				<hr class="short"/>
 				<% } else { %>
 					<ul id="event_users">
 					<% sportsEvent.get('users').forEach(function(user) { %>
-						<a href="#/user/<%= user.id %>">
-							<%= user.first_name %>
-						</a>
+						<li>
+							<a href="#/user/<%= user.id %>">
+								<%= user.first_name %>
+							</a>
+						</li>
 					<% }) %>
 					</ul>
+					<hr class="short"/>
 				<% } %>
 			</div>
 		<% }%>
 
 		<li>
-			<button type="button">Join Event</button>
+			<button>Join Event</button>
 		</li>
 	</ul>
 </div>

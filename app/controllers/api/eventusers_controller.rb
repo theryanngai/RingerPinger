@@ -4,16 +4,22 @@ class Api::EventusersController < ApplicationController
 	end
 
 	def create
-		@eventuser = Eventuser.new
+		@eventuser = Eventuser.new(eventuser_params)
 
 		if @eventuser.save
-			render json: @eventuser, status: :created
+			render :show, status: :created
 		else 
 			render json: @eventuser.errors.full_messages, status: :unprocessable_entity
 		end
 	end
 
-	def destroy
+	def show
+		@eventuser = Eventuser.find(params[:id])
+	end
+
+	private 
+	def eventuser_params
+		params.permit(:user_id, :event_id)
 	end
 end
 

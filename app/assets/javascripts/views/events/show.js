@@ -3,6 +3,7 @@ RingerPinger.Views.EventShow = Backbone.CompositeView.extend({
 	template: JST["events/show"],
 
 	events: {
+		'click button': 'createEventUser'
 	},
 
 	initialize: function() {
@@ -30,6 +31,18 @@ RingerPinger.Views.EventShow = Backbone.CompositeView.extend({
 	addFooter: function() {
 		var footerView = new RingerPinger.Views.Footer;
 		this.addSubview('.main-footer', footerView);
-	}
+	},
 
+	createEventUser: function(event) {
+		event.preventDefault();
+		var newEventUser = new RingerPinger.Models.Eventuser({ user_id: RingerPinger.currentUser.id,
+																													 event_id: this.model.get('id')
+																												});
+		var that = this;
+		newEventUser.save({}, {
+			success: function(model) {
+				that.model.fetch();
+			}
+		});
+	}
 })

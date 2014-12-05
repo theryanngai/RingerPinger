@@ -77,6 +77,8 @@
 		<a href="#/user/edit">
 			<button type="button" id="edit-user-btn">Edit My Info</button>
 		</a>
+	<% } else if (user.get('status') === "available") { %>
+		<button type="button" id="recruit-user-btn">Recruit Me!</button>
 	<% } %>
 </div>
 

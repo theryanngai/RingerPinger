@@ -313,3 +313,25 @@
 		}
 	}
 }
+
+#recruit-user-btn {
+	font-size: 18px;
+	font-weight: 200;
+	letter-spacing: 1px;
+	margin-bottom: 40px;
+	transition-property: background, color;
+	transition-duration: 0.5s;
+	height: 45px;
+	width: 150px;
+	color: white;
+	background: tomato;
+	border-style: none;
+	border-radius: 5px;
+}
+
+#recruit-user-btn:hover {
+	transition-property: background, color;
+	transition-duration: 0.5s;
+	color: gray;
+	background:	#FF927E;
+}
