@@ -23,7 +23,7 @@
 
 				<li>
 					<label for="user_about_me">About Me</label>
-					<textarea id="user_about_me" name="user[about_me]" value="<%= this.model.escape('about_me') %>" placeholder="Tell us what you're all about!" rows="4" cols="50"></textarea>
+					<textarea id="user_about_me" name="user[about_me]" placeholder="Tell us what you're all about!" rows="4" cols="50"><%= this.model.escape('about_me') %></textarea>
 				</li>
 
 				<li>
@@ -37,7 +37,7 @@
 						<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpa1/t31.0-8/s960x960/1658306_2331775727928_166834307_o.jpg">
 					</div>
 					<br>
-					<button type="button" id="upload_pic">Change Profile Picture</button>
+					<button type="button" id="upload_pic">Change</button>
 				</li>
 			<li>
 				<button id="save-btn">Save</button>

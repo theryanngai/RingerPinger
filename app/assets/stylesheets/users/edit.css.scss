@@ -18,12 +18,14 @@
 	}
 
 	input {
+		padding: 5px;
 		font-size: 18px;
 		font-weight: 100;
 		letter-spacing: 2px;
 	}
 
 	textarea {
+		padding: 5px;
 		font-size: 18px;
 		font-weight: 100;
 		letter-spacing: 2px;
@@ -44,7 +46,39 @@
 		margin: 20px;
 	}
 
+	button {
+		border-radius: 10px;
+		border: none;
+		transition-property: background, color;
+		transition-duration: 0.5s;
+	}
+
+	button:hover {
+		background: #2F2F2F;
+		color: white;
+		transition-property: background, color;
+		transition-duration: 0.5s;
+	}
+
 	#save-btn {
 		margin: 20px;
+		transition-property: background, color;
+		transition-duration: 0.5s;
+		height: 45px;
+		width: 150px;
+		color: white;
+		background: tomato;
+		border-style: none;
+		border-radius: 3px;
+		font-size: 15px;
+		font-weight: 200;
+		letter-spacing: 3px;
+	}
+
+	#save-btn:hover {
+		transition-property: background, color;
+		transition-duration: 0.5s;
+		background:	#FF927E;
+		color: gray;
 	}
 }

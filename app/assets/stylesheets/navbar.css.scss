@@ -1,5 +1,10 @@
+.navbar {
+	border: none;
+}
+
 .navbar.navbar-no-margin {
 	margin: 0px;
+	border: none;
 	background: url('images/baseball_grass.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -8,6 +13,7 @@
 }
 
 .navbar.navbar-event-show {
+	border: none;
 	margin: 0px;
 	background: url('images/soccer_goal.jpg');
 	background-repeat: no-repeat;
@@ -19,7 +25,8 @@
 #navbar-style {
 	background: rgba(0, 0, 0, 0.5);
 	height: 70px;
-	width: 100%
+	width: 100%;
+	border: none;
 }
 
 .navbar-items {
