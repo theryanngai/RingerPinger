@@ -8,6 +8,15 @@ RingerPinger.Views.HomeSearchBar = Backbone.CompositeView.extend({
 	findEvents: function(event) {
 		event.preventDefault();
 		var formResults = $(event.target).serializeJSON().search;
+		if (formResults.location === "" &&
+				formResults.start_date === "" &&
+				formResults.end_date === "" &&
+				formResults.sport === "") {
+			alert("Please enter some search criteria!");
+			Backbone.history.navigate('#/', { trigger: true });
+			return;
+		}
+
 		var queryString = "location=" + formResults.location 
 		queryString += "&" + "start_date=" + formResults.start_date 
 		queryString += "&" + "end_date=" + formResults.end_date
