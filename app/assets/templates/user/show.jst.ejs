@@ -1,4 +1,9 @@
 <div class='navbar navbar-no-margin'></div>
+
+<div class="profile-pic">
+	<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpa1/t31.0-8/s960x960/1658306_2331775727928_166834307_o.jpg">
+</div>
+
 <div id='user-info'>
 	<h1><%=(user.escape('first_name') + " " + user.escape('last_name')).toUpperCase() %></h1>
 
@@ -83,38 +88,42 @@
 
 <div class="user-events">
 	<div id="captained-events">
+		<hr />
 		<h3>CAPTAINED GAMES</h3>
+		<hr class="short"/>
 		<% if (user.get('created_events')) { %>
-			<ul>
-				<% user.get('created_events').forEach(function(created_event) { %>
-					<li>
-						<a href="#/event/<%=created_event.id %>"><%= created_event.title %></a>
-					</li>
-				<% }) %>
-			</ul>
-		<% } else { %>
-			<h2>--</h2>
+			<% if (user.get('created_events').length === 0) { %>
+				--
+			<% } else { %>
+				<ul>
+					<% user.get('created_events').forEach(function(created_event) { %>
+						<li>
+							<a href="#/events/<%=created_event.id %>"><%= created_event.title %></a>
+						</li>
+					<% }) %>
+				</ul>
+			<% } %>
 		<% } %>
 	</div>
 
 	<div id="attending-events">
+		<hr class="short"/>
 		<h3>ATTENDING GAMES</h3>
+		<hr />
 		<% if (user.get('events')) { %>
-			<ul>
-				<% user.get('events').forEach(function(game) { %>
-					<li>
-						<a href="#/event/<%= game.id %>"><%= game.title %></a>
-					</li>
-				<% }) %>
-			</ul>
-		<% } else { %>
-			<h2>--</h2>
+			<% if (user.get('events').length === 0) { %>
+			 --
+			<% } else { %>
+				<ul>
+					<% user.get('events').forEach(function(game) { %>
+						<li>
+							<a href="#/events/<%= game.id %>"><%= game.title %></a>
+						</li>
+					<% }) %>
+				</ul>
+			<% } %>
 		<% } %>
 	</div>
-</div>
-
-
-
 </div>
 
 <div class='main-footer'></div> 
