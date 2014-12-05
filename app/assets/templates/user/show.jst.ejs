@@ -21,12 +21,20 @@
 		<li>
 			<span class="title" id="about-me-title">ABOUT ME</span>
 			<br>
-			<%= user.escape('about_me') %>
+			<% if (user.get('about_me')) { %>
+				<%= user.escape('about_me') %>
+			<% } else { %>
+			--
+			<% } %>
 		</li>
 		<li>
 			<span class="title" id="location-title">LOCATION</span>
 			<br>
-			<%= user.escape('location') %>
+			<% if (user.get('location')) { %>
+				<%= user.escape('location') %>
+			<% } else { %>
+			--
+			<% } %>
 		</li>
 	</ul>
 

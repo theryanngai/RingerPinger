@@ -14,7 +14,7 @@ RingerPinger.Views.UserShow = Backbone.CompositeView.extend({
 		this.addSportModal();
 
 		this.listenTo(this.model, "sync", this.render);
-		this.listenTo(RingerPinger.usersports, "sync", this.render);
+		this.listenTo(RingerPinger.currentUser, "sync", this.render);
 	},
 
 	className: 'user-show',

@@ -8,7 +8,8 @@ RingerPinger.Views.AddSportModal = Backbone.CompositeView.extend({
 	},
 
 	initialize: function(options) {
-	
+		RingerPinger.sports.fetch();
+		this.listenTo(RingerPinger.currentUser, "sync", this.render);
 	},
 
 	render: function() {
@@ -23,27 +24,40 @@ RingerPinger.Views.AddSportModal = Backbone.CompositeView.extend({
 	},
 
 	addSport: function(event) {
-		RingerPinger.sport.fetch();
 		event.preventDefault();
-		var attrs = $('#addsport-form').serializeJSON();
-		debugger;
-		var newUserSport = new RingerPinger.Models.Usersport({ user_id: RingerPinger.currentUser.id });
-		newUserSport.set(attrs.usersport);
-		debugger;
+		var attrs = $('#addsport-form').serializeJSON().usersport;
+		var sport = RingerPinger.sports.findWhere({ name: attrs.sport_name });
+		var newUserSport = new RingerPinger.Models.Usersport({ user_id: RingerPinger.currentUser.id,
+																														 skill: attrs.skill_level });
+		if (sport) {
+			newUserSport.set({ sport_id: sport.get('id') });
+			newUserSport.save({}, {
+				success: function() {
+					RingerPinger.currentUser.fetch();
+				}
+			})
+		} else {
+			sport = new RingerPinger.Models.Sport({ name: attrs.sport_name });
+			var that = this;
+			sport.save({}, {
+				success: function(model) {
+					newUserSport.set({ sport_id: model.get('id')})
+					that.createUserSport(newUserSport);
+					RingerPinger.sports.fetch();
+					Backbone.history.loadlUrl(Backbone.history.fragment);
+				}
+			});
+		}
+	},
+
+	createUserSport: function(newUserSport) {
 		newUserSport.save({}, {
 			success: function(model) {
-				var that = this;
-				$.ajax({
-		      url: "/api/usersports",
-		      type: "POST",
-		      data: attrs,
-		      success: function (model) {
-		        that.$('.addsport-modal').removeClass('addsport-show');
-		        RingerPinger.usersports.add(model);
-		        Backbone.history.loadUrl(Backbone.history.fragment);
-		      }
-		    })
+				RingerPinger.currentUser.fetch();
+				Backbone.history.loadUrl(Backbone.history.fragment);
+			}, error: function(model) {
+				alert(newUserSport.errors);
 			}
 		});
-	},
+	}
 })
