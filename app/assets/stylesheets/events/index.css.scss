@@ -1,15 +1,38 @@
 .event-collection {
 	position: absolute;
-	left: 50%;
-	bottom: 0%;
-	width: 500px;
-	height: 400px;
+	float: right;
+	top: 300px;
+	right: 50px; 
+	width: 600px;
+	height: 500px;
+
+	font-color: gray;
+
+	ul {
+		list-style: none;
+	}
+
+	a {
+		transition-property: color;
+		transition-duration: 0.5s;
+		position: relative;
+		right: 5%;
+		font-size: 20px;
+		color: gray;
+		text-decoration: none;
+	}
+
+	a:hover {
+		transition-property: color;
+		transition-duration: 0.5s;
+		color: tomato;
+		text-decoration: none;
+	}
 }
 
 .event-index.sport-choice {
 	position: relative;
 	left: 48%;
-	bottom: 1000px;
 	width: 700px;
 	height: 50px;
 }
@@ -21,8 +44,6 @@
 	width: 30%;
 	height: 200px;
 	input {
-		position: relative;
-		bottom: 100%;
 	}
 }
 
@@ -69,5 +90,6 @@
 	top: 35px;
 	margin: 20px;
 }
+
 
 

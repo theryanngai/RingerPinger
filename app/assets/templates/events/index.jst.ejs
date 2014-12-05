@@ -12,19 +12,19 @@
 
 <div class="sport-choice event-index">
 	<div class='btn-group'>
-		<input type="radio" id="basketball-btn" value="basketball" name="event[sport]">
+		<input type="radio" id="basketball-btn" value="Basketball" name="event[sport]">
 			<img src="/assets/basketball.png">
 			<span>Basketball</span>
-		</input><input type="radio" value="football" name="event[sport]">
+		</input><input type="radio" value="Football" name="event[sport]">
 			<img src="/assets/football.png">
 			<span>Football</span>
-		</input><input type="radio" value="baseball" name="event[sport]">
+		</input><input type="radio" value="Baseball" name="event[sport]">
 			<img src="/assets/baseball.png">
 			<span>Baseball</span>
-		</input><input type="radio" value="soccer" name="event[sport]">
+		</input><input type="radio" value="Soccer" name="event[sport]">
 			<img src="/assets/soccer.png">
 			<span>Soccer</span>
-		</input><input type="radio" value="tennis" name="event[sport]">
+		</input><input type="radio" value="Tennis" name="event[sport]">
 			<img src="/assets/tennis.png">
 			<span>Tennis</span>
 		</input><button type="button" id="other-sport"><span>Other</span> <span id="down-caret">&#9660;</span></button>
@@ -34,18 +34,18 @@
 <div id="filter-slider">
 	<input type="range"  min="1" max="4" value="1" step=1 
 	onchange="outputUpdate(value)" id="skill_level_slider">
-	<output for="skill_level_slider" id="skill_level">Rookie</output>
+	<output for="skill_level_slider" id="skill_level">ROOKIE</output>
 
 	<script>
 		function outputUpdate(val) {
 		if (val === "1") {
-			val = "Rookie";
+			val = "ROOKIE";
 		} else if (val === "2") {
-			val = "Amateur";
+			val = "AMATEUR";
 		} else if (val === "3") {
-			val = "Veteran";
+			val = "VETERAN";
 		} else {
-			val = "All-Star";
+			val = "ALL-STAR";
 		}
 
 		document.querySelector('#skill_level').value = val;
