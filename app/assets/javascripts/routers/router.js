@@ -31,7 +31,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 				map: $('#map-canvas'),
 				location: 'San Francisco, CA, United States'
 			});
-		}, 200);
+		}, 500);
 	
 
 		$('#map-canvas').addClass('new-event-map');
@@ -75,7 +75,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 				map: $('#map-canvas'),
 				location: 'San Francisco, CA, United States'
 			});
-		}, 200);
+		}, 500);
 
 		$('#map-canvas').addClass('user-index-map');
 	},
@@ -90,7 +90,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 				map: $('#map-canvas'),
 				location: 'San Francisco, CA, United States'
 			});
-		}, 200);
+		}, 500);
 
 		$('#map-canvas').addClass('user-index-map');
 	},

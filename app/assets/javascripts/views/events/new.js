@@ -57,7 +57,6 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 																			});
 			newAttrs.event.max_players = parseInt(newAttrs.event.max_players);
 			newEvent.set(newAttrs.event);
-			debugger;
 			newEvent.save({}, {
 				success: function(model) {
 					RingerPinger.events.fetch();

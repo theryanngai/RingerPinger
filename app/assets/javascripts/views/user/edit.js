@@ -38,7 +38,6 @@ RingerPinger.Views.EditUser = Backbone.CompositeView.extend({
 		var newAttrs = $('#update_user_form').serializeJSON().user;
 		var editedUser = new RingerPinger.Models.User({ id: RingerPinger.currentUser.id});
 		editedUser.set(newAttrs);
-		debugger;
 
 		editedUser.save({}, {
 			success: function(model) {

@@ -6,13 +6,12 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		'click #map-find' : 'filterResults'
 	},
 
-	initialize: function() {
+	initialize: function(options) {
 		this.addNavbar();
 		this.addFooter();
 		this.addMap();
-		this.addLocalEvents(RingerPinger.events);
 
-		// this.listenTo(RingerPinger.events, "sync", this.render);
+		this.listenTo(RingerPinger.events, "sync", this.render);
 	},
 
 	filterResults: function(event) {
@@ -22,15 +21,46 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	},
 
 	render: function() {
+		if (Backbone.history.fragment != "events") {
+			var start_date = this.parseURI("start_date");
+			var end_date = this.parseURI("end_date");
+			var location = this.parseURI("location");
+
+			var filteredEvents = RingerPinger.events.models.filter(
+						function(model) {
+							return model.get('location').split(',')[0] === location.split(',')[0] &&
+										 new Date(model.get('event_date')) > new Date(start_date) &&
+										 new Date(model.get('event_date')) < new Date(end_date);
+						});						
+		} else {
+			var filteredEvents = RingerPinger.events;
+		}
+
+
 		var content = this.template({ events: RingerPinger.events });
 		this.$el.html(content);
+		this.addLocalEvents(filteredEvents);
 		this.attachSubviews();
+
 		return this;
 	},
 
+	parseURI: function(variable) {
+		var query = Backbone.history.fragment.split('?').pop(0);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+  },
+
 	addLocalEvents: function(collection) {
 		var localEventView = new RingerPinger.Views.LocalEvents({ collection: collection });
-		this.addSubview('.local-events', localEventView);
+		// this.addSubview('.local-events', localEventView
+		this.$('.local-events').html(localEventView.render().$el);
 	},
 
 	addNavbar: function() {

@@ -6,6 +6,7 @@ RingerPinger.Views.HomeSearchBar = Backbone.CompositeView.extend({
 	},
 
 	findEvents: function(event) {
+		event.preventDefault();
 		var formResults = $(event.target).serializeJSON().search;
 		var queryString = "location=" + formResults.location 
 		queryString += "&" + "start_date=" + formResults.start_date 
