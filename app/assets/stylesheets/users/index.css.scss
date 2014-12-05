@@ -10,7 +10,10 @@
 
 	ul {
 		list-style: none;
+		
 		a {
+			transition-property: font-size, color;
+			transition-duration: 0.2s;
 			position: relative;
 			right: 5%;
 			font-size: 20px;
@@ -19,7 +22,11 @@
 		}
 
 		a:hover {
+			transition-property: font-size, color;
+			transition-duration: 0.2s;
 			color: tomato;
+			font-size: 35px;
+			text-decoration: none;
 		}
 	}
 }

@@ -13,8 +13,8 @@
 	}
 
 	a {
-		transition-property: color;
-		transition-duration: 0.5s;
+		transition-property: font-size, color;
+		transition-duration: 0.3s;
 		position: relative;
 		right: 5%;
 		font-size: 20px;
@@ -23,9 +23,10 @@
 	}
 
 	a:hover {
-		transition-property: color;
-		transition-duration: 0.5s;
+		transition-property: font-size, color;
+		transition-duration: 0.3s;
 		color: tomato;
+		font-size: 35px;
 		text-decoration: none;
 	}
 }

@@ -1,7 +1,6 @@
+
 #panels {
 	background: #CEE1E1;
-	min-width: 1400px;
-	max-height: 740px;
 }
 
 .panels-header {
@@ -14,6 +13,8 @@
 }
 
 .panel-images {
+
+	left: 4000px;
 	
 	img {
 		transition-property: opacity;
@@ -38,10 +39,9 @@
 	}
 
 	.bottom-row {
-		margin-left: 50px;
 		
 		img {
-			margin: 10px;
+			margin: 10%;
 			border: solid gray 2px;
 			margin-bottom: 50px;
 		}
