@@ -9,6 +9,8 @@ RingerPinger.Views.EditUser = Backbone.CompositeView.extend({
 	initialize: function() {
 		this.addNavBar();
 		this.addFooter();
+
+		this.listenTo(RingerPinger.currentUser, "sync", this.render);
 	},
 
 	className: 'edit-user',

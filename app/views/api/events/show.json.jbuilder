@@ -9,6 +9,7 @@ json.(
 	:max_players,
 	:creator,
 	:users,
+	:event_date,
 	:created_at, 
 	:updated_at,
 
