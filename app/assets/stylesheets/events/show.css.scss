@@ -1,0 +1,64 @@
+#event-show {
+	text-align: center;
+	font-size: 20px;
+	font-weight: 100;
+	letter-spacing: 1px;
+
+	ul {
+		list-style:none;
+		padding: 0px;
+	}
+
+	li {
+		padding: 0px;
+	}
+
+	label {
+		font-size: 25px;
+		letter-spacing: 3px;
+		font-weight: 200;
+	}
+
+	.event-attr {
+		margin: 20px;
+	}
+
+	h1 {
+		color: #2F2F2F;
+		letter-spacing: 5px;
+	}
+
+	hr {
+		border: none;
+		height: 1px;
+		color: lightgray;
+		background: lightgray;
+		width: 50%;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	hr.short {
+		width: 40%;
+	}
+
+	button {
+		margin-top: 30px;
+		margin-bottom: 30px;
+		color: white;
+		transition-property: background, color;
+		transition-duration: 0.5s;
+		background: tomato;
+		border-style: none;
+		border-radius: 5px;
+		letter-spacing: 1px;
+		font-weight: 100;
+	}
+
+	button:hover {
+		background: salmon;
+		color: gray;
+		transition-property: background, color;
+		transition-duration: 0.5s;
+	}
+}

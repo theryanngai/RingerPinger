@@ -1,19 +1,62 @@
 <div class='navbar navbar-event-show'></div>
 
-<h4><%=sportsEvent.escape('title') %></h4>
-<ul>
-	<li>Description: <%= sportsEvent.escape('description') %></li>
-	<li><%= sportsEvent.escape('sport') %></li>
-	<li><%= sportsEvent.escape('max_players') %></li>
-	<li><%= sportsEvent.escape('location') %></li>
-	<% if (sportsEvent.get('creator')) { %>
+<div id="event-show">
+	<hr />
+	<h1><%= sportsEvent.escape('title').toUpperCase() %></h1>
+	<hr class="short"/>
+
+	<ul>
+		<div class="event-attr">
+			<li id="event_description"><%= sportsEvent.escape('description') %></li>
+		</div>
+
+		<div class="event-attr">
+			<label for="event_sport">SPORT</label>
+			<li id="event_sport"><%= sportsEvent.escape('sport') %></li>
+		</div>
+
+		<div class="event-attr">
+			<label for="event_max_players">MAX PARTICIPANTS</label>
+			<li id="event_max_players"><%= sportsEvent.escape('max_players') %></li>
+		</div>
+
+		<div class="event-attr">
+			<label for="event_location">LOCATION</label>
+			<li><%= sportsEvent.escape('location') %></li>
+		</div>
+
+		<% if (sportsEvent.get('creator')) { %>
+			<div class="event-attr">
+				<label for="event_captain">CAPTAIN</label>
+				<li id="event_captain">
+	 				<a href="#/user/<%= sportsEvent.get('creator').id %>">
+						<%= sportsEvent.get('creator').first_name %>
+					</a>
+				</li>
+			</div>
+		<% } %>
+
+		<% if (sportsEvent.get('users')) { %>
+			<div class="event-attr">
+				<label for="event_users">REGISTERED PLAYERS</label>
+				<% if (sportsEvent.get('users').length === 0) { %>
+					None yet!
+				<% } else { %>
+					<ul id="event_users">
+					<% sportsEvent.get('users').forEach(function(user) { %>
+						<a href="#/user/<%= user.id %>">
+							<%= user.first_name %>
+						</a>
+					<% }) %>
+					</ul>
+				<% } %>
+			</div>
+		<% }%>
+
 		<li>
-			Captain:
-			<a href="#/user/<%= sportsEvent.get('creator').id %>">
-				<%= sportsEvent.get('creator').first_name %>
-			</a>
+			<button type="button">Join Event</button>
 		</li>
-	<% } %>
-</ul>
+	</ul>
+</div>
 
 <div class='main-footer'></div>
