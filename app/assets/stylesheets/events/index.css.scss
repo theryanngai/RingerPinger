@@ -17,9 +17,13 @@
 #filter-slider {
 	position: absolute;
 	left: 500px;
-	bottom: 450px;
+	bottom: 550px;
 	width: 30%;
-	height: 50px;
+	height: 200px;
+	input {
+		position: relative;
+		bottom: 100%;
+	}
 }
 
 #index-map-search {

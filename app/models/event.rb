@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 	validates :title, presence: true, uniqueness: true
-	validates :description, :sport, :max_players, :event_date, :user_id, presence: true
+	validates :description, :sport, :max_players, :user_id, presence: true
 
 	has_many :eventusers
 	has_many :users, through: :eventusers

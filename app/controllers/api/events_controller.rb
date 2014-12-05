@@ -10,6 +10,7 @@ class Api::EventsController < ApplicationController
 	end
 
 	def create
+		debugger
 		@event = Event.new(event_params)
 
 		if @event.save
@@ -21,14 +22,6 @@ class Api::EventsController < ApplicationController
 
 	private
 	def event_params
-		params.require(:event).permit(
-																	:title, 
-																	:description, 
-																	:sport, 
-																	:max_players, 
-																	:user_id,
-																	:location,
-																	:event_date
-																	)
+		params.permit(:title, :description, :sport, :max_players, :user_id, :location, :event_date)
 	end
 end
