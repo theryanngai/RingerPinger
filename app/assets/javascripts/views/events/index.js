@@ -15,7 +15,11 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	},
 
 	filterResults: function(event) {
-		var filteredEvents = RingerPinger.events.where({ location: this.$('#map-input').val() });
+		if (this.$('#map-input').val() === "") {
+			var filteredEvents = RingerPinger.events;
+		} else {
+			var filteredEvents = RingerPinger.events.where({ location: this.$('#map-input').val() });
+		}
 		var filteredContent = new RingerPinger.Views.LocalEvents({ collection: filteredEvents });
 		this.$('.local-events').html(filteredContent.render().$el);
 	},
