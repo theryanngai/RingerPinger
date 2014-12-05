@@ -54,20 +54,8 @@
 </div>
 
 <div class="event-collection">
-
-	<h1> Local Events </h1>
-
-	<ul class="event-list">
-		<% events.each(function(event) { %>
-			<li>
-				<a href="#/events/<%= event.id %>">
-					<%= event.escape('title') %>
-				</a>
-				<br>
-				<%= event.escape('location') %>
-			</li>
-		<% }) %>
-	</ul>
+	<div class="local-events">
+	</div>
 </div>
 
 	

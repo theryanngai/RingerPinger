@@ -2,12 +2,23 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	
 	template: JST["events/index"],
 
+	events: {
+		'click #map-find' : 'filterResults'
+	},
+
 	initialize: function() {
 		this.addNavbar();
 		this.addFooter();
 		this.addMap();
+		this.addLocalEvents(RingerPinger.events);
 
-		this.listenTo(RingerPinger.events, "sync", this.render);
+		// this.listenTo(RingerPinger.events, "sync", this.render);
+	},
+
+	filterResults: function(event) {
+		var filteredEvents = RingerPinger.events.where({ location: this.$('#map-input').val() });
+		var filteredContent = new RingerPinger.Views.LocalEvents({ collection: filteredEvents });
+		this.$('.local-events').html(filteredContent.render().$el);
 	},
 
 	render: function() {
@@ -15,6 +26,11 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		this.$el.html(content);
 		this.attachSubviews();
 		return this;
+	},
+
+	addLocalEvents: function(collection) {
+		var localEventView = new RingerPinger.Views.LocalEvents({ collection: collection });
+		this.addSubview('.local-events', localEventView);
 	},
 
 	addNavbar: function() {

@@ -11,8 +11,6 @@ RingerPinger.Views.UsersIndex = Backbone.CompositeView.extend({
 		this.addFooter();
 		this.addLocalRingers(RingerPinger.users);
 		this.addMap();
-
-		// this.listenTo(RingerPinger.users, "sync", this.)
 	},
 
 	render: function() {
