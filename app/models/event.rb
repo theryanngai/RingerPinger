@@ -5,6 +5,9 @@ class Event < ActiveRecord::Base
 	has_many :eventusers
 	has_many :users, through: :eventusers
 
+	geocoded_by :location
+	after_validation :geocode
+
 	belongs_to(
 		:creator,
 		class_name: 'User',
