@@ -12,5 +12,6 @@ json.(
 	:event_date,
 	:created_at, 
 	:updated_at,
-
+	:latitude,
+	:longitude
 	)

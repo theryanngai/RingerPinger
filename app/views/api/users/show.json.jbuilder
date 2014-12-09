@@ -11,7 +11,9 @@ json.(
 	:created_events,
 	:events,
 	:created_at, 
-	:updated_at
+	:updated_at,
+	:latitude,
+	:longitude
 )
 
 json.sports @user.sports do |sport|
