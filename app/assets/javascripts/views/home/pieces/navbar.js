@@ -15,6 +15,7 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 		'click .signup-link': 'showSignUp',
 		'click .login-link':'showLogin',
 		'click .log-out': 'logOutUser',
+		'click .guest-login-link': 'loginGuest',
 		'click #toggle' : 'changeStatus'
 	},
 
@@ -30,6 +31,26 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 		$('.signup-modal').addClass('signup-show');
 		$('.login-modal').removeClass('login-show');
 		this.$homeEl.addClass('darkened');
+	},
+
+	loginGuest: function() {
+		var guestEmail = "guest@ringerpinger.io";
+		var guestPassword = "password";
+
+		var attrs = {"user": { email: guestEmail, password: guestPassword }};
+
+		$.ajax({
+      url: "/api/session",
+      type: "POST",
+      data: attrs,
+      success: function (model) {
+        RingerPinger.currentUser = new RingerPinger.Models.User(model);
+        Backbone.history.loadUrl(Backbone.history.fragment);
+      },
+      error: function (model) { 
+      	alert('Bad Username/Password Combo');
+      }
+    })
 	},
 
 	addSignupBox: function() {
