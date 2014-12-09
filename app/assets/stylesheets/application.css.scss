@@ -68,7 +68,7 @@ body {
 
 #center-blurb {
  	
- 	// background-color: rgba(0, 0, 0, 0.6);
+ 	color: rgba(0, 0, 0, 0.6);
 
 	.head {
 		font-size: 60px;
@@ -82,11 +82,12 @@ body {
 	}
 
 	.info-button {
-		transition-property: background-color;
+		color: rgba(0, 0, 0, 0.6);
+		transition-property: background-color, color;
 		transition-duration: 0.5s;
 		letter-spacing: 1px;
 		font-weight: 400;
-		background: rgba(255,255,255, 0.5);
+		background: rgba(255,255,255, 0.8);
 		position: relative;
 		padding: 10px 30px;
 		margin: 20px;
@@ -95,12 +96,13 @@ body {
 	}
 
 	.info-button:hover {
-		transition-property: background-color;
+		transition-property: background-color, color;
+		color: white;
 		transition-duration: 0.5s;
 		background-color: rgba(0, 0, 0, 0.6);
 	}
 
-	color: white;
+	// color: white;
 	text-align: center;
 	letter-spacing: 1px;
 	font-weight: 900;
