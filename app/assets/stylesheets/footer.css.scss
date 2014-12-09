@@ -1,9 +1,13 @@
 .main-footer {
-	background: url('images/tennis_ball.jpg');
+	background: url('images/sunset_basketball.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-size: 2000px;
-	background-position: -500px -300px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	// background-size: 2000px;
+	// background-position: 100px 100px;
 	width: 100%;
 
 	.links {

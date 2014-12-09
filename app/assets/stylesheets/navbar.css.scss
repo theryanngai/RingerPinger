@@ -8,8 +8,12 @@
 	background: url('images/baseball_grass.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-size: 2000px;
-	background-position: -200px -1050px;
+	// background-size: 2000px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	// background-position: -200px -1050px;
 }
 
 .navbar.navbar-event-show {
