@@ -34,7 +34,7 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 	},
 
 	loginGuest: function() {
-		var guestEmail = "guest@ringerpinger.io";
+		var guestEmail = "guest@ringerpinger.com";
 		var guestPassword = "password";
 
 		var attrs = {"user": { email: guestEmail, password: guestPassword }};
