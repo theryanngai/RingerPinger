@@ -13,6 +13,7 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 
 		this.listenTo(RingerPinger.events, "sync", this.render);
 		this.listenTo(RingerPinger.events, "newSearch", this.filterResults);
+		this.listenTo(RingerPinger.events, "addGeocode", this.addGeocode);
 	},
 
 	filterResults: function(event) {
@@ -26,22 +27,6 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	},
 
 	render: function() {
-		// if (Backbone.history.fragment != "events") {
-		// 	var start_date = this.parseURI("start_date");
-		// 	var end_date = this.parseURI("end_date");
-		// 	var location = this.parseURI("location");
-
-		// 	var filteredEvents = RingerPinger.events.models.filter(
-		// 				function(model) {
-		// 					return model.get('location').split(',')[0] === location.split(',')[0] &&
-		// 								 new Date(model.get('event_date')) > new Date(start_date) &&
-		// 								 new Date(model.get('event_date')) < new Date(end_date);
-		// 				});						
-		// } else {
-		// 	var filteredEvents = RingerPinger.events;
-		// }
-
-
 		var content = this.template({ events: RingerPinger.events });
 		this.$el.html(content);
 		this.addLocalEvents(RingerPinger.events);
@@ -67,7 +52,13 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	},
 
 	addMap: function() {
-		this.mapView = new RingerPinger.Views.Map();
+		this.mapView = new RingerPinger.Views.Map( { collection: RingerPinger.events });
 		this.addSubview('#map-container', this.mapView);
 	},
+
+	addGeocode: function() {
+		alert("butts");
+		debugger;
+		// $('#map-input').geocomplete();
+	}
 })

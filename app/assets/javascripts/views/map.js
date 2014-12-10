@@ -21,13 +21,8 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 
 		this.setDates();
 		this.parseLocation();
-		debugger;
 
-		// this.mapOptions = {
-  //     center: new google.maps.LatLng(37.7810556,-122.411455),
-  //     zoom: 12,
-  //     mapTypeId: google.maps.MapTypeId.ROADMAP
-  //   }
+		this.listenTo(RingerPinger.events, "addGeocode", this.addGeocode);
 	},
 
 	initializeMap: function() {
@@ -38,6 +33,7 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 	render: function() {
 		var content = this.template();
 		this.$el.html(content);
+		RingerPinger.events.trigger("addGeocode");
 		return this;
 	},
 
@@ -88,7 +84,7 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 
   setSearch: function() {
   	var southWest = this.map.getBounds().getSouthWest();
-  	var northEast = this.map.getBounds().getnorthEast();
+  	var northEast = this.map.getBounds().getNorthEast();
   	var boundaries = {
   		south: southWest.lat(),
   		west: southWest.lng(),
@@ -103,5 +99,5 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
   		sport: this.sport
   	};
   	this.collection.trigger("newSearch", options);
-  },
+  }
 })

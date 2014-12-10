@@ -69,10 +69,10 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		RingerPinger.events.fetch();
 		var eventsIndexView = new RingerPinger.Views.EventsIndex({ collection: RingerPinger.events });
 		this._swapView(eventsIndexView);
-		debugger;
-		$('#map-input').geocomplete({
-			map: $('#map-canvas'),
-		});
+		// $('#map-input').geocomplete({
+		// 	map: $('#map-canvas'),
+		// });
+		$('#map-input').geocomplete();
 		$('#map-canvas').addClass('user-index-map');
 	},
 
