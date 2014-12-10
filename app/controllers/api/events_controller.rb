@@ -11,6 +11,7 @@ class Api::EventsController < ApplicationController
 
 	def create
 		@event = Event.new(event_params)
+		debugger
 
 		if @event.save
 			render :show, status: :created

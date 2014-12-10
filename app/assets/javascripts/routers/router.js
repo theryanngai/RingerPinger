@@ -17,23 +17,19 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	home: function() {
 		var homeView = new RingerPinger.Views.Home();
 		this._swapView(homeView);
-		$('.datepicker').datepicker();
+		$('.datepicker').datepicker({
+			dateFormat: 'yy/mm/dd'
+		});
 		$('.search-location').geocomplete();
 	},
 
 	newEvent: function() {
 		var newEventView = new RingerPinger.Views.NewEvent();
 		this._swapView(newEventView);
-		$('.datepicker').datepicker();
-
-		setTimeout(function(){
-			$('#map-input').geocomplete({
-				map: $('#map-canvas'),
-				location: 'San Francisco, CA, United States'
-			});
-		}, 500);
-	
-
+		$('.datepicker').datepicker({
+			dateFormat: 'yy/mm/dd'
+		});
+		$('#map-input').geocomplete();
 		$('#map-canvas').addClass('new-event-map');
 	},
 
@@ -67,13 +63,12 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 
 	eventsIndex: function() {
 		RingerPinger.events.fetch();
+		// var events = new RingerPinger.Collections.Events();
+		// events.fetch();
 		var eventsIndexView = new RingerPinger.Views.EventsIndex({ collection: RingerPinger.events });
 		this._swapView(eventsIndexView);
-		// $('#map-input').geocomplete({
-		// 	map: $('#map-canvas'),
-		// });
-		$('#map-input').geocomplete();
 		$('#map-canvas').addClass('user-index-map');
+		$('#map-input').geocomplete();
 	},
 
 	usersIndex: function() {

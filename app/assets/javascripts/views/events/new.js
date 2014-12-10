@@ -9,7 +9,6 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	initialize: function() {
 		this.navBar = this.addNavBar();
 		this.addFooter();
-		this.addMap();
 	},
 
 	className: 'new-event',

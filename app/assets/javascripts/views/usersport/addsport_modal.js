@@ -43,6 +43,7 @@ RingerPinger.Views.AddSportModal = Backbone.CompositeView.extend({
 				success: function(model) {
 					newUserSport.set({ sport_id: model.get('id')})
 					that.createUserSport(newUserSport);
+					RingerPinger.usersports.fetch();
 					RingerPinger.sports.fetch();
 					Backbone.history.loadlUrl(Backbone.history.fragment);
 				}
@@ -53,6 +54,7 @@ RingerPinger.Views.AddSportModal = Backbone.CompositeView.extend({
 	createUserSport: function(newUserSport) {
 		newUserSport.save({}, {
 			success: function(model) {
+				RingerPinger.usersports.fetch();
 				RingerPinger.currentUser.fetch();
 				Backbone.history.loadUrl(Backbone.history.fragment);
 			}, error: function(model) {

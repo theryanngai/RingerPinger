@@ -9,21 +9,39 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	initialize: function(options) {
 		this.addNavbar();
 		this.addFooter();
-		this.addMap();
 
-		this.listenTo(RingerPinger.events, "sync", this.render);
+		this.listenTo(this.collection, "sync", this.render);
 		this.listenTo(RingerPinger.events, "newSearch", this.filterResults);
-		this.listenTo(RingerPinger.events, "addGeocode", this.addGeocode);
+		this.listenTo(this.collection, "addGeocode", this.addGeocode);
+		this.listenTo(this.collection, "addGeocode", this.addMarkers);
+
+		this.addMap();
 	},
 
-	filterResults: function(event) {
-		if (this.$('#map-input').val() === "") {
-			var filteredEvents = RingerPinger.events;
-		} else {
-			var filteredEvents = RingerPinger.events.where({ location: this.$('#map-input').val() });
+	filterResults: function(options) {
+		if (options.boundaries) {
+			this.boundaries = options.boundaries
+		} 
+		if (options.start_date) {
+			this.start_date = options.start_date
 		}
-		var filteredContent = new RingerPinger.Views.LocalEvents({ collection: filteredEvents });
-		this.$('.local-events').html(filteredContent.render().$el);
+		if (options.end_date) {
+			this.end_date = options.end_date
+		}
+		if (options.sport) {
+			this.sport = options.sport
+		}
+	},
+
+	addMarkers: function(options) {
+		this.collection.forEach(function(sportsEvent) {
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(sportsEvent.get('latitude'), 
+																				 sportsEvent.get('longitude')),
+				map: RingerPinger.map,
+				title: 'Butts!'
+			});
+		});
 	},
 
 	render: function() {
@@ -31,7 +49,6 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		this.$el.html(content);
 		this.addLocalEvents(RingerPinger.events);
 		this.attachSubviews();
-
 		return this;
 	},
 
@@ -52,13 +69,13 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	},
 
 	addMap: function() {
-		this.mapView = new RingerPinger.Views.Map( { collection: RingerPinger.events });
+		this.mapView = new RingerPinger.Views.Map( { collection: this.collection });
 		this.addSubview('#map-container', this.mapView);
 	},
 
 	addGeocode: function() {
-		alert("butts");
-		debugger;
-		// $('#map-input').geocomplete();
+		$('#map-input').geocomplete({
+			map: $('#map-canvas'),	
+		});
 	}
 })

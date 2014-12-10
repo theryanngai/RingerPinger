@@ -22,18 +22,18 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 		this.setDates();
 		this.parseLocation();
 
-		this.listenTo(RingerPinger.events, "addGeocode", this.addGeocode);
+		this.listenTo(this.collection, 'newLocation', this.changeLocation);
 	},
 
 	initializeMap: function() {
     this.map = new google.maps.Map(this.$('#map-canvas')[0], this.mapOptions);
+    RingerPinger.map = this.map
     google.maps.event.addListener(this.map, 'idle', this.setSearch.bind(this));
 	},
 
 	render: function() {
 		var content = this.template();
 		this.$el.html(content);
-		RingerPinger.events.trigger("addGeocode");
 		return this;
 	},
 
@@ -59,7 +59,7 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
   		this.end_date = new Date();
   	} else {
   		this.start_date = new Date(this.start_date);
-  		this.end_date = new Date(this.start_date);
+  		this.end_date = new Date(this.end_date);
   	}
   },
 
@@ -78,8 +78,17 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
   			} else {
   				that.initializeMap();
   			}
+  		that.collection.trigger("addGeocode");
   		}
   	})
+  },
+
+  changeLocation: function(params) {
+  	this.location = params.location;
+  	this.start_date = params.start_date;
+  	this.end_date = params.end_date;
+  	this.sport = params.sport;
+  	this.parseLocation();
   },
 
   setSearch: function() {
@@ -99,5 +108,5 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
   		sport: this.sport
   	};
   	this.collection.trigger("newSearch", options);
-  }
+  },
 })

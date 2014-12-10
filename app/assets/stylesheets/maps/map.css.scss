@@ -1,20 +1,27 @@
 .new-event-map {
-	position: absolute;
-	height: 500px;
-	width: 500px;
-	border: 3px solid tomato;
+	height: 100%;
+	width: 50%;
 	border-radius: 5px;
 	margin: 35px;
 	bottom: -130px;
 	z-index: 1;
 }
 
-.user-index-map {
-	position: relative;
-	height: 600px;
-	width: 600px;
-	border: 3px solid tomato;
+#map-canvas.user-index-map {
+	height: 100%;
+	width: 100%;
 	border-radius: 5px;
-	margin: 50px;
+	margin: 0px;
 	z-index: 1;
+}
+
+.map-box {
+	height: 100%;
+	width: 100%;
+}
+
+#map-container {
+	height: 100%;
+	width: 100%;
+	border: 1px solid gray;
 }
