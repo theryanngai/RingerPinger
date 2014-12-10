@@ -27,8 +27,6 @@ RingerPinger.Views.LoginModal = Backbone.CompositeView.extend({
 		var attrs = $('#login-form').serializeJSON();
 		var that = this;
 
-		debugger;
-
     $.ajax({
       url: "/api/session",
       type: "POST",
