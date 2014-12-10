@@ -12,6 +12,7 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		this.addMap();
 
 		this.listenTo(RingerPinger.events, "sync", this.render);
+		this.listenTo(RingerPinger.events, "newSearch", this.filterResults);
 	},
 
 	filterResults: function(event) {

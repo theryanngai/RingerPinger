@@ -5,13 +5,14 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 	className: 'map-box',
 
 	initialize: function() {
+		this.geocoder = new google.maps.Geocoder();
+
 		if (Backbone.history.fragment != "events") {
 			this.location = this.parseURI("location");
 			this.start_date = this.parseURI("start_date");
 			this.end_date = this.parseURI("end_date");
 			this.sport = this.parseURI("sport");
 		} else {
-			this.geocoder = new google.maps.Geocoder();
 			this.location = 'San Francisco, CA';
 			this.start_date = '';
 			this.end_date = '';
@@ -30,7 +31,8 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 	},
 
 	initializeMap: function() {
-    this.map = new google.maps.Map(this.$('#map-canvas')[0], this.mapOptions)
+    this.map = new google.maps.Map(this.$('#map-canvas')[0], this.mapOptions);
+    google.maps.event.addListener(this.map, 'idle', this.setSearch.bind(this));
 	},
 
 	render: function() {
@@ -75,8 +77,36 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
   	this.geocoder.geocode( {'address': this.location }, function (results, status) {
   		if (status == google.maps.GeocoderStatus.OK) {
   			that.coords = results[0].geometry.location;
-  			debugger;
+  			that.mapOptions = {
+  				center: that.coords,
+  				zoom: 12
+  			};
+  			if (that.map) {
+  				that.map.setCenter(that.coords);
+  				that.setSearch();
+  			} else {
+  				that.initializeMap();
+  			}
   		}
   	})
-  }
+  },
+
+  setSearch: function() {
+  	var southWest = this.map.getBounds().getSouthWest();
+  	var northEast = this.map.getBounds().getnorthEast();
+  	var boundaries = {
+  		south: southWest.lat(),
+  		west: southWest.lng(),
+  		north: northEast.lat(),
+  		east: northEast.lng()
+  	};
+  	this.setDates();
+  	var options = {
+  		boundaries: boundaries,
+  		start_date: this.start_date,
+  		end_date: this.end_date,
+  		sport: this.sport
+  	};
+  	this.collection.trigger("newSearch", options);
+  },
 })

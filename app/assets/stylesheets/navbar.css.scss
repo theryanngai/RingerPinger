@@ -8,12 +8,10 @@
 	background: url('images/baseball_dirt.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	// background-size: 2000px;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	// background-position: -200px -1050px;
 }
 
 .navbar.navbar-event-show {
@@ -22,8 +20,10 @@
 	background: url('images/baseball_dirt.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-size: 2000px;
-	background-position: -500px -600px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 #navbar-style {
