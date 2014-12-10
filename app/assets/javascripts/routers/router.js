@@ -69,14 +69,10 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		RingerPinger.events.fetch();
 		var eventsIndexView = new RingerPinger.Views.EventsIndex({ collection: RingerPinger.events });
 		this._swapView(eventsIndexView);
-		
-		setTimeout(function(){
-			$('#map-input').geocomplete({
-				map: $('#map-canvas'),
-				location: 'San Francisco, CA, United States'
-			});
-		}, 500);
-
+		debugger;
+		$('#map-input').geocomplete({
+			map: $('#map-canvas'),
+		});
 		$('#map-canvas').addClass('user-index-map');
 	},
 
