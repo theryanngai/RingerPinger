@@ -6,40 +6,21 @@
 	<div class="clearfix"></div>
 
 	<div class="index-body right-half">
-		<div id="date-range-select">
-			<label id="date-label">Dates</label>
-			<input name="event[start_date]" placeholder="Earliest Date" 
-				class="home-search-field event-search datepicker">
-			<input name="event[end_date]" placeholder="Latest Date" 
-				class="home-search-field event-search datepicker">
-		</div>
-		<div class="noUiSlider"></div>
-		<div id="filter-slider">
-			<div class="slider-piece" id="slider-label">
-				<label id="event-slider-label">Skill Level</label>
+		<form>
+			<div id="date-range-select">
+				<label id="date-label">Dates</label>
+				<input name="event[start_date]" placeholder="Earliest Date" 
+					class="home-search-field event-search datepicker">
+				<input name="event[end_date]" placeholder="Latest Date" 
+					class="home-search-field event-search datepicker">
 			</div>
-			<div class="slider-piece" id="slider">
-				<input type="range"  min="1" max="4" value="1" step=1 
-				onchange="outputUpdate(value)" id="skill_level_slider">
-				<output for="skill_level_slider" id="skill_level">ROOKIE</output>
+			<div id="skill-level-select">
+				<span id="slider-label">Skill</span><span class="noUiSlider"></span>
+				<div id="slider-value"></div>
 			</div>
 
-			<script>
-				function outputUpdate(val) {
-				if (val === "1") {
-					val = "ROOKIE";
-				} else if (val === "2") {
-					val = "AMATEUR";
-				} else if (val === "3") {
-					val = "VETERAN";
-				} else {
-					val = "ALL-STAR";
-				}
-
-				document.querySelector('#skill_level').value = val;
-			}
-			</script>
-		</div>
+			<button id="submit-event-filter">Click!</button>
+		</form>
 
 		<div class="event-collection">
 			<div class="local-events">

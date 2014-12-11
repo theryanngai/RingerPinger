@@ -3,7 +3,8 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	template: JST["events/index"],
 
 	events: {
-		'click #map-find' : 'filterResults'
+		'click #map-find' : 'filterResults',
+		'submit' : 'butts'
 	},
 
 	initialize: function(options) {
@@ -17,6 +18,11 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 
 
 		this.addMap();
+	},
+
+	butts: function() {
+		event.preventDefault();
+		debugger;
 	},
 
 	filterResults: function(options) {
@@ -90,12 +96,18 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		});
 
 		this.$('.noUiSlider').noUiSlider({
-			start: 1,
+			start: 0,
 			range: {
-				'min':[0],
-				'max':[100]
-			}
+				'min': 0,
+				'25%': 1,
+				'50%': 2,
+				'75%': 3,
+				'max': 4
+			},
+			snap: true
 		});
+
+		this.$('.noUiSlider').Link('lower').to(this.$('#slider-value'));
 	},
 
 	addFooter: function() {
