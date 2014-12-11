@@ -38,13 +38,13 @@
 	height: 50px;
 }
 
-#filter-slider {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	top: 10%;
-	width: 80%;
-}
+// #filter-slider {
+// 	display: block;
+// 	margin-left: auto;
+// 	margin-right: auto;
+// 	top: 10%;
+// 	width: 20%;
+// }
 
 #index-map-search {
 	position: relative;
@@ -122,4 +122,19 @@
 	padding: 0px;
 }
 
+.home-search-field.event-search {
+	border: 1px solid #C0C0C0;
+	border-radius: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 16px;
+	font-weight: 100;
+}
+
+#date-label {
+	font-size: 16px;
+	font-weight: 100;
+	letter-spacing: 1px;
+	margin-right: 10%;
+}
 

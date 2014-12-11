@@ -78,7 +78,8 @@ RingerPinger.Views.UsersIndex = Backbone.CompositeView.extend({
 				position: new google.maps.LatLng(ringer.get('latitude'), 
 																				 ringer.get('longitude')),
 				map: RingerPinger.map,
-				title: ringer.get('first_name')
+				title: ringer.get('first_name'),
+				animation: google.maps.Animation.DROP
 			});
 		});
 	},

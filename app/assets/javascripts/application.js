@@ -16,6 +16,7 @@
 //= require jquery.geocomplete
 //= require bootstrap-datepicker
 //= require jquery-ui
+//= require jquery.nouislider.all.min
 //= require underscore
 //= require backbone
 //= require bootstrap

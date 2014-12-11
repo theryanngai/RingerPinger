@@ -71,6 +71,13 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		RingerPinger.events.trigger("addMarkers");
 		$('#map-canvas').addClass('user-index-map');
 		$('#map-input').geocomplete();
+		// $('.noUiSlider').noUiSlider({
+		// 	start: 1,
+		// 	range: {
+		// 		'min':[0],
+		// 		'max':[100]
+		// 	}
+		// });
 	},
 
 	usersIndex: function() {

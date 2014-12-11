@@ -53,7 +53,8 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 				position: new google.maps.LatLng(sportsEvent.get('latitude'), 
 																				 sportsEvent.get('longitude')),
 				map: RingerPinger.map,
-				title: sportsEvent.get('title')
+				title: sportsEvent.get('title'),
+				animation: google.maps.Animation.DROP
 			});
 		});
 	},
@@ -67,6 +68,7 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 			this.addLocalEvents(RingerPinger.events);
 		}
 		this.attachSubviews();
+		this.addDatepicker();
 		return this;
 	},
 
@@ -78,6 +80,22 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	addNavbar: function() {
 		var navBarView = new RingerPinger.Views.HomeNavBar({ $homeEl: this.$el });
 		this.addSubview('.navbar', navBarView);
+	},
+
+	addDatepicker: function() {
+		this.$('.datepicker').each(function() {
+			$(this).datepicker({
+				dateFormat: 'yy/mm/dd'
+			});
+		});
+
+		this.$('.noUiSlider').noUiSlider({
+			start: 1,
+			range: {
+				'min':[0],
+				'max':[100]
+			}
+		});
 	},
 
 	addFooter: function() {
