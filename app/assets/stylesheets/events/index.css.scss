@@ -10,14 +10,18 @@
 		list-style: none;
 	}
 
+	li {
+		padding: 0px;
+	}
+
 	a {
 		transition-property: font-size, color;
 		transition-duration: 0.3s;
 		position: relative;
-		right: 5%;
 		font-size: 20px;
 		color: gray;
 		text-decoration: none;
+		padding: 0px;
 	}
 
 	a:hover {
@@ -87,12 +91,18 @@
 }
 
 .index-body.right-half {
+	text-align: center;
 	position: relative;
 	overflow-y: scroll;
 	display: block;
 	float: left;
 	width: 50%;
 	padding: 30px;
+
+	#date-range-select {
+		margin-bottom: 30px;
+		text-align: center;
+	}
 }
 
 .index-body.left-half {
@@ -105,6 +115,10 @@
 
 .events-index {
 	height: 100%;
+}
+
+.event-list {
+	padding: 0px;
 }
 
 
