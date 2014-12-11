@@ -10,25 +10,46 @@ RingerPinger.Views.UsersIndex = Backbone.CompositeView.extend({
 		this.addNavbar();
 		this.addFooter();
 
-		this.listenTo(RingerPinger.users, "newSearch", this.filterResults);
+		this.listenTo(this.collection, "newSearch", this.filterResults);
 		this.listenTo(this.collection, "addGeocode", this.addGeocode);
 		this.listenTo(this.collection, "addMarkers", this.addMarkers);
-		
+		this.listenTo(this.collection, "refreshEvents", this.render);
+
 		this.addMap();
 	},
 
-	render: function() {
+	render: function(collection) {
 		var content = this.template({ users: RingerPinger.users });
-		this.addLocalRingers(RingerPinger.users);
 		this.$el.html(content);
+		if (collection) {
+			this.addLocalRingers(collection);
+		} else {
+			this.addLocalRingers(RingerPinger.users);
+		}
 		this.attachSubviews();
 		return this;
 	},
 
-	filterResults: function(event) {
-		var filteredUsers = RingerPinger.users.where({ location: this.$('#map-input').val() });
-		var filteredContent = new RingerPinger.Views.LocalRingers({ collection: filteredUsers });
-		this.$('.local-ringers').html(filteredContent.render().$el);
+	filterResults: function(options) {
+		if (options.boundaries) {
+			this.boundaries = options.boundaries;
+		} 
+		if (options.available) {
+			this.available = options.available;
+		}
+
+		var that = this;
+
+		var filteredUsers = RingerPinger.users.filter(function(sportsEvent) {
+			return (sportsEvent.get('latitude') < that.boundaries.north &&
+							sportsEvent.get('latitude') > that.boundaries.south &&
+							sportsEvent.get('longitude') < that.boundaries.east &&
+							sportsEvent.get('longitude') > that.boundaries.west &&
+							sportsEvent.get('status') === "available")
+		});
+
+		RingerPinger.filteredUsers = new RingerPinger.Collections.Users(filteredUsers);
+		this.collection.trigger("refreshEvents", RingerPinger.filteredUsers);
 	},
 
 	addNavbar: function() {
@@ -38,7 +59,7 @@ RingerPinger.Views.UsersIndex = Backbone.CompositeView.extend({
 
 	addLocalRingers: function(collection) {
 		var localRingerView = new RingerPinger.Views.LocalRingers({ collection: collection });
-		this.addSubview('.local-ringers', localRingerView);
+		this.$('.local-ringers').html(localRingerView.render().$el);
 	},
 
 	addFooter: function() {

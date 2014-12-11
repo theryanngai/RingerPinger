@@ -12,12 +12,12 @@
 
 	ul {
 		list-style: none;
+		padding: 0px;
 		
 		a {
 			transition-property: font-size, color;
 			transition-duration: 0.2s;
 			position: relative;
-			right: 5%;
 			font-size: 20px;
 			color: gray;
 			text-decoration: none;
@@ -95,6 +95,9 @@
 
 	li {
 		padding: 0px;
+		padding-left: 2px;
+		padding-right: 2px;
+		display: inline-block;
 	}
 }
 

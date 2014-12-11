@@ -59,6 +59,7 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	},
 
 	render: function(collection) {
+		debugger;
 		var content = this.template({ events: RingerPinger.events });
 		this.$el.html(content);
 		if (collection) {
