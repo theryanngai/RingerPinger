@@ -1,12 +1,14 @@
 .local-ringers {
-	position: absolute;
-	float: right;
-	top: 300px;
-	right: 50px; 
-	width: 600px;
+	position: relative;
+	display: block;
 	height: 500px;
+	width: 100%;
 
 	font-color: gray;
+
+	h1 {
+		color: black;
+	}
 
 	ul {
 		list-style: none;
@@ -33,12 +35,6 @@
 
 
 #filter-slider {
-	// position: absolute;
-	// left: 55%;
-	// bottom: 500px;
-	// width: 500px;
-	// height: 50px;
-
 	output {
 		font-size: 40px;
 		font-weight: 500;

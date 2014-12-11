@@ -6,17 +6,10 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 
 	initialize: function() {
 		this.geocoder = new google.maps.Geocoder();
+    this.location = this.parseURI("location");
 
-		if (Backbone.history.fragment != "events") {
-			this.location = this.parseURI("location");
-			this.start_date = this.parseURI("start_date");
-			this.end_date = this.parseURI("end_date");
-			this.sport = this.parseURI("sport");
-		} else {
-			this.location = 'San Francisco, CA';
-			this.start_date = '';
-			this.end_date = '';
-			this.sport = ''
+    if (!this.location) {
+		  this.location = 'San Francisco, CA';
 		}
 
 		this.setDates();
@@ -79,6 +72,7 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
   				that.initializeMap();
   			}
   		that.collection.trigger("addGeocode");
+      that.collection.trigger("addMarkers");
   		}
   	})
   },

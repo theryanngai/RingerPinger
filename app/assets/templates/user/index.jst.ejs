@@ -1,39 +1,35 @@
 <div class="navbar navbar-no-margin"></div>
+<div class="events-index clearfix">
+	<div class="index-body left-half">
+		<div id="map-container"></div>
+	</div>
 
-<span id="index-map-title">Select Location</span>
-	
-<div id="map-container"></div>
+	<div class="index-body right-half">
+		<div id="filter-slider">
+			<input type="range"  min="1" max="4" value="1" step=1 
+			onchange="outputUpdate(value)" id="skill_level_slider">
+			<output for="skill_level_slider" id="skill_level">ROOKIE</output>
 
-<div id="index-map-search">
-	<input id="map-input" name="map[input]" placeholder="Search a City...">
-	<button type="button" id="map-find">Filter Results!</button>
+			<script>
+				function outputUpdate(val) {
+				if (val === "1") {
+					val = "ROOKIE";
+				} else if (val === "2") {
+					val = "AMATEUR";
+				} else if (val === "3") {
+					val = "VETERAN";
+				} else {
+					val = "ALL-STAR";
+				}
+
+				document.querySelector('#skill_level').value = val;
+			}
+			</script>
+		</div>
+
+		<div class="local-ringers event-collection"></div>
+	</div>
 </div>
-
-<div id="filter-slider">
-	<input type="range"  min="1" max="4" value="1" step=1 
-	onchange="outputUpdate(value)" id="skill_level_slider">
-	<output for="skill_level_slider" id="skill_level">ROOKIE</output>
-
-	<script>
-		function outputUpdate(val) {
-		if (val === "1") {
-			val = "ROOKIE";
-		} else if (val === "2") {
-			val = "AMATEUR";
-		} else if (val === "3") {
-			val = "VETERAN";
-		} else {
-			val = "ALL-STAR";
-		}
-
-		document.querySelector('#skill_level').value = val;
-	}
-	</script>
-</div>
-
-<div class="local-ringers">\</div>
-
-	
 
 
 <div class="main-footer"></div>

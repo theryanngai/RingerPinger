@@ -7,7 +7,7 @@ RingerPinger.Views.LocalRingers = Backbone.CompositeView.extend({
 	},
 
 	render: function() {
-		var content = this.template({ users: this.collection });
+		var content = this.template({ users: RingerPinger.users });
 		this.$el.html(content);   
 		this.attachSubviews();
 		return this;

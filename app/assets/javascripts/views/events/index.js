@@ -13,7 +13,7 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		this.listenTo(this.collection, "sync", this.render);
 		this.listenTo(RingerPinger.events, "newSearch", this.filterResults);
 		this.listenTo(this.collection, "addGeocode", this.addGeocode);
-		this.listenTo(this.collection, "addGeocode", this.addMarkers);
+		this.listenTo(this.collection, "addMarkers", this.addMarkers);
 
 		this.addMap();
 	},
@@ -39,7 +39,7 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 				position: new google.maps.LatLng(sportsEvent.get('latitude'), 
 																				 sportsEvent.get('longitude')),
 				map: RingerPinger.map,
-				title: 'Butts!'
+				title: sportsEvent.get('title')
 			});
 		});
 	},
@@ -54,7 +54,6 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 
 	addLocalEvents: function(collection) {
 		var localEventView = new RingerPinger.Views.LocalEvents({ collection: collection });
-		// this.addSubview('.local-events', localEventView
 		this.$('.local-events').html(localEventView.render().$el);
 	},
 

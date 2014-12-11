@@ -57,33 +57,27 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		} else {
 			var editUserView = new RingerPinger.Views.EditUser({ model: RingerPinger.currentUser });
 			this._swapView(editUserView);
+			debugger;
 			$('#user_location').geocomplete();
 		}
 	},
 
 	eventsIndex: function() {
 		RingerPinger.events.fetch();
-		// var events = new RingerPinger.Collections.Events();
-		// events.fetch();
 		var eventsIndexView = new RingerPinger.Views.EventsIndex({ collection: RingerPinger.events });
 		this._swapView(eventsIndexView);
+		debugger;
+		RingerPinger.events.trigger("addMarkers");
 		$('#map-canvas').addClass('user-index-map');
 		$('#map-input').geocomplete();
 	},
 
 	usersIndex: function() {
 		RingerPinger.users.fetch();
-		var indexView = new RingerPinger.Views.UsersIndex({ collection: RingerPinger.users});
+		var indexView = new RingerPinger.Views.UsersIndex({ collection: RingerPinger.users });
 		this._swapView(indexView);
-		
-		setTimeout(function(){
-			$('#map-input').geocomplete({
-				map: $('#map-canvas'),
-				location: 'San Francisco, CA, United States'
-			});
-		}, 500);
-
 		$('#map-canvas').addClass('user-index-map');
+		$('#map-input').geocomplete();
 	},
 
 	_swapView: function(view) {
