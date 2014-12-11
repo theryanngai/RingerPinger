@@ -55,6 +55,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 			Backbone.history.navigate('#/', { trigger: true });
 			alert("You must be logged in to continue!");
 		} else {
+			RingerPinger.currentUser.fetch();
 			var editUserView = new RingerPinger.Views.EditUser({ model: RingerPinger.currentUser });
 			this._swapView(editUserView);
 			$('#user_location').geocomplete();
