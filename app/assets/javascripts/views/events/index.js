@@ -10,7 +10,6 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		this.addNavbar();
 		this.addFooter();
 
-		this.listenTo(this.collection, "sync", this.render);
 		this.listenTo(RingerPinger.events, "newSearch", this.filterResults);
 		this.listenTo(this.collection, "addGeocode", this.addGeocode);
 		this.listenTo(this.collection, "addMarkers", this.addMarkers);

@@ -10,17 +10,17 @@ RingerPinger.Views.UsersIndex = Backbone.CompositeView.extend({
 		this.addNavbar();
 		this.addFooter();
 
-		this.listenTo(this.collection, "sync", this.render);
 		this.listenTo(RingerPinger.users, "newSearch", this.filterResults);
 		this.listenTo(this.collection, "addGeocode", this.addGeocode);
 		this.listenTo(this.collection, "addMarkers", this.addMarkers);
+		
 		this.addMap();
 	},
 
 	render: function() {
 		var content = this.template({ users: RingerPinger.users });
-		this.$el.html(content);
 		this.addLocalRingers(RingerPinger.users);
+		this.$el.html(content);
 		this.attachSubviews();
 		return this;
 	},

@@ -63,7 +63,7 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
   			that.coords = results[0].geometry.location;
   			that.mapOptions = {
   				center: that.coords,
-  				zoom: 12
+  				zoom: 13
   			};
   			if (that.map) {
   				that.map.setCenter(that.coords);
