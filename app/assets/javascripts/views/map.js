@@ -48,8 +48,8 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 
   setDates: function() {
   	if (!this.start_date || !this.end_date) {
-  		this.start_date = new Date(new Date() - (24*60*60*1000)*14);
-  		this.end_date = new Date(new Date() + (24*60*60*1000)*14);
+  		this.start_date = new Date();
+  		this.end_date = new Date(new Date().getTime() + (24*60*60*1000)*30);
   	} else {
   		this.start_date = new Date(this.start_date);
   		this.end_date = new Date(this.end_date);

@@ -66,7 +66,6 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		RingerPinger.events.fetch();
 		var eventsIndexView = new RingerPinger.Views.EventsIndex({ collection: RingerPinger.events });
 		this._swapView(eventsIndexView);
-		debugger;
 		RingerPinger.events.trigger("addMarkers");
 		$('#map-canvas').addClass('user-index-map');
 		$('#map-input').geocomplete();

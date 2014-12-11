@@ -13,6 +13,8 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		this.listenTo(this.collection, "newSearch", this.filterResults);
 		this.listenTo(this.collection, "addGeocode", this.addGeocode);
 		this.listenTo(this.collection, "addMarkers", this.addMarkers);
+		this.listenTo(this.collection, "refreshEvents", this.render);
+
 
 		this.addMap();
 	},
@@ -41,6 +43,8 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 							new Date(sportsEvent.get('event_date')) > that.start_date &&
 							new Date(sportsEvent.get('event_date')) < that.end_date);
 		})
+		RingerPinger.filteredEvents = new RingerPinger.Collections.Events(filteredEvents);
+		this.collection.trigger("refreshEvents", RingerPinger.filteredEvents);
 	},
 
 	addMarkers: function(options) {
@@ -54,10 +58,14 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		});
 	},
 
-	render: function() {
+	render: function(collection) {
 		var content = this.template({ events: RingerPinger.events });
 		this.$el.html(content);
-		this.addLocalEvents(RingerPinger.events);
+		if (collection) {
+			this.addLocalEvents(collection);
+		} else {
+			this.addLocalEvents(RingerPinger.events);
+		}
 		this.attachSubviews();
 		return this;
 	},
