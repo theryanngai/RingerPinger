@@ -1,134 +1,145 @@
 <div class='navbar navbar-no-margin'></div>
+<div class="user-show-content">
+	<div class="user-show-left">
+		<div id='user-info'>
+			<h1><%=(user.escape('first_name') + " " + user.escape('last_name')).toUpperCase() %></h1>
 
-<div class="profile-pic">
-	<% if (user.get('profile_picture')) { %>
-		<img src="<%= user.escape('profile_picture') %>">
-	<% } else { %>
-	No Profile Picture yet!
-	<% } %>
-</div>
-
-<div id='user-info'>
-	<h1><%=(user.escape('first_name') + " " + user.escape('last_name')).toUpperCase() %></h1>
-
-	<% if (user.get('status') === "available") { %>
-		<hr />
-		<div class="availability"><h3>Currently Available!</h3></div>
-		<hr class='short'/>
-	<% } else { %>
-		<hr />
-		<div class="unavailability"><h3>Currently Unavailable.</h3></div>
-		<hr class="short"/>
-	<% } %>
-
-	<ul class="user-details">
-		<li>
-			<span class="title" id="email-title">CONTACT</span>
-			<br>
-			<%= user.escape('email') %>
-		</li>
-		<li>
-			<span class="title" id="about-me-title">ABOUT ME</span>
-			<br>
-			<% if (user.get('about_me')) { %>
-				<%= user.escape('about_me') %>
+			<% if (user.get('status') === "available") { %>
+				<hr />
+				<div class="availability"><h3>Currently Available!</h3></div>
+				<hr class='short'/>
 			<% } else { %>
-			--
+				<hr />
+				<div class="unavailability"><h3>Currently Unavailable.</h3></div>
+				<hr class="short"/>
 			<% } %>
-		</li>
-		<li>
-			<span class="title" id="location-title">LOCATION</span>
-			<br>
-			<% if (user.get('location')) { %>
-				<%= user.escape('location') %>
-			<% } else { %>
-			--
-			<% } %>
-		</li>
-	</ul>
 
-	<% if (user.get('sports')) { %>
-		<div class="sports-played">
-			<hr class='short'/>
-			<h3> SPORTS PLAYED </h3>
-			<hr />
-
-			<ul>
-				<% if (user.get('sports').length === 0) { %>
-					<li>
-						Nothing yet!
-					</li>
-				<% } else { %>
-					<% user.get('sports').forEach(function(sport) { %>
-						<li>
-							<div class="title" id="sport-name"><%= sport.name %></div>
-							<span id="skill-level-title">Skill Level: </span> 
-							<span id="skill-level"><%= sport.skill %></span>
-						</li>
-					<% }) %>
-				<% } %>
-
+			<ul class="user-details">
 				<li>
-					<span id="add-sport-link"><a href="#/user/addsport"> Add A Sport </a></span>
+					<span class="title" id="email-title">CONTACT</span>
+					<br>
+					<%= user.escape('email') %>
+				</li>
+				<li>
+					<span class="title" id="about-me-title">ABOUT ME</span>
+					<br>
+					<% if (user.get('about_me')) { %>
+						<%= user.escape('about_me') %>
+					<% } else { %>
+					--
+					<% } %>
+				</li>
+				<li>
+					<span class="title" id="location-title">LOCATION</span>
+					<br>
+					<% if (user.get('location')) { %>
+						<%= user.escape('location') %>
+					<% } else { %>
+					--
+					<% } %>
 				</li>
 			</ul>
-		</div>
-	<% } %>
 
-	<br>
+			<% if (user.get('sports')) { %>
+				<div class="sports-played">
+					<hr class='short'/>
+					<h3> SPORTS PLAYED </h3>
+					<hr />
 
-	<% if (user.get('id') === RingerPinger.currentUser.get('id')) { %>
-		<a href="#/user/edit">
-			<button type="button" id="edit-user-btn">Edit My Info</button>
-		</a>
-	<% } else if (user.get('status') === "available") { %>
-		<button type="button" id="recruit-user-btn">Recruit Me!</button>
-	<% } %>
-</div>
-
-<div class="user-events">
-	
-</div>
-
-<div class="addsport"></div>
-
-<div class="user-events">
-	<div id="captained-events">
-		<hr />
-		<h3>CAPTAINED GAMES</h3>
-		<hr class="short"/>
-		<% if (user.get('created_events')) { %>
-			<% if (user.get('created_events').length === 0) { %>
-				--
-			<% } else { %>
-				<ul>
-					<% user.get('created_events').forEach(function(created_event) { %>
-						<li>
-							<a href="#/events/<%=created_event.id %>"><%= created_event.title %></a>
-						</li>
-					<% }) %>
-				</ul>
+					<ul>
+						<% if (user.get('sports').length === 0) { %>
+							<li>
+								Nothing yet!
+							</li>
+						<% } else { %>
+							<% user.get('sports').forEach(function(sport) { %>
+								<li>
+									<div class="sport-listing">
+										<div class="title" id="sport-name">
+											<%= sport.name %>
+											<% if (user.get('id') === RingerPinger.currentUser.get('id')) { %>
+												<button type="button" id="delete_sport" class=<%=sport.id%>>x</button>
+											<% } %>
+										</div>
+										<span id="skill-level-title">Skill Level: </span> 
+										<span id="skill-level"><%= sport.skill %></span>
+									</div>
+								</li>
+							<% }) %>
+						<% } %>
+					</ul>
+				</div>
+				<% if (user.get('id') === RingerPinger.currentUser.get('id')) { %>
+					<span id="add-sport-link">
+						<a href="#/user/addsport"> 
+							Add A Sport 
+						</a>
+					</span>
+				<% } %>
 			<% } %>
-		<% } %>
+
+			<br>
+
+			<% if (user.get('id') === RingerPinger.currentUser.get('id')) { %>
+				<a href="#/user/edit">
+					<button type="button" id="edit-user-btn">Edit My Info</button>
+				</a>
+			<% } else if (user.get('status') === "available") { %>
+				<button type="button" id="recruit-user-btn">Recruit Me!</button>
+			<% } %>
+		</div>
 	</div>
 
-	<div id="attending-events">
-		<hr class="short"/>
-		<h3>ATTENDING GAMES</h3>
-		<hr />
-		<% if (user.get('events')) { %>
-			<% if (user.get('events').length === 0) { %>
-			 --
+
+	<div class="addsport"></div>
+
+	<div class= "user-show-right">
+		<div class="profile-pic">
+			<% if (user.get('profile_picture')) { %>
+				<img src="<%= user.escape('profile_picture') %>">
 			<% } else { %>
-				<ul>
-					<% user.get('events').forEach(function(game) { %>
-						<li>
-							<a href="#/events/<%= game.id %>"><%= game.title %></a>
-						</li>
-					<% }) %>
-				</ul>
+				<img src="http://proservepropertycare.com/Images/user.gif" %>
 			<% } %>
-		<% } %>
+		</div>
+		<div class="user-events">
+			<div id="captained-events">
+				<hr />
+				<h3>CAPTAINED GAMES</h3>
+				<hr class="short"/>
+				<% if (user.get('created_events')) { %>
+					<% if (user.get('created_events').length === 0) { %>
+						--
+					<% } else { %>
+						<ul>
+							<% user.get('created_events').forEach(function(created_event) { %>
+								<li>
+									<a href="#/events/<%=created_event.id %>"><%= created_event.title %></a>
+								</li>
+							<% }) %>
+						</ul>
+					<% } %>
+				<% } %>
+			</div>
+
+			<div id="attending-events">
+				<hr class="short"/>
+				<h3>ATTENDING GAMES</h3>
+				<hr />
+				<% if (user.get('events')) { %>
+					<% if (user.get('events').length === 0) { %>
+					 --
+					<% } else { %>
+						<ul>
+							<% user.get('events').forEach(function(game) { %>
+								<li>
+									<a href="#/events/<%= game.id %>"><%= game.title %></a>
+								</li>
+							<% }) %>
+						</ul>
+					<% } %>
+				<% } %>
+			</div>
+		</div>
 	</div>
 </div>
 

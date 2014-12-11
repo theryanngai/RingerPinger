@@ -58,7 +58,9 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 			RingerPinger.currentUser.fetch();
 			var editUserView = new RingerPinger.Views.EditUser({ model: RingerPinger.currentUser });
 			this._swapView(editUserView);
-			$('#user_location').geocomplete();
+			setTimeout(function() {
+				$('#user_location').geocomplete();
+			}, 100)
 		}
 	},
 

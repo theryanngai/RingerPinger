@@ -1,4 +1,4 @@
-RingerPinger.Views.LocalEvents = Backbone.CompositeView.extend({
+RingerPinger.Views.LocalEvents = Backbone.View.extend({
 	
 	template: JST["events/local_events"],
 
@@ -9,7 +9,6 @@ RingerPinger.Views.LocalEvents = Backbone.CompositeView.extend({
 	render: function() {
 		var content = this.template({ events: this.collection });
 		this.$el.html(content);   
-		this.attachSubviews();
 		return this;
 	},
 })

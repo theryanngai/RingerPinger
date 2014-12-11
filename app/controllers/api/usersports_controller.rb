@@ -13,6 +13,16 @@ class Api::UsersportsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@usersport = Usersport.find(params[:id])
+
+		if @usersport.destroy
+			render :index, status: 200
+		else
+			render json: @usersport.errors.full_messages, status: :unprocessable_entity
+		end
+	end
+
 	def show
 		@usersport = Usersport.find(params[:id])
 	end

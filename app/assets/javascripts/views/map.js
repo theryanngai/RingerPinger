@@ -20,8 +20,8 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 
 	initializeMap: function() {
     this.map = new google.maps.Map(this.$('#map-canvas')[0], this.mapOptions);
-    RingerPinger.map = this.map
     google.maps.event.addListener(this.map, 'idle', this.setSearch.bind(this));
+    RingerPinger.map = this.map
 	},
 
 	render: function() {

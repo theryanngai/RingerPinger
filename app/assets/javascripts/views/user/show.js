@@ -6,6 +6,7 @@ RingerPinger.Views.UserShow = Backbone.CompositeView.extend({
 
 	events: {
 		'click #add-sport-link':'showAddSport',
+		'click #delete_sport' : 'deleteSport'
 	},
 
 	initialize: function() {
@@ -46,5 +47,20 @@ RingerPinger.Views.UserShow = Backbone.CompositeView.extend({
 		event.preventDefault();
 		RingerPinger.usersports.fetch();
 		$('.addsport-modal').addClass('addsport-show');
+	},
+
+	deleteSport: function(event) {
+		var sport_id = parseInt(event.target.classList[0]);
+
+		RingerPinger.usersports.fetch({
+			success: function() {
+				var model = RingerPinger.usersports.where({ user_id: RingerPinger.currentUser.id, 
+																										sport_id: sport_id
+																									})[0]
+				model.destroy();
+				RingerPinger.currentUser.fetch();
+				Backbone.history.loadUrl(Backbone.history.fragment);
+			}
+		});
 	}
 })

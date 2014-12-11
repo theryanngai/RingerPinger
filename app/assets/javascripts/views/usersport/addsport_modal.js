@@ -45,7 +45,7 @@ RingerPinger.Views.AddSportModal = Backbone.CompositeView.extend({
 					that.createUserSport(newUserSport);
 					RingerPinger.usersports.fetch();
 					RingerPinger.sports.fetch();
-					Backbone.history.loadlUrl(Backbone.history.fragment);
+					Backbone.history.loadUrl(Backbone.history.fragment);
 				}
 			});
 		}

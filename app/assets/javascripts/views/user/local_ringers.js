@@ -1,4 +1,4 @@
-RingerPinger.Views.LocalRingers = Backbone.CompositeView.extend({
+RingerPinger.Views.LocalRingers = Backbone.View.extend({
 	
 	template: JST["user/local_ringers"],
 
@@ -9,8 +9,6 @@ RingerPinger.Views.LocalRingers = Backbone.CompositeView.extend({
 	render: function() {
 		var content = this.template({ users: this.collection });
 		this.$el.html(content);   
-		// this.attachSubviews();
-		
 		return this;
 	},
 })

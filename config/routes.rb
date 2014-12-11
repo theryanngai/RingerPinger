@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resource :session
     resources :events
     resources :sports
-    resources :usersports, only: [:index, :create]
+    resources :usersports, only: [:index, :create, :destroy]
     resources :eventusers
   end
 end
