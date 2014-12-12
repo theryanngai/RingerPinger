@@ -4,7 +4,8 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 
 	events: {
 		'click #map-find' : 'filterResults',
-		'submit' : 'butts'
+		'submit' : 'butts',
+		'click .noUiSlider' : 'updateCaption'
 	},
 
 	initialize: function(options) {
@@ -16,13 +17,26 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		this.listenTo(this.collection, "addMarkers", this.addMarkers);
 		this.listenTo(this.collection, "refreshEvents", this.render);
 
-
 		this.addMap();
 	},
 
 	butts: function() {
 		event.preventDefault();
 		debugger;
+	},
+
+	updateCaption: function(event) {
+		var value = parseInt($('#slider-value').val())
+
+		if (value === 1) {
+			$('#skill-level-marker').html('ROOKIE');
+		} else if (value === 2) {
+			$('#skill-level-marker').html('AMATEUR');
+		} else if (value === 3) {
+			$('#skill-level-marker').html('VETERAN');
+		} else {
+			$('#skill-level-marker').html('ALL-STAR');
+		}
 	},
 
 	filterResults: function(options) {
