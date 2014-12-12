@@ -76,7 +76,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 			this._swapView(editUserView);
 			setTimeout(function() {
 				$('#user_location').geocomplete();
-			}, 100);
+			}, 500);
 		}
 	},
 
