@@ -141,17 +141,19 @@
 }
 
 #date-label {
-	font-size: 16px;
-	font-weight: 100;
-	letter-spacing: 1px;
-	margin-right: 10%;
+	color: #333333;
+	font-size: 20px;
+	font-weight: 200;
+	letter-spacing: 2px;
+	margin: 20px;
 }
 
 #sport-label {
-	font-size: 16px;
-	font-weight: 100;
-	letter-spacing: 1px;
-	margin-right: 10%;
+	color: #333333;
+	font-size: 20px;
+	font-weight: 200;
+	letter-spacing: 2px;
+	margin: 20px;
 }
 
 .noUiSlider {
@@ -169,6 +171,10 @@
 	padding-bottom: 20px; 
 
 	#slider-label {
+		color: #333333;
+		font-size: 20px;
+		font-weight: 200;
+		letter-spacing: 2px;
 		margin: 20px;
 	}
 
@@ -176,4 +182,14 @@
 		margin: 20px;
 	}
 }
+
+hr#event-index-hr {
+		border: none;
+		height: 1px;
+		color: lightgray;
+		background: lightgray;
+		width: 100%;
+		margin-top: 5%;
+		margin-bottom: 5%;
+	}
 

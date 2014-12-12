@@ -10,6 +10,7 @@ json.(
 	:creator,
 	:users,
 	:event_date,
+	:skill_level,
 	:created_at, 
 	:updated_at,
 	:latitude,

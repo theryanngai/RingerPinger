@@ -8,55 +8,40 @@
 			RingerPinger allows athletes to find and join your 
 			events. You can also find and recruit others to your own events!
 		</div>
-	<div id="map-search">
-		<input id="map-input" name="map[input]" placeholder="Search Cities...">
-		<button type="button" id="map-find">Find It!</button>
 	</div>
 
-	<div class="form-inputs">
-		<div class="sport-choice">
-			<span id="sport-label">Select Sport</span>
-			<div class='btn-group'>
-				<input type="radio" id="basketball-btn" value="Basketball" name="event[sport]">
-					<img src="/assets/basketball.png">
-					<span>Basketball</span>
-				</input><input type="radio" value="Football" name="event[sport]">
-					<img src="/assets/football.png">
-					<span>Football</span>
-				</input><input type="radio" value="Baseball" name="event[sport]">
-					<img src="/assets/baseball.png">
-					<span>Baseball</span>
-				</input><input type="radio" value="Soccer" name="event[sport]">
-					<img src="/assets/soccer.png">
-					<span>Soccer</span>
-				</input><input type="radio" value="Tennis" name="event[sport]">
-					<img src="/assets/tennis.png">
-					<span>Tennis</span>
-				</input><button type="button" id="other-sport"><span>Other</span> <span id="down-caret">&#9660;</span></button>
-			</div>
-		</div>
-
-		<div class="text-inputs">
-			<input name="event[title]" id="event_title" placeholder="Title">
-				<br>
-			<input name="event[event_date]" id="event_event_date" class="datepicker"
-				placeholder="Event Date">
-				<br>
-			<textarea name="event[description]" id="event_description" 
-				placeholder="Tell us about your event." rows="4" cols="50" 
-				class="description-field"></textarea>
-				<br>
-			<select name="event[max_players]" id="event_max_players">
-				<option selected="true" style="display:none;">Max Players</option>
-				<% for (var i = 1; i < 41; i++) { %>
-					<option><%= i %></options>
-				<% } %>
-			</select>
-		</div>
-
-
-	<button id="create-btn">Create Event</button>
+	<div class="text-inputs">
+		<input name="event[sport]" id="event_sport" placeholder="Sport">
+			<br>
+		<select name="event[skill_level]" id="usersport_skill_level">
+			<option selected disabled hidden value=''>Event Skill Level</option>
+			<option value="Rookie">Rookie</option>
+			<option value="Amateur">Amateur</option>
+			<option value="Veteran">Veteran</option>
+			<option value="All-Star">All-Star</option>
+		</select>
+			<br>
+		<input name="event[title]" id="event_title" placeholder="Event Title">
+			<br>
+		<input name="event[event_date]" id="event_event_date" class="datepicker"
+			placeholder="Event Date">
+			<br>
+		<input id="map-input" name="map[input]" placeholder="Location">
+			<br>
+		<textarea name="event[description]" id="event_description" 
+			placeholder="Tell us about your event." rows="4" cols="50" 
+			class="description-field"></textarea>
+			<br>
+		<select name="event[max_players]" id="event_max_players">
+			<option selected="true" style="display:none;">Max Players</option>
+			<% for (var i = 1; i < 41; i++) { %>
+				<option><%= i %></options>
+			<% } %>
+		</select>
+		<br>
+		<button id="create-btn">Create Event</button>
 	</div>
+</div>
 
 </form>
 <div class="main-footer"></div>

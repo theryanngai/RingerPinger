@@ -44,24 +44,19 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	},
 
 	createEvent: function(event) {
-		event.preventDefault();
-		if (!RingerPinger.currentUser) {
-			
-			this.navBar.showLogin(event);
-		} else {
-			var newAttrs = $('#event-form').serializeJSON();
-			var newEvent = new RingerPinger.Models.Event({ 
-																				user_id: RingerPinger.currentUser.id,
-																				location: newAttrs.map.input
-																			});
-			newAttrs.event.max_players = parseInt(newAttrs.event.max_players);
-			newEvent.set(newAttrs.event);
-			newEvent.save({}, {
-				success: function(model) {
-					RingerPinger.events.fetch();
-					Backbone.history.navigate('#/events/' + model.id, { trigger: true });
-				}
-			});
-		}
+		var newAttrs = $('#event-form').serializeJSON();
+		var newEvent = new RingerPinger.Models.Event({ 
+																			user_id: RingerPinger.currentUser.id,
+																			location: newAttrs.map.input
+																		});
+		newAttrs.event.max_players = parseInt(newAttrs.event.max_players);
+		newEvent.set(newAttrs.event);
+		debugger;
+		newEvent.save({}, {
+			success: function(model) {
+				RingerPinger.events.fetch();
+				Backbone.history.navigate('#/events/' + model.id, { trigger: true });
+			}
+		});
 	}
 })

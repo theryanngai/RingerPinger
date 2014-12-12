@@ -42,6 +42,7 @@ RingerPinger.Views.EditUser = Backbone.CompositeView.extend({
 		editedUser.save({}, {
 			success: function(model) {
 				RingerPinger.currentUser.fetch();
+				RingerPinger.users.fetch();
 				Backbone.history.navigate('#/user/' + model.id, { trigger: true });
 			}
 		});

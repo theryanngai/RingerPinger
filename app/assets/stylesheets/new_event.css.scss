@@ -1,15 +1,21 @@
 #event-form {
+	text-align: center;
 	background: #E0E2E8;
 	color: #585858;
 	font-size: 18px;
 	font-weight: 300;
 	letter-spacing: 1px;
-	height: 900px;
+	height: 850px;
+	overflow-y: scroll;
 
 	.form-inputs {
 		position: relative;
 		width: 50%;
 		left: 40%
+	}
+
+	#event_sport {
+		margin-top: 30px;
 	}
 }
 

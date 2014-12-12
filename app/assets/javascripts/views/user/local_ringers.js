@@ -3,7 +3,7 @@ RingerPinger.Views.LocalRingers = Backbone.View.extend({
 	template: JST["user/local_ringers"],
 
 	initialize: function(options) {
-		this.listenTo(this.collection, "sync", this.render);
+		// this.listenTo(this.collection, "sync", this.render);
 	},
 
 	render: function() {
