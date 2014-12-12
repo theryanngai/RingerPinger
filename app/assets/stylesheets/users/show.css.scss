@@ -420,12 +420,12 @@
 }
 
 .ui-autocomplete {
+	position: absolute;
 	z-index: 1;
 	list-style: none;
 	background: white;
 	color: gray;
 	width: 100px;
-	height: 10%;
 	padding: 0px;
 
 	li {
