@@ -10,6 +10,7 @@ RingerPinger.Views.AddSportModal = Backbone.CompositeView.extend({
 	initialize: function(options) {
 		RingerPinger.sports.fetch();
 		this.listenTo(RingerPinger.currentUser, "sync", this.render);
+		this.listenTo(RingerPinger.sports, "sync", this.render);
 	},
 
 	render: function() {

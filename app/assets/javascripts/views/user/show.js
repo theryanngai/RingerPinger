@@ -25,7 +25,18 @@ RingerPinger.Views.UserShow = Backbone.CompositeView.extend({
 		var content = this.template({ user: this.model });
 		this.$el.html(content);
 		this.attachSubviews();
+		this.addAutocomplete();
 		return this;
+	},
+
+	addAutocomplete: function() {
+		var availableSports = RingerPinger.sports.pluck('name');
+
+		this.$("#usersport_sport_name").autocomplete({
+   		source: availableSports
+		});
+
+		this.$('#usersport_sport_name').attr('autocomplete', 'on');
 	},
 
 	addNavbar: function() {

@@ -322,7 +322,7 @@
 		select {
 			margin-top: 10px;
 			margin-bottom: 10px;
-			width: 120px;
+			width: 150px;
 			font-size: 20px;
 			text-align: center;
 			font-color: gray;
@@ -417,4 +417,35 @@
 		width: 100%;
 		margin: 0px;
 	}
+}
+
+.ui-autocomplete {
+	z-index: 1;
+	list-style: none;
+	background: white;
+	color: gray;
+	width: 100px;
+	height: 10%;
+	padding: 0px;
+
+	li {
+		text-align: center;
+		transition-property: background, color;
+		transition-duration: 0.1s;
+		font-weight: 100;
+		letter-spacing: 1px;
+		padding: 0px;
+		margin: 0px;
+	}
+
+	li:hover {
+		transition-property: background, color;
+		transition-duration: 0.1s;
+		background: tomato;
+		color: white;
+	}
+}
+
+.ui-helper-hidden-accessible {
+	display: none;
 }

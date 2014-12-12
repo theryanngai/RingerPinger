@@ -101,8 +101,17 @@
 	padding: 30px;
 
 	#date-range-select {
+		position: relative;
+		display: block;
+		text-align: left;
 		margin-bottom: 30px;
-		text-align: center;
+	}
+
+	#index-sport-select {
+		position: relative;
+		display: block;
+		text-align: left;
+		margin-bottom: 30px;
 	}
 }
 
@@ -138,6 +147,13 @@
 	margin-right: 10%;
 }
 
+#sport-label {
+	font-size: 16px;
+	font-weight: 100;
+	letter-spacing: 1px;
+	margin-right: 10%;
+}
+
 .noUiSlider {
 	display: block;
 	width: 70%;
@@ -153,6 +169,10 @@
 	padding-bottom: 20px; 
 
 	#slider-label {
+		margin: 20px;
+	}
+
+	#skill-level-marker {
 		margin: 20px;
 	}
 }
