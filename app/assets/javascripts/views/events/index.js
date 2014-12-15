@@ -147,8 +147,8 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 			this.processSearch();
 		} else {
 			this.addLocalEvents(RingerPinger.events);
+			this.addMap(RingerPinger.events);
 		}
-		this.addMap();
 		this.attachSubviews();
 		this.addDatepicker();
 		return this;
@@ -175,6 +175,7 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		} else {
 			this.addLocalEvents(dateAndSportFiltered);
 		}
+		this.addMap(dateAndSportFiltered);
 	},
 
 	addLocalEvents: function(collection, alert) {
@@ -215,8 +216,8 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		this.addSubview('.main-footer', footerView);
 	},
 
-	addMap: function() {
-		this.mapView = new RingerPinger.Views.Map( { collection: this.collection });
+	addMap: function(collection) {
+		this.mapView = new RingerPinger.Views.Map( { collection: collection });
 		this.addSubview('#map-container', this.mapView);
 	},
 
