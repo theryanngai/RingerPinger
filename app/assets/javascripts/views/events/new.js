@@ -44,6 +44,7 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 	},
 
 	createEvent: function(event) {
+		event.preventDefault();
 		var newAttrs = $('#event-form').serializeJSON();
 		var newEvent = new RingerPinger.Models.Event({ 
 																			user_id: RingerPinger.currentUser.id,
