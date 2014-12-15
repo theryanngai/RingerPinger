@@ -5,7 +5,10 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	events: {
 		'click #map-find' : 'filterResults',
 		'click #submit-event-filter' : 'filterResults',
-		'click .noUiSlider' : 'updateCaption'
+		'click .noUiSlider' : 'updateCaption',
+		'keypress #event-sport-filter' : 'filterSport',
+		'change #event-start-filter' : 'filterDate',
+		'change #event-end-filter' : 'filterDate'
 	},
 
 	initialize: function(options) {
@@ -23,26 +26,24 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		// this.addMap();
 	},
 
-	filter: function(event) {
-		event.preventDefault();
-		var params = $(event.target).serializeJSON().event;
-		
-		if (params.sport != "") {
-			this.filterSport(this.collection);
+	filterSport: function(event) {
+		if (event.which === 13) {
+			alert("butts");
 		}
 	},
 
 	filterDate: function(startDate, endDate) {
-		if (startDate && endDate) {
-			return new RingerPinger.Collections.Events(
-				this.collection.filter(function(sportsEvent) {
-					return (new Date(sportsEvent.get('event_date')) > new Date(startDate) &&
-								new Date(sportsEvent.get('event_date')) < new Date(endDate));
-				})
-			)
-		} else {
-			return this.collection;
-		}
+		// if (startDate && endDate) {
+		// 	return new RingerPinger.Collections.Events(
+		// 		this.collection.filter(function(sportsEvent) {
+		// 			return (new Date(sportsEvent.get('event_date')) > new Date(startDate) &&
+		// 						new Date(sportsEvent.get('event_date')) < new Date(endDate));
+		// 		})
+		// 	)
+		// } else {
+		// 	return this.collection;
+		// }
+		alert('butts');
 	},
 
 	filterSkill: function(collection, skillLevel) {
