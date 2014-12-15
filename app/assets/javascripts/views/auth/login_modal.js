@@ -8,7 +8,6 @@ RingerPinger.Views.LoginModal = Backbone.CompositeView.extend({
 	},
 
 	initialize: function(options) {
-	
 	},
 
 	render: function() {
@@ -35,6 +34,7 @@ RingerPinger.Views.LoginModal = Backbone.CompositeView.extend({
         that.$('.login-modal').removeClass('login-show');
         RingerPinger.currentUser = new RingerPinger.Models.User(model);
         Backbone.history.loadUrl(Backbone.history.fragment);
+        RingerPinger.users.trigger("refresh");
       },
       error: function (model) { 
       	alert('Bad Username/Password Combo');

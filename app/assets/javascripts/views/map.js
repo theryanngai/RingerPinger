@@ -12,10 +12,10 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 		  this.location = 'San Francisco, CA';
 		}
 
-		this.setDates();
 		this.parseLocation();
 
 		this.listenTo(this.collection, 'newLocation', this.changeLocation);
+    this.listenTo(this.collection, 'addMarkers', this.addMarkers);
 	},
 
 	initializeMap: function() {
@@ -44,16 +44,6 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
       }
     }
     console.log('Query variable %s not found', variable);
-  },
-
-  setDates: function() {
-  	if (!this.start_date || !this.end_date) {
-  		this.start_date = new Date();
-  		this.end_date = new Date(new Date().getTime() + (24*60*60*1000)*30);
-  	} else {
-  		this.start_date = new Date(this.start_date);
-  		this.end_date = new Date(this.end_date);
-  	}
   },
 
   parseLocation: function() {
@@ -102,5 +92,17 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
   		sport: this.sport
   	};
   	this.collection.trigger("newSearch", options);
+  },
+
+  addMarkers: function(options) {
+    this.collection.forEach(function(sportsEvent) {
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(sportsEvent.get('latitude'), 
+                                         sportsEvent.get('longitude')),
+        map: RingerPinger.map,
+        title: sportsEvent.get('title'),
+        animation: google.maps.Animation.DROP
+      });
+    });
   },
 })

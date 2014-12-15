@@ -9,6 +9,8 @@ RingerPinger.Views.HomeNavBar = Backbone.CompositeView.extend({
 			this.addSignupBox();
 			this.addLoginBox();
 		}
+
+		this.listenTo(RingerPinger.users, "refresh", this.render);
 	},
 
 	events: {

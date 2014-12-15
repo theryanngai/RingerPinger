@@ -20,6 +20,25 @@ RingerPinger.Collections.Events = Backbone.Collection.extend({
 		}
 
 		return sportsEvent;
+	},
+
+	filterDate: function(startDate, endDate) {
+		if (startDate && endDate) {
+			var realStart = new Date(startDate);
+			var realEnd = new Date(endDate);
+			return this.filter(function(event) {
+				return new Date(event.get('event_date')) > realStart &&
+				new Date(event.get('event_date')) < realEnd;
+			});
+		}
+	},
+
+	filterSport: function(collection, sport) {
+		if (collection && sport) {
+			return collection.filter(function(event) {
+				return event.get('sport') === sport;
+			});
+		}
 	}
 })
 

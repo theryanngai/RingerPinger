@@ -3,6 +3,7 @@ RingerPinger.Views.LocalEvents = Backbone.View.extend({
 	template: JST["events/local_events"],
 
 	initialize: function(options) {
+		this.alert = options.alert;
 		this.listenTo(this.collection, "sync", this.render);
 	},
 

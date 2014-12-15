@@ -4,26 +4,80 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 
 	events: {
 		'click #map-find' : 'filterResults',
-		'submit' : 'butts',
+		'click #submit-event-filter' : 'filterResults',
 		'click .noUiSlider' : 'updateCaption'
 	},
 
 	initialize: function(options) {
+		this.startDate = null;
+		this.endDate = null;
+		this.sport = null;
+
 		this.addNavbar();
 		this.addFooter();
 
 		this.listenTo(this.collection, "newSearch", this.filterResults);
 		this.listenTo(this.collection, "addGeocode", this.addGeocode);
-		this.listenTo(this.collection, "addMarkers", this.addMarkers);
 		this.listenTo(this.collection, "refreshEvents", this.render);
 
-		this.addMap();
+		// this.addMap();
 	},
 
-	butts: function() {
+	filter: function(event) {
 		event.preventDefault();
-		debugger;
+		var params = $(event.target).serializeJSON().event;
+		
+		if (params.sport != "") {
+			this.filterSport(this.collection);
+		}
 	},
+
+	filterDate: function(startDate, endDate) {
+		if (startDate && endDate) {
+			return new RingerPinger.Collections.Events(
+				this.collection.filter(function(sportsEvent) {
+					return (new Date(sportsEvent.get('event_date')) > new Date(startDate) &&
+								new Date(sportsEvent.get('event_date')) < new Date(endDate));
+				})
+			)
+		} else {
+			return this.collection;
+		}
+	},
+
+	filterSkill: function(collection, skillLevel) {
+		if (skillLevel) {
+			debugger;
+			return new RingerPinger.Collections.Events(
+				collection.where({ skill_level: skillLevel })
+			)
+		} else {
+			return collection;
+		}
+	},
+
+	parseURI: function(variable) {
+		var query = Backbone.history.fragment.split('?').pop(0);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split('=');
+      if (decodeURIComponent(pair[0]) == variable) {
+      	if (/\S/.test(decodeURIComponent(pair[1]))) {
+          return decodeURIComponent(pair[1]);
+      	} else {
+      		return undefined;
+      	}
+      }
+    }
+    console.log('Query variable %s not found', variable);
+  },
+
+  parseAll: function() {
+  	this.location = this.parseURI("location");
+  	this.startDate = this.parseURI("start_date");
+  	this.endDate = this.parseURI("end_date");
+  	this.sport = this.parseURI("sport");
+  },
 
 	updateCaption: function(event) {
 		var value = parseInt($('#slider-value').val())
@@ -40,18 +94,37 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	},
 
 	filterResults: function(options) {
+		if ($(options.target).serializeJSON().event) {
+			options = $(options.target).serializeJSON().event;
+		}
+
 		if (options.boundaries) {
 			this.boundaries = options.boundaries;
 		} 
 		if (options.start_date) {
-			this.start_date = options.start_date;
+			this.startDate = options.start_date;
 		}
 		if (options.end_date) {
-			this.end_date = options.end_date;
+			this.endDate = options.end_date;
 		}
 		if (options.sport) {
 			this.sport = options.sport;
 		}
+		if (options.skill_level) {
+			if (options.skill_level === "1.00") {
+				this.skillLevel = "Rookie";
+			} else if (options.skill_level === "2.00") {
+				this.skillLevel = "Amateur";
+			}	else if (options.skill_level === "3.00") {
+				this.skillLevel = "Veteran";
+			} else if (options.skill_level === "4.00") {
+				this.skillLevel = "All-Star";
+			}
+		}
+
+
+		var dateFiltered = this.filterDate(this.startDate, this.endDate);
+		var skillFiltered = this.filterSkill(dateFiltered, this.skillLevel);
 
 		var that = this;
 
@@ -60,40 +133,53 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 							sportsEvent.get('latitude') > that.boundaries.south &&
 							sportsEvent.get('longitude') < that.boundaries.east &&
 							sportsEvent.get('longitude') > that.boundaries.west &&
-							new Date(sportsEvent.get('event_date')) > that.start_date &&
-							new Date(sportsEvent.get('event_date')) < that.end_date);
+							new Date(sportsEvent.get('event_date')) > that.startDate &&
+							new Date(sportsEvent.get('event_date')) < that.endDate);
 		})
 		RingerPinger.filteredEvents = new RingerPinger.Collections.Events(filteredEvents);
 		this.collection.trigger("refreshEvents", RingerPinger.filteredEvents);
 	},
 
-	addMarkers: function(options) {
-		this.collection.forEach(function(sportsEvent) {
-			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(sportsEvent.get('latitude'), 
-																				 sportsEvent.get('longitude')),
-				map: RingerPinger.map,
-				title: sportsEvent.get('title'),
-				animation: google.maps.Animation.DROP
-			});
-		});
-	},
-
 	render: function(collection) {
 		var content = this.template({ events: RingerPinger.events });
 		this.$el.html(content);
-		if (collection) {
-			this.addLocalEvents(collection);
+		if (this.isSearched()) {
+			this.processSearch();
 		} else {
 			this.addLocalEvents(RingerPinger.events);
 		}
+		this.addMap();
 		this.attachSubviews();
 		this.addDatepicker();
 		return this;
 	},
 
-	addLocalEvents: function(collection) {
-		var localEventView = new RingerPinger.Views.LocalEvents({ collection: collection });
+	isSearched: function() {
+		if (window.location.hash.substring(8)[0] === '?') {
+			return true;
+		} 
+		return false;
+	},
+
+	processSearch: function() {
+		this.parseAll();
+		var dateFiltered = this.collection.filterDate(this.startDate, this.endDate);
+		dateFiltered = new RingerPinger.Collections.Events(dateFiltered);
+		var dateAndSportFiltered = this.collection.filterSport(dateFiltered, this.sport);
+		dateAndSportFiltered = new RingerPinger.Collections.Events(dateAndSportFiltered);
+		var content = this.template({ events: RingerPinger.events });
+		this.$el.html(content);
+		if (dateAndSportFiltered.models.length === 0) {
+			var alert = "Your search returned no results. Here's everything nearby!";
+			this.addLocalEvents(RingerPinger.events, alert);
+		} else {
+			this.addLocalEvents(dateAndSportFiltered);
+		}
+	},
+
+	addLocalEvents: function(collection, alert) {
+		var localEventView = new RingerPinger.Views.LocalEvents({ collection: collection, 
+																															alert: alert});
 		this.$('.local-events').html(localEventView.render().$el);
 	},
 
