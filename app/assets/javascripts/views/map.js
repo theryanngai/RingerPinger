@@ -84,12 +84,8 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
   		north: northEast.lat(),
   		east: northEast.lng()
   	};
-  	this.setDates();
   	var options = {
   		boundaries: boundaries,
-  		start_date: this.start_date,
-  		end_date: this.end_date,
-  		sport: this.sport
   	};
   	this.collection.trigger("newSearch", options);
   },
