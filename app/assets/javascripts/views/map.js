@@ -87,7 +87,8 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
   	var options = {
   		boundaries: boundaries,
   	};
-  	this.collection.trigger("newSearch", options);
+  	
+    RingerPinger.events.trigger("newSearch", options);
   },
 
   addMarkers: function(options) {

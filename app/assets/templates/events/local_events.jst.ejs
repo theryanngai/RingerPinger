@@ -1,5 +1,8 @@
 <h1> Local Events </h1>
 
+<% if (alert) { %>
+	<h4><%= alert %></h4>
+<% } %>
 <% if (events) { %>
 	<% if (events.length === 0) { %>
 		<h3> No Events Found! </h3>
