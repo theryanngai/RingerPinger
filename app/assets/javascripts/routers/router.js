@@ -18,7 +18,8 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		var homeView = new RingerPinger.Views.Home();
 		this._swapView(homeView);
 		$('.datepicker').datepicker({
-			dateFormat: 'yy/mm/dd'
+			dateFormat: 'yy/mm/dd',
+			minDate: 0
 		});
 		$('.search-location').geocomplete();
 	},
@@ -29,8 +30,13 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		} else {
 			var newEventView = new RingerPinger.Views.NewEvent();
 			this._swapView(newEventView);
+
+			var date = new Date();
+			date.setDate(date.getDate()-1);
+
 			$('.datepicker').datepicker({
-				dateFormat: 'yy/mm/dd'
+				dateFormat: 'yy/mm/dd',
+				minDate: 0
 			});
 			$('#map-input').geocomplete();
 			$('#map-canvas').addClass('new-event-map');	

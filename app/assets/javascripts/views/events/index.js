@@ -6,7 +6,7 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		'click #map-find' : 'filterResults',
 		'click #submit-event-filter' : 'filterResults',
 		'click .noUiSlider' : 'updateCaption',
-		'keypress #event-sport-filter' : 'filterSport',
+		'keypress #event-sport-filter' : 'onPageFilterSport',
 		'change #event-start-filter' : 'onPageFilterDate',
 		'change #event-end-filter' : 'onPageFilterDate'
 	},
@@ -23,14 +23,21 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		this.listenTo(this.collection, "addGeocode", this.addGeocode);
 	},
 
-	filterSport: function(event) {
+	onPageFilterSport: function(event) {
 		if (event.which === 13) {
-			alert("butts");
+			var sportFiltered = this.instanceCollection.where({ sport: $(event.target).val() });
+			RingerPinger.events.trigger('refreshEvents', sportFiltered);
+			RingerPinger.events.trigger('refreshMarkers', sportFiltered);
+			event.preventDefault();
 		}
 	},
 
-	onPageFilterDate: function(event) {
-		debugger;
+	onPageFilterDate: function(event) { 
+		event.preventDefault();
+		if (($('#event-end-filter').data().datepicker.selectedYear != 0) && 
+				($('#event-start-filter').data().datepicker.currentYear != 0)) {
+			debugger;
+		}
 	},
 
 	filterDate: function(startDate, endDate) {
@@ -44,7 +51,6 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		} else {
 			return this.collection;
 		}
-		alert('butts');
 	},
 
 	filterSkill: function(collection, skillLevel) {
@@ -95,7 +101,6 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	},
 
 	filterResults: function(options) {
-		debugger;
 		if ($(options.target).serializeJSON().event) {
 			options = $(options.target).serializeJSON().event;
 		}
@@ -106,8 +111,8 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 
 		var that = this;
 
-		if (this.collection2) {
-			var searchCollection = this.collection2;
+		if (this.filtered) {
+			var searchCollection = this.filtered;
 		} else {
 			var searchCollection = RingerPinger.events;
 		}
@@ -126,12 +131,13 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		var content = this.template();
 		this.$el.html(content);
 		if (this.isSearched()) {
-			this.collection2 = this.processSearch();
-			this.addLocalEvents(this.collection2);
-			this.addMap(this.collection2);
+			this.filtered = this.processSearch();
+			this.addMap(this.filtered);
+			this.instanceCollection = this.filtered;
 		} else {
 			this.addLocalEvents(RingerPinger.events);
 			this.addMap(RingerPinger.events);
+			this.instanceCollection = RingerPinger.events;
 		}
 		this.attachSubviews();
 		this.addDatepicker();
@@ -152,15 +158,13 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		var dateAndSportFiltered = this.collection.filterSport(dateFiltered, this.sport);
 		dateAndSportFiltered = new RingerPinger.Collections.Events(dateAndSportFiltered);
 		if (dateAndSportFiltered.models.length === 0) {
-			// var alert = "Your search returned no results. Here's everything!";
-			// this.addLocalEvents(RingerPinger.events, alert);
+			var alert = "Your search returned no results. Here's everything!";
+			this.addLocalEvents(RingerPinger.events, alert);
 			return RingerPinger.events;
 		} else {
-			// this.addLocalEvents(dateAndSportFiltered);
-			return dateAndSportFiltered;
+			this.addLocalEvents(dateAndSportFiltered);
 		}
-		// this.addMap(dateAndSportFiltered);
-		// return dateAndSportFiltered;
+		return dateAndSportFiltered;
 	},
 
 	addLocalEvents: function(collection, alert) {

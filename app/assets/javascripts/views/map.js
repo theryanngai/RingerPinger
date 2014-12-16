@@ -5,6 +5,7 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 	className: 'map-box',
 
 	initialize: function() {
+    this.allMarkers = [];
 		this.geocoder = new google.maps.Geocoder();
     this.location = this.parseURI("location");
 
@@ -16,6 +17,7 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
 
 		this.listenTo(this.collection, 'newLocation', this.changeLocation);
     this.listenTo(this.collection, 'addMarkers', this.addMarkers);
+    this.listenTo(RingerPinger.events, 'refreshMarkers', this.refreshMarkers);
 	},
 
 	initializeMap: function() {
@@ -92,6 +94,7 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
   },
 
   addMarkers: function(options) {
+    var that = this;
     this.collection.forEach(function(sportsEvent) {
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(sportsEvent.get('latitude'), 
@@ -100,6 +103,26 @@ RingerPinger.Views.Map = Backbone.CompositeView.extend({
         title: sportsEvent.get('title'),
         animation: google.maps.Animation.DROP
       });
+      that.allMarkers.push(marker);
     });
   },
+
+  refreshMarkers: function(collection) {
+    this.allMarkers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    
+    this.allMarkers = [];    
+    collection.forEach(function(event) {
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(event.get('latitude'),
+                                         event.get('longitude')),
+        map: RingerPinger.map,
+        title: event.get('title'),
+        animation: google.maps.Animation.DROP
+      });
+
+      this.allMarkers.push(marker);
+    }.bind(this));
+  }
 })
