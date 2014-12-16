@@ -29,19 +29,16 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 
 		if (searchVal === "") {
 			var sportFiltered = collection;
+			return collection;
 		} else {
 			var sportFiltered = collection.where({ sport: searchVal });
 		}
 
-		return sportFiltered;
-		// RingerPinger.events.trigger('refreshEvents', sportFiltered);
-		// RingerPinger.events.trigger('refreshMarkers', sportFiltered);
-		// this.instanceCollection =  new RingerPinger.Collections.Events(sportFiltered);
-		// event.preventDefault();
+		return new RingerPinger.Collections.Events(sportFiltered);
 	},
 
 	handleSportFilter: function(event) {
-		if (event.which === 13 & $(event.target).val() != "") {
+		if (event.which === 13) {
 			this.onPageFilter();
 		} 
 	},
@@ -56,7 +53,6 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 
 	onPageFilterSkill: function(collection) {
 		var value = parseInt($('.noUiSlider').val());
-		collection = new RingerPinger.Collections.Events(collection);
 
 		if (value === 0) {
 			var skillFiltered = collection;
@@ -85,7 +81,7 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 			})
 			return new RingerPinger.Collections.Events(dateFiltered);
 		} else {
-			return this.instanceCollection;
+			return RingerPinger.events;
 		} 
 	},
 
@@ -233,7 +229,8 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	addDatepicker: function() {
 		this.$('.datepicker').each(function() {
 			$(this).datepicker({
-				dateFormat: 'yy/mm/dd'
+				dateFormat: 'yy/mm/dd',
+				minDate: 0
 			});
 		});
 
