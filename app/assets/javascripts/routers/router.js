@@ -30,10 +30,6 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		} else {
 			var newEventView = new RingerPinger.Views.NewEvent();
 			this._swapView(newEventView);
-
-			var date = new Date();
-			date.setDate(date.getDate()-1);
-
 			$('.datepicker').datepicker({
 				dateFormat: 'yy/mm/dd',
 				minDate: 0
