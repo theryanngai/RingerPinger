@@ -24,7 +24,23 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
     });
 
 		this.attachSubviews();
+		this.addAutocomplete();
 		return this;
+	},
+
+	addAutocomplete: function() {
+		RingerPinger.sports.fetch({
+			success: function() {
+				var availableSports = RingerPinger.sports.pluck('name');
+
+				debugger;
+				this.$("#event_sport").autocomplete({
+	 				source: availableSports
+	 			});
+
+				this.$('#event_sport').attr('autocomplete', 'on');
+			}.bind(this)
+		});
 	},
 
 	addNavBar: function() {

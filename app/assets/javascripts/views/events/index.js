@@ -196,7 +196,6 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		RingerPinger.sports.fetch({
 			success: function() {
 				var availableSports = RingerPinger.sports.pluck('name');
-				debugger;
 
 				this.$("#event-sport-filter").autocomplete({
    				source: availableSports

@@ -24,7 +24,21 @@ RingerPinger.Views.HomeSearchBar = Backbone.CompositeView.extend({
 	render: function() {
 		var content = this.template();
 		this.$el.html(content);
-
+		this.addAutocomplete();
 		return this;
-	}
+	},
+
+	addAutocomplete: function() {
+		RingerPinger.sports.fetch({
+			success: function() {
+				var availableSports = RingerPinger.sports.pluck('name');
+
+				this.$("#event_sport").autocomplete({
+   				source: availableSports
+   			});
+
+  			this.$('#event_sport').attr('autocomplete', 'on');
+  		}.bind(this)
+		});
+	},
 })
