@@ -12,7 +12,8 @@
 }
 
 .panel-images {
-	
+	overflow-x: scroll;
+	overflow-y: scroll;
 	img {
 		transition-property: opacity;
 		transition-duration: 0.5s;
@@ -27,8 +28,13 @@
 	}
 
 	.top-row {
-		margin-left: 18%;
+		width: 940px;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
 		img {
+			position: relative;
+			float: left;
 			margin: 20px;
 			margin-top: 0px;
 			border: solid gray 2px;
@@ -36,9 +42,12 @@
 	}
 
 	.bottom-row {
-		margin-left: 5%;
-		
+		width: 1360px;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
 		img {
+			float: left;
 			margin: 10px;
 			border: solid gray 2px;
 			margin-bottom: 50px;
