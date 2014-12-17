@@ -34,10 +34,13 @@ RingerPinger.Collections.Events = Backbone.Collection.extend({
 	},
 
 	filterSport: function(collection, sport) {
+		debugger;
 		if (collection && sport) {
 			return collection.filter(function(event) {
 				return event.get('sport') === sport;
 			});
+		} else {
+			return collection;
 		}
 	}
 })

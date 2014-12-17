@@ -14,5 +14,6 @@ json.(
 	:created_at, 
 	:updated_at,
 	:latitude,
-	:longitude
+	:longitude,
+	:users
 	)

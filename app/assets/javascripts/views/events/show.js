@@ -35,14 +35,18 @@ RingerPinger.Views.EventShow = Backbone.CompositeView.extend({
 
 	createEventUser: function(event) {
 		event.preventDefault();
-		var newEventUser = new RingerPinger.Models.Eventuser({ user_id: RingerPinger.currentUser.id,
-																													 event_id: this.model.get('id')
-																												});
-		var that = this;
-		newEventUser.save({}, {
-			success: function(model) {
-				that.model.fetch();
-			}
-		});
+		if (this.model.get('users').length < this.model.get('max_players')) {
+			var newEventUser = new RingerPinger.Models.Eventuser({ user_id: RingerPinger.currentUser.id,
+																														 event_id: this.model.get('id')
+																													});
+			var that = this;
+			newEventUser.save({}, {
+				success: function(model) {
+					that.model.fetch();
+				}
+			});
+		} else {
+			alert("This event is already full. Sorry!");
+		}
 	}
 })

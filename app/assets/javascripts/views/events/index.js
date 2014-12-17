@@ -6,6 +6,7 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		'click #map-find' : 'filterResults',
 		'click #submit-event-filter' : 'filterResults',
 		'click .noUiSlider' : 'updateCaption',
+		// 'blur #event-sport-filter' : 'onPageFilter',
 		'keypress #event-sport-filter' : 'handleSportFilter',
 		'change #event-start-filter' : 'handleDateFilter',
 		'change #event-end-filter' : 'handleDateFilter',
@@ -70,13 +71,13 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		return new RingerPinger.Collections.Events(skillFiltered);
 	},
 
-	onPageFilterDate: function(dateFilled) { 
-		if (dateFilled) {
+	onPageFilterDate: function() { 
+		if (this.dateFilled()) {
 			var startDate = new Date($('#event-start-filter').val());
 			var endDate = new Date($('#event-end-filter').val());
 			var dateFiltered = RingerPinger.events.filter(function(event) {
-				return (new Date(event.get('event_date')) > startDate &&
-							 new Date(event.get('event_date')) < endDate
+				return (new Date(event.get('event_date')) >= startDate &&
+							 new Date(event.get('event_date')) <= endDate
 							);
 			})
 			return new RingerPinger.Collections.Events(dateFiltered);
@@ -85,15 +86,23 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		} 
 	},
 
+	dateFilled: function() {
+		if ($('#event-start-filter').val() === "" ||
+				$('#event-end-filter').val() === "") {
+			return false;
+		} else {
+			return true;
+		}
+	},
+
 
 	onPageFilter: function(event) {
-		var resultCollection = this.onPageFilterDate(event);
+		var resultCollection = this.onPageFilterDate();
 		resultCollection = this.onPageFilterSport(resultCollection);
 		resultCollection = this.onPageFilterSkill(resultCollection);
 		RingerPinger.events.trigger('refreshEvents', resultCollection);
 		RingerPinger.events.trigger('refreshMarkers', resultCollection);
-		this.instanceCollection =  new RingerPinger.Collections.Events(resultCollection);
-		// event.preventDefault();
+		this.instanceCollection =  resultCollection;
 	},
 
 	filterDate: function(startDate, endDate) {
@@ -158,18 +167,22 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 
 		var that = this;
 
-		if (this.filtered) {
-			var searchCollection = this.filtered;
+		if (this.instanceCollection) {
+			var coll = this.instanceCollection;
 		} else {
-			var searchCollection = RingerPinger.events;
+			var coll = RingerPinger.events;
 		}
 
-		var filteredEvents = searchCollection.filter(function(sportsEvent) {
+		// debugger;
+		// // this.instanceCollection;
+
+		var filteredEvents = coll.filter(function(sportsEvent) {
 			return (sportsEvent.get('latitude') < that.boundaries.north &&
 							sportsEvent.get('latitude') > that.boundaries.south &&
 							sportsEvent.get('longitude') < that.boundaries.east &&
 							sportsEvent.get('longitude') > that.boundaries.west)
 						})
+
 		filteredEvents = new RingerPinger.Collections.Events(filteredEvents);
 		RingerPinger.events.trigger("refreshEvents", filteredEvents);
 	},
