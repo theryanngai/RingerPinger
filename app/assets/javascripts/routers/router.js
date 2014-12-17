@@ -17,11 +17,13 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	home: function() {
 		var homeView = new RingerPinger.Views.Home();
 		this._swapView(homeView);
+		homeView.addTour();	
 		$('.datepicker').datepicker({
 			dateFormat: 'yy/mm/dd',
 			minDate: 0
 		});
 		$('.search-location').geocomplete();
+		RingerPinger.events.fetch();
 	},
 
 	newEvent: function() {

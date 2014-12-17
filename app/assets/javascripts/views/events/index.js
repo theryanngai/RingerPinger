@@ -6,7 +6,6 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 		'click #map-find' : 'filterResults',
 		'click #submit-event-filter' : 'filterResults',
 		'click .noUiSlider' : 'updateCaption',
-		// 'blur #event-sport-filter' : 'onPageFilter',
 		'keypress #event-sport-filter' : 'handleSportFilter',
 		'change #event-start-filter' : 'handleDateFilter',
 		'change #event-end-filter' : 'handleDateFilter',
@@ -173,9 +172,6 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 			var coll = RingerPinger.events;
 		}
 
-		// debugger;
-		// // this.instanceCollection;
-
 		var filteredEvents = coll.filter(function(sportsEvent) {
 			return (sportsEvent.get('latitude') < that.boundaries.north &&
 							sportsEvent.get('latitude') > that.boundaries.south &&
@@ -229,9 +225,7 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	processSearch: function() {
 		this.parseAll();
 		var dateFiltered = this.collection.filterDate(this.startDate, this.endDate);
-		dateFiltered = new RingerPinger.Collections.Events(dateFiltered);
 		var dateAndSportFiltered = this.collection.filterSport(dateFiltered, this.sport);
-		dateAndSportFiltered = new RingerPinger.Collections.Events(dateAndSportFiltered);
 		if (dateAndSportFiltered.models.length === 0) {
 			var alert = "Your search returned no results. Here's everything!";
 			this.addLocalEvents(RingerPinger.events, alert);
@@ -245,7 +239,6 @@ RingerPinger.Views.EventsIndex = Backbone.CompositeView.extend({
 	addLocalEvents: function(collection, alert) {
 		var localEventView = new RingerPinger.Views.LocalEvents({ collection: collection, 
 																															alert: alert });
-		// this.$('.local-events').html(localEventView.render().$el);
 		this.addSubview('.local-events', localEventView);
 	},
 

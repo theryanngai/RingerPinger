@@ -17,6 +17,8 @@
 //= require bootstrap-datepicker
 //= require jquery-ui
 //= require jquery.nouislider.all.min
+//= require tether.min
+//= require shepherd.min
 //= require underscore
 //= require backbone
 //= require bootstrap
