@@ -3,7 +3,7 @@ RingerPinger.Views.EventShow = Backbone.CompositeView.extend({
 	template: JST["events/show"],
 
 	events: {
-		'click button': 'createEventUser'
+		'click #join-event': 'createEventUser'
 	},
 
 	initialize: function() {

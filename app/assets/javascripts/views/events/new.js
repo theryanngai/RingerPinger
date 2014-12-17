@@ -33,7 +33,6 @@ RingerPinger.Views.NewEvent = Backbone.CompositeView.extend({
 			success: function() {
 				var availableSports = RingerPinger.sports.pluck('name');
 
-				debugger;
 				this.$("#event_sport").autocomplete({
 	 				source: availableSports
 	 			});
