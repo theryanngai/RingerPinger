@@ -27,6 +27,10 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	},
 
 	newEvent: function() {
+		if (tour) {
+			tour.complete();
+		}
+
 		if (!RingerPinger.currentUser) {
 			this.redirectToLogin();
 		} else {
@@ -42,6 +46,10 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	},
 
 	newUserSport: function() {
+		if (tour) {
+			tour.complete();
+		}
+		
 		if (!RingerPinger.currentUser) {
 			this.redirectToLogin();
 		} else {
@@ -51,6 +59,10 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	},
 
 	showEvent: function(id) {
+		if (tour) {
+			tour.complete();
+		}
+		
 		if (!RingerPinger.currentUser) {
 			this.redirectToLogin();
 		} else {
@@ -61,6 +73,10 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	},
 
 	showUser: function(id) {
+		if (tour) {
+			tour.complete();
+		}
+		
 		if (!RingerPinger.currentUser) {
 			this.redirectToLogin();
 		} else {
@@ -72,6 +88,10 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	},
 
 	editUser: function() {
+		if (tour) {
+			tour.complete();
+		}
+		
 		if (!RingerPinger.currentUser) {
 			this.redirectToLogin();
 		} else {
@@ -85,6 +105,10 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	},
 
 	eventsIndex: function() {
+		if (tour) {
+			tour.complete();
+		}
+		
 		if (!RingerPinger.currentUser) {
 			this.redirectToLogin();
 		} else {
@@ -98,6 +122,10 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 	},
 
 	usersIndex: function() {
+		if (tour) {
+			tour.complete();
+		}
+		
 		if (!RingerPinger.currentUser) {
 			this.redirectToLogin();
 		} else {
@@ -110,7 +138,7 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 		}
 	},
 
-	redirectToLogin: function() {
+	redirectToLogin: function() {		
 		Backbone.history.navigate('', { trigger: true });
 		alert('Please log in first!');
 	},

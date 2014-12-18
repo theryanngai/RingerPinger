@@ -20,11 +20,13 @@
     border-radius: 5px;
     position: relative;
     font-family: inherit;
-    background: white;
-    color: #444444;
+    background: rgba(0, 0, 0, 0.9);
+    color: tomato;
+    width: 300px;
     padding: 1em;
     font-size: 1.1em;
     line-height: 1.5em;
+    font-weight: 150;
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
@@ -69,7 +71,7 @@
       right: 100%;
       top: 50%;
       margin-top: -16px;
-      border-right-color: white; }
+      border-right-color: rgba(0, 0, 0, 0.9); }
   .shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom .shepherd-content {
     margin-top: 16px; }
     .shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom .shepherd-content:before {
@@ -122,7 +124,8 @@
 .shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center.shepherd-has-title .shepherd-content:before, .shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before, .shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before {
   border-bottom-color: #eeeeee; }
 .shepherd-element.shepherd-theme-arrows.shepherd-has-title .shepherd-content header {
-  background: #eeeeee;
+  background: rgba(255,255,255, 0.7);
+  color: black;
   padding: 1em; }
   .shepherd-element.shepherd-theme-arrows.shepherd-has-title .shepherd-content header a.shepherd-cancel-link {
     padding: 0;

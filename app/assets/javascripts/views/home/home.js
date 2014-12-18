@@ -70,7 +70,7 @@ RingerPinger.Views.Home = Backbone.CompositeView.extend({
 
 		tour.addStep('searchStep', {
 			title: 'Find Local Events',
-			text: "Tip: Search San Francisco for existing events. Press the Guest Login link in the top right corner if you haven't created an account yet!",
+			text: "Tip: Search San Francisco for existing events. Click the Guest Login link in the top right corner if you haven't created an account yet!",
 			attachTo: '.search-location',
 			classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 			buttons: [
@@ -124,6 +124,10 @@ RingerPinger.Views.Home = Backbone.CompositeView.extend({
 	},
 
 	startTour: function() {
+		if (tour) {
+			tour.complete();
+		}
+		
 		tour.start();
 	},
 

@@ -35,6 +35,7 @@ RingerPinger.Views.AddSportModal = Backbone.CompositeView.extend({
 			newUserSport.save({}, {
 				success: function() {
 					RingerPinger.currentUser.fetch();
+					RingerPinger.usersports.fetch();
 				}
 			})
 		} else {

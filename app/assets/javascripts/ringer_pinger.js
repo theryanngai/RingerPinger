@@ -6,6 +6,7 @@ window.RingerPinger = {
   initialize: function() {
   	var $body = $('.backbone');
   	new RingerPinger.Routers.Router ({ $rootEl: $body });
+  	tour = null;
   	Backbone.history.start();
   }
 };
