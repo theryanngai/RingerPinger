@@ -37,7 +37,8 @@ RingerPinger.Views.LoginModal = Backbone.CompositeView.extend({
         RingerPinger.users.trigger("refresh");
       },
       error: function (model) { 
-      	alert('Bad Username/Password Combo');
+      	// debugger;
+      	$('#login-error').html(model.responseJSON.message);
       }
     })
 	}

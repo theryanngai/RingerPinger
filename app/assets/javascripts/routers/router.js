@@ -140,7 +140,10 @@ RingerPinger.Routers.Router = Backbone.Router.extend({
 
 	redirectToLogin: function() {		
 		Backbone.history.navigate('', { trigger: true });
-		alert('Please log in first!');
+		$('#basicModal').modal({
+			'backdrop' : 'static'
+		});
+		// alert('Please log in first!');
 	},
 
 	_swapView: function(view) {
